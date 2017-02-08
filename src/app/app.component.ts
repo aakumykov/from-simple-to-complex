@@ -1,34 +1,31 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
+import { NavController } from 'ionic-angular';
 
 import { HomePage  } from '../pages/home/home';
-
-// import { BlankPage } from '../pages/blank/blank';
-// import { TitlePage } from '../pages/title/title';
-
+import { BlankPage } from '../pages/blank/blank';
+import { TitlePage } from '../pages/title/title';
 
 @Component({
-  templateUrl: 'app.html'
+	templateUrl: 'app.html'
 })
+
 export class MyApp {
-  rootPage = HomePage;
-  
-  // homePage = HomePage;
-  // blankPage = BlankPage;
-  // titlePage = TitlePage;
+	@ViewChild('content') nav: NavController;
+	rootPage = HomePage;
 
-  constructor(
-    platform: Platform,
-    // public navCtrl: NavController, 
-    // public navParams: NavParams
-  ) {
-    platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      StatusBar.styleDefault();
-      Splashscreen.hide();
-    });
-  }
+	constructor(){}
 
+	// ngAfterViewInit() {
+	// 	console.info('ngAfterViewInit()');
+	// 	//console.info(this.rootPage);
+	// 	// this.nav.push(TitlePage);
+	// }
+
+	openPage(page){
+		console.info('openPage(), page:');
+		console.info(page);
+		this.nav.push(page);
+	}
 }
