@@ -3,23 +3,14 @@
 		<button ion-button menuToggle>
 			<ion-icon name="menu"></ion-icon>
 		</button>
-		<ion-title>Пустая страница</ion-title>
+		<ion-title>Домашняя страница</ion-title>
 	</ion-navbar>
 </ion-header>
 
-<!-- <ion-header>
-	<ion-navbar>
-		<button menuToggle>
-			<ion-icon name="menu"></ion-icon>
-		</button>
-		<ion-title>Hello Ionic</ion-title>
-	</ion-navbar>
-</ion-header> -->
-
 <ion-content padding>
   <p>
-    Условно пустая.
     <a href="http://ionicframework.com/docs/v2">Документация</a>
   </p>
-  <p>Мир в ореховой скорлупке (42).</p>
+  <p>Мир в ореховой скорлупке.</p>
+  <button ion-button (click)="openPage()">Страница с заголовком</button>
 </ion-content>
