@@ -6,6 +6,7 @@ import { MenuController } from 'ionic-angular';
 import { HomePage  } from '../pages/home/home';
 import { BlankPage } from '../pages/blank/blank';
 import { TitlePage } from '../pages/title/title';
+import { GridPage } from '../pages/grid/grid';
 
 @Component({
 	templateUrl: 'app.html'
@@ -13,12 +14,13 @@ import { TitlePage } from '../pages/title/title';
 
 export class MyApp {
 	@ViewChild('content') nav: NavController;
-	
-	rootPage = HomePage;
 
 	homePage = HomePage;
 	titlePage = TitlePage;
 	blankPage = BlankPage;
+	gridPage = GridPage;
+
+	rootPage = this.gridPage;
 
 	constructor(public menuCtrl: MenuController){}
 

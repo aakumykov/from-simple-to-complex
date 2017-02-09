@@ -5,6 +5,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { BlankPage } from '../pages/blank/blank';
 import { TitlePage } from '../pages/title/title';
+import { GridPage } from '../pages/grid/grid';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { TitlePage } from '../pages/title/title';
     HomePage,
     BlankPage,
     TitlePage,
+    GridPage,
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -22,6 +24,7 @@ import { TitlePage } from '../pages/title/title';
     HomePage,
     BlankPage,
     TitlePage,
+    GridPage,
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
