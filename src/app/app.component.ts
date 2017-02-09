@@ -1,5 +1,4 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 import { NavController } from 'ionic-angular';
 import { MenuController } from 'ionic-angular';
@@ -23,14 +22,8 @@ export class MyApp {
 
 	constructor(public menuCtrl: MenuController){}
 
-	// ngAfterViewInit() {
-	// 	console.info('ngAfterViewInit()');
-	// 	//console.info(this.rootPage);
-	// 	// this.nav.push(TitlePage);
-	// }
-
 	openPage(page){
-		console.info('openPage(), page:'); console.info(page);
+		// console.info('openPage(), page:'); console.info(page);
 		this.nav.push(page);
 		this.menuCtrl.close();
 	}
