@@ -23,7 +23,6 @@ export class MyApp {
 	constructor(public menuCtrl: MenuController){}
 
 	openPage(page){
-		// console.info('openPage(), page:'); console.info(page);
 		this.nav.push(page);
 		this.menuCtrl.close();
 	}
