@@ -34,7 +34,7 @@ export class MyApp {
 	ngAfterViewInit(){
 		console.log('ngAfterViewInit()');
 		// this.menuCtrl.open();
-		this.nav.push(this.gifGridPage);
+		this.nav.push(this.videoGridPage);
 	}
 
 	openPage(page){

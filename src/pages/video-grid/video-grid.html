@@ -8,11 +8,42 @@
 	<ion-grid class='media_grid'>
 		<ion-row wrap>
 			<ion-col width-50>
-				<video #video1 src="assets/video/video1.mp4" (tap)="video1.play()"></video>
+				<ion-card>
+					<ion-card-content>
+						<video #video1 src="assets/video/video1.mp4" (tap)="video1.play()"></video>
+					</ion-card-content>
+					
+					<ion-card-header>Танец с бубном</ion-card-header>
+					
+					<ion-row>
+						<ion-col>
+						  <button ion-button icon-left clear small>
+						    <ion-icon name="thumbs-up"></ion-icon>
+						    <div>12 оценок</div>
+						  </button>
+						</ion-col>
+						<ion-col>
+						  <button ion-button icon-left clear small>
+						    <ion-icon name="text"></ion-icon>
+						    <div>4 коммента</div>
+						  </button>
+						</ion-col>
+						<ion-col center text-center>
+						  <ion-note>
+						    11ч назад
+						  </ion-note>
+						</ion-col>
+					</ion-row>
+				</ion-card>
 			</ion-col>
 			
 			<ion-col width-50>
-				<video #video2 src="assets/video/video2.mp4" (tap)="video2.play()"></video>
+				<ion-card>
+					<ion-card-header>Сцена из TF</ion-card-header>
+					<ion-card-content>
+						<video #video2 src="assets/video/video2.mp4" (tap)="video2.play()"></video>
+					</ion-card-content>
+				</ion-card>
 			</ion-col>
 			
 			<ion-col width-50>
