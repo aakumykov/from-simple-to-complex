@@ -8,6 +8,7 @@ import { TitlePage } from '../pages/title/title';
 import { GridPage } from '../pages/grid/grid';
 import { CardsPage } from '../pages/cards/cards';
 import { VideoPage } from '../pages/video/video';
+import { VideoGridPage } from '../pages/video-grid/video-grid';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { VideoPage } from '../pages/video/video';
     GridPage,
     CardsPage,
     VideoPage,
+    VideoGridPage,
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -31,6 +33,7 @@ import { VideoPage } from '../pages/video/video';
     GridPage,
     CardsPage,
     VideoPage,
+    VideoGridPage,
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
