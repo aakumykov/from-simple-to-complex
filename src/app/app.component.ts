@@ -7,6 +7,7 @@ import { BlankPage } from '../pages/blank/blank';
 import { TitlePage } from '../pages/title/title';
 import { GridPage } from '../pages/grid/grid';
 import { CardsPage } from '../pages/cards/cards';
+import { VideoPage } from '../pages/video/video';
 
 @Component({
 	templateUrl: 'app.html'
@@ -20,6 +21,7 @@ export class MyApp {
 	blankPage = BlankPage;
 	gridPage = GridPage;
 	cardsPage = CardsPage;
+	videoPage = VideoPage;
 
 	rootPage = this.homePage;
 
@@ -28,7 +30,7 @@ export class MyApp {
 	ngAfterViewInit(){
 		console.log('ngAfterViewInit()');
 		// this.menuCtrl.open();
-		this.nav.push(this.cardsPage);
+		this.nav.push(this.videoPage);
 	}
 
 	openPage(page){

@@ -7,6 +7,7 @@ import { BlankPage } from '../pages/blank/blank';
 import { TitlePage } from '../pages/title/title';
 import { GridPage } from '../pages/grid/grid';
 import { CardsPage } from '../pages/cards/cards';
+import { VideoPage } from '../pages/video/video';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { CardsPage } from '../pages/cards/cards';
     TitlePage,
     GridPage,
     CardsPage,
+    VideoPage,
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -28,6 +30,7 @@ import { CardsPage } from '../pages/cards/cards';
     TitlePage,
     GridPage,
     CardsPage,
+    VideoPage,
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
