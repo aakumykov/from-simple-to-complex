@@ -12,6 +12,8 @@ import { VideoGridPage } from '../pages/video-grid/video-grid';
 import { GifGridPage } from '../pages/gif-grid/gif-grid';
 import { RegionsPage } from '../pages/regions/regions';
 
+import { RegionsService } from '../pages/regions/regions.service';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -41,6 +43,9 @@ import { RegionsPage } from '../pages/regions/regions';
     GifGridPage,
     RegionsPage,
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    RegionsService,
+  ]
 })
 export class AppModule {}
