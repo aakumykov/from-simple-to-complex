@@ -10,6 +10,7 @@ import { CardsPage } from '../pages/cards/cards';
 import { VideoPage } from '../pages/video/video';
 import { VideoGridPage } from '../pages/video-grid/video-grid';
 import { GifGridPage } from '../pages/gif-grid/gif-grid';
+import { RegionsPage } from '../pages/regions/regions';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { GifGridPage } from '../pages/gif-grid/gif-grid';
     VideoPage,
     VideoGridPage,
     GifGridPage,
+    RegionsPage,
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -37,6 +39,7 @@ import { GifGridPage } from '../pages/gif-grid/gif-grid';
     VideoPage,
     VideoGridPage,
     GifGridPage,
+    RegionsPage,
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
