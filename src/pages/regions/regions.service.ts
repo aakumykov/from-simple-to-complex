@@ -5,13 +5,14 @@ import { Http, Response } 			from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/observable/throw';
 
 import { Region } from './region';
 
 
 @Injectable()
 export class RegionsService {
-	private regionsUrl = 'http://localhost:3000/regions2';
+	private regionsUrl = 'http://localhost:3000/regions';
 
 	constructor(private http: Http){}
 

@@ -16,6 +16,7 @@ export class RegionsPage {
 	// переменные
 	regions: Region[];
 	errorMsg: string;
+	infoMsg: string = 'инфа 100%';
 
 	// внешние методы
 	ngOnInit(){

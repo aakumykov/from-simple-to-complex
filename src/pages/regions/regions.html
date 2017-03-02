@@ -6,7 +6,8 @@
 
 
 <ion-content>
-	<p class='error'>{{ errorMsg }}</p>
+	<ion-item class='error' *ngIf="errorMsg">{{ errorMsg }}</ion-item>
+	<ion-item class='info' *ngIf="infoMsg">{{ infoMsg }}</ion-item>
 	<ion-list>
 		<ion-item *ngFor="let region of regions">{{ region.name }}</ion-item>
 	</ion-list>
