@@ -20,12 +20,12 @@ export class RegionsPage {
 
 	ionViewDidLoad() {
 			console.log('ionViewDidLoad, RegionsPage');
-		this.regions = this.getRegions();
+		// this.regions = this.getRegions();
 	}
 
 	ngOnInit(): void {
 			console.log('ngOnInit, RegionsPage');
-		//this.regions = this.getRegions();
+		this.regions = this.getRegions();
 	}
 
 	getRegions() {
