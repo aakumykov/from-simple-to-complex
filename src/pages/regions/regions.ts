@@ -11,12 +11,16 @@ import { RegionsService } from './regions.service';
 
 export class RegionsPage {
 	// конструктор
-	constructor(private regionsService: RegionsService){}
+	constructor(
+		public navCtrl: NavController,
+		public vanParams: NavParams,
+		private regionsService: RegionsService
+	){}
 
 	// переменные
 	regions: Region[];
 	errorMsg: string;
-	infoMsg: string = 'инфа 100%';
+	infoMsg: string;
 
 	// внешние методы
 	ngOnInit(){
