@@ -3,7 +3,8 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 import { HomePage } from '../pages/home/home';
-import { RegionsPage } from '../pages/regions/regions';
+import { RegionsPage } from '../pages/regions/regions.component';
+import { RegionDetailsPage } from '../pages/regions/region-details.component'
 
 import { RegionsService } from '../pages/regions/regions.service';
 
@@ -13,6 +14,7 @@ import { RegionsService } from '../pages/regions/regions.service';
     MyApp,
     HomePage,
     RegionsPage,
+    RegionDetailsPage,
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -22,6 +24,7 @@ import { RegionsService } from '../pages/regions/regions.service';
     MyApp,
     HomePage,
     RegionsPage,
+    RegionDetailsPage,
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},

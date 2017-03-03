@@ -3,8 +3,7 @@ import { NavController } from 'ionic-angular';
 import { MenuController } from 'ionic-angular';
 
 import { HomePage  } from '../pages/home/home';
-import { RegionsPage } from '../pages/regions/regions';
-
+import { RegionsPage } from '../pages/regions/regions.component';
 
 @Component({
 	templateUrl: 'app.html'
