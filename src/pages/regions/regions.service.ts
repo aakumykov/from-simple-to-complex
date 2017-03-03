@@ -16,12 +16,22 @@ export class RegionsService {
 
 	constructor(private http: Http){}
 
-	getRegions(): Observable<Region[]> {
+	// внешние методы
+	// getRegions(): Observable<Region[]> {
+	getRegions() {
 		return this.http.get(this.regionsUrl)
 						.map(this.extractData)
 						.catch(this.handleError);
 	}
 
+	getRegionPlaces(id: number) {
+		let url = this.regionsUrl+'/'+id+'/places';
+		return this.http.get(url)
+						.map(this.extractData)
+						.catch(this.handleError);
+	}
+
+	// внутренние методы
 	private extractData(res: Response) {
 		let body = res.json();
 		return body || {};
