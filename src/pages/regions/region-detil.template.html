@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Районы</ion-title>
+    <ion-title>Район &laquo;{{ name }}&raquo;</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -8,7 +8,8 @@
 <ion-content>
 	<ion-item class='error' *ngIf="errorMsg">{{ errorMsg }}</ion-item>
 	<ion-item class='info' *ngIf="infoMsg">{{ infoMsg }}</ion-item>
+
 	<ion-list>
-		<ion-item *ngFor="let region of regions">{{ region.name }}</ion-item>
+		<ion-item *ngFor="let place of places">{{ place.name }}</ion-item>
 	</ion-list>
 </ion-content>

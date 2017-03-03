@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-import { Region } from './region';
+import { Region } from './region.class';
 import { RegionsService } from './regions.service';
+import { RegionDetailPage } from './region-detail.component'
 
 @Component({
 	selector: 'regions',
-	templateUrl: 'regions.html'
+	templateUrl: 'regions.template.html'
 })
 
 export class RegionsPage {
@@ -25,6 +26,12 @@ export class RegionsPage {
 	// внешние методы
 	ngOnInit(){
 		this.getRegions();
+	}
+
+	regionDetails(id: number){
+		let msg = 'regionDetails('+id+')';
+		console.info(msg);
+		this.navCtrl.push(RegionDetailPage);
 	}
 
 	// внутренние методы
