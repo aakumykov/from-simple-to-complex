@@ -4,7 +4,7 @@ import { MyApp } from './app.component';
 
 import { HomePage } from '../pages/home/home';
 import { RegionsPage } from '../pages/regions/regions.component';
-import { RegionDetailPage } from '../pages/regions/region-detail.component'
+import { RegionDetailsPage } from '../pages/regions/region-details.component'
 
 import { RegionsService } from '../pages/regions/regions.service';
 
@@ -14,7 +14,7 @@ import { RegionsService } from '../pages/regions/regions.service';
     MyApp,
     HomePage,
     RegionsPage,
-    RegionDetailPage,
+    RegionDetailsPage,
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -24,7 +24,7 @@ import { RegionsService } from '../pages/regions/regions.service';
     MyApp,
     HomePage,
     RegionsPage,
-    RegionDetailPage,
+    RegionDetailsPage,
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},

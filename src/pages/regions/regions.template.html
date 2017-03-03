@@ -9,6 +9,6 @@
 	<ion-item class='error' *ngIf="errorMsg">{{ errorMsg }}</ion-item>
 	<ion-item class='info' *ngIf="infoMsg">{{ infoMsg }}</ion-item>
 	<ion-list>
-		<ion-item *ngFor="let region of regions" (click)="regionDetails(region.id)">{{ region.name }}</ion-item>
+		<ion-item *ngFor="let region of regions" (click)="regionDetails(region.id, region.name)">{{ region.name }}</ion-item>
 	</ion-list>
 </ion-content>

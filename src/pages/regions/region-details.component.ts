@@ -6,33 +6,30 @@ import { RegionsService } from './regions.service';
 
 @Component({
 	selector: 'region-detail',
-	templateUrl: 'region-detil.template.html'
+	templateUrl: 'region-details.template.html'
 })
 
-export class RegionDetailPage {
+export class RegionDetailsPage {
 	// конструктор
 	constructor(
 		public navCtrl: NavController,
-		public vanParams: NavParams,
+		public navParams: NavParams,
 		private regionsService: RegionsService
 	){}
 
 	// переменные
-	regions: Region[];
 	errorMsg: string;
 	infoMsg: string;
 
+	id: number;
+	name: string;
+
 	// внешние методы
 	ngOnInit(){
-		this.getRegions();
-	}
+		this.id = this.navParams.get('id');
+		this.name = this.navParams.get('name');
 
-	// внутренние методы
-	private getRegions(){
-		this.regionsService.getRegions().subscribe(
-			regions => this.regions = regions,
-			error => this.errorMsg = <any>error//,
-			// () => this.infoMsg = 'RegionsPage.getRegions() отработал'
-		);
+		console.info( 'id: ' + this.id );
+		console.info( 'name: ' + this.name );
 	}
 }
