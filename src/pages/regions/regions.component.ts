@@ -40,7 +40,11 @@ export class RegionsPage {
 		if (!name) { return false; }
 
 		this.regionsService.addRegion(name).subscribe(
-				region => this.regions.push(region),
+				region => {
+					console.info('region: ');
+					console.info(region);
+					this.regions.push(region);
+				},
 				error => this.errorMsg = <any>error
 		);
 	}

@@ -38,6 +38,15 @@ export class RegionDetailsPage {
 		this.getRegionPlaces();
 	}
 
+	addPlace(name: string) {
+		console.info('RegionDetailsPage.addPlace('+name+')');
+
+		this.regionsService.addPlace(this.id, name).subscribe(
+			place => this.places.push(place),
+			error => this.errorMsg = <any>error,
+		);
+	}
+
 	// внутренние методы
 	private getRegionPlaces(){
 		this.regionsService.getRegionPlaces(this.id).subscribe(
