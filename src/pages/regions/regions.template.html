@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Районы</ion-title>
+    <ion-title>Домашняя страница</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -10,6 +10,7 @@
 	<ion-item class='info' *ngIf="infoMsg">{{ infoMsg }}</ion-item>
 	
 	<ion-list>
+		<ion-list-header>Список районов:</ion-list-header>
 		<ion-item *ngFor="let region of regions" (click)="regionDetails(region.id, region.name)">{{ region.name }}</ion-item>
 	</ion-list>
 
