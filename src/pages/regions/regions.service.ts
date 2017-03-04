@@ -1,6 +1,6 @@
 import { Injectable }	  			from '@angular/core';
 import { Http, Response } 			from '@angular/http';
-// import { Headers, RequestOptions }  from '@angular/http';
+import { Headers, RequestOptions }  from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
@@ -29,6 +29,17 @@ export class RegionsService {
 		return this.http.get(url)
 						.map(this.extractData)
 						.catch(this.handleError);
+	}
+
+	addRegion(name: string) {
+		console.info('RegionsService.addRegion('+name+')');
+
+		let headers = new Headers({ 'Content-Type': 'application/json' });
+		let options = new RequestOptions({ headers: headers });
+
+		return this.http.post(this.regionsUrl, { name }, options)
+					.map(this.extractData)
+					.catch(this.handleError);
 	}
 
 	// внутренние методы

@@ -34,6 +34,17 @@ export class RegionsPage {
 		this.navCtrl.push(RegionDetailsPage,{ id:id, name:name });
 	}
 
+	addRegion(name: string) {
+		console.info('regionDetails('+name+')');
+
+		if (!name) { return false; }
+
+		this.regionsService.addRegion(name).subscribe(
+				region => this.regions.push(region),
+				error => this.errorMsg = <any>error
+		);
+	}
+
 	// внутренние методы
 	private getRegions(){
 		this.regionsService.getRegions().subscribe(

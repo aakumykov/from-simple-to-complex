@@ -8,7 +8,16 @@
 <ion-content>
 	<ion-item class='error' *ngIf="errorMsg">{{ errorMsg }}</ion-item>
 	<ion-item class='info' *ngIf="infoMsg">{{ infoMsg }}</ion-item>
+	
 	<ion-list>
 		<ion-item *ngFor="let region of regions" (click)="regionDetails(region.id, region.name)">{{ region.name }}</ion-item>
 	</ion-list>
+
+	<ion-item>
+		<ion-label floating>Новый район</ion-label>
+		<ion-input type="text" value="" #newRegionName></ion-input>
+	</ion-item>
+	<div padding>
+		<button ion-button block (click)="addRegion(newRegionName.value); newRegionName.value=''">Добавить</button>
+	</div>
 </ion-content>
