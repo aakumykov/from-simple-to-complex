@@ -8,11 +8,10 @@
 <ion-content>
 	<ion-item class='error' *ngIf="errorMsg">{{ errorMsg }}</ion-item>
 	<ion-item class='info' *ngIf="infoMsg">{{ infoMsg }}</ion-item>
-
-	<ion-item *ngIf="places">Места:</ion-item>
 	
 	<!-- список мест -->
 	<ion-list>
+		<ion-list-header *ngIf="places">Места:</ion-list-header>
 		<ion-item *ngFor="let place of places">{{ place.name }}</ion-item>
 	</ion-list>
 
