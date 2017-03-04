@@ -13,6 +13,7 @@ import { Region } from './region.class';
 @Injectable()
 export class RegionsService {
 	private regionsUrl = 'http://localhost:3000/regions';
+	private placesUrl = 'http://localhost:3000/places';
 
 	constructor(private http: Http){}
 
@@ -38,6 +39,17 @@ export class RegionsService {
 		let options = new RequestOptions({ headers: headers });
 
 		return this.http.post(this.regionsUrl, { name }, options)
+					.map(this.extractData)
+					.catch(this.handleError);
+	}
+
+	addPlace(id:number, name: string) {
+		console.info('RegionsService.addPlace('+name+', '+id+')');
+
+		let headers = new Headers({ 'Content-Type': 'application/json' });
+		let options = new RequestOptions({ headers: headers });
+
+		return this.http.post(this.placesUrl, { name: name, region_id: id }, options)
 					.map(this.extractData)
 					.catch(this.handleError);
 	}
