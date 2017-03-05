@@ -3,18 +3,18 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 import { HomePage } from '../pages/home/home';
-import { RegionsPage } from '../pages/regions/regions.component';
-import { RegionDetailsPage } from '../pages/regions/region-details.component'
 
-import { RegionsService } from '../pages/regions/regions.service';
+import { RegionsList } from '../pages/regions/regions-list/regions-list';
+import { RegionDetails } from '../pages/regions/region-details/region-details'
+import { RegionsService } from '../pages/regions/regions.service'; // => region.service
 
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    RegionsPage,
-    RegionDetailsPage,
+    RegionsList,
+    RegionDetails,
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -23,8 +23,8 @@ import { RegionsService } from '../pages/regions/regions.service';
   entryComponents: [
     MyApp,
     HomePage,
-    RegionsPage,
-    RegionDetailsPage,
+    RegionsList,
+    RegionDetails,
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},

@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-import { Region } from './region.class';
-import { RegionsService } from './regions.service';
-import { RegionDetailsPage } from './region-details.component'
+import { Region } from '../region';
+import { RegionDetails } from '../region-details/region-details'
+import { RegionsService } from '../regions.service';
 
 @Component({
 	selector: 'regions',
-	templateUrl: 'regions.template.html'
+	templateUrl: 'regions-list.html'
 })
 
-export class RegionsPage {
+export class RegionsList {
 	// конструктор
 	constructor(
 		public navCtrl: NavController,
@@ -31,7 +31,7 @@ export class RegionsPage {
 	regionDetails(id: number, name: string){
 		console.info('regionDetails('+id+')');
 
-		this.navCtrl.push(RegionDetailsPage,{ id:id, name:name });
+		this.navCtrl.push(RegionDetails,{ id:id, name:name });
 	}
 
 	addRegion(name: string) {
@@ -54,7 +54,7 @@ export class RegionsPage {
 		this.regionsService.getRegions().subscribe(
 			regions => this.regions = regions,
 			error => this.errorMsg = <any>error//,
-			// () => this.infoMsg = 'RegionsPage.getRegions() отработал'
+			// () => this.infoMsg = 'RegionsList.getRegions() отработал'
 		);
 	}
 }

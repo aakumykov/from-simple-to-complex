@@ -3,7 +3,8 @@ import { NavController } from 'ionic-angular';
 import { MenuController } from 'ionic-angular';
 
 import { HomePage  } from '../pages/home/home';
-import { RegionsPage } from '../pages/regions/regions.component';
+
+import { RegionsList } from '../pages/regions/regions-list/regions-list';
 
 @Component({
 	templateUrl: 'app.html'
@@ -13,7 +14,7 @@ export class MyApp {
 	@ViewChild('content') nav: NavController;
 
 	homePage = HomePage;
-	regionsPage = RegionsPage;
+	regionsPage = RegionsList;
 
 	rootPage = this.homePage;
 
