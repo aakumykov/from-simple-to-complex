@@ -18,7 +18,7 @@
 				<ion-icon name="create"></ion-icon>
 				Изменить
 			  </button>
-			  <button ion-button color="danger" (click)="removeRegion(region.id)">
+			  <button ion-button color="danger" (click)="removeRegion(region)">
 				<ion-icon name="trash"></ion-icon>
 				Удалить
 			  </button>
@@ -27,7 +27,7 @@
 	</ion-list>
 
 	<ion-item>
-		<ion-label floating>Новый район</ion-label>
+		<ion-label fixed>Новый район</ion-label>
 		<ion-input type="text" value="" #newRegionName></ion-input>
 	</ion-item>
 	<div padding>

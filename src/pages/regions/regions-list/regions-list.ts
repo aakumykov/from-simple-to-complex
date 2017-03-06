@@ -40,11 +40,7 @@ export class RegionsList {
 		if (!name) { return false; }
 
 		this.regionsService.addRegion(name).subscribe(
-				region => {
-					console.info('region: ');
-					console.info(region);
-					this.regions.push(region);
-				},
+				region => this.regions.push(region),
 				error => this.errorMsg = <any>error
 		);
 	}
@@ -53,21 +49,20 @@ export class RegionsList {
 		console.info('RegionsList.editRegion('+id+')');
 	}
 
-	removeRegion(id: number) {
-		console.info('RegionsList.removeRegion('+id+')');
+	removeRegion(region: Region) {
+		console.info('RegionsList.removeRegion('+region+')');
 
-		console.log('----- this.regions -----');
-		console.log(this.regions);
-		console.log('------------------------');
-
-		this.regionsService.removeRegion(id).subscribe(
-			region => {
-				//this.regions.splice(this.regions.indexOf(region),1)
-				console.info('----- success -----');
-				console.info(region);
-				console.info('-------------------');
+		this.regionsService.removeRegion(region.id).subscribe(
+			() => {
+				for (let r in this.regions) {
+					if (region == this.regions[r]) {
+						this.regions.splice(Number(r),1);
+					}
+				}
+				this.infoMsg = 'район "'+region.name+'" удалён';
 			},
-			error => this.errorMsg = <any>error
+			error => this.errorMsg = <any>error,
+			() => this.infoMsg = 'операция выполнена'
 		);
 	}
 
