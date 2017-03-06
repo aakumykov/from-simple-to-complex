@@ -49,6 +49,19 @@ export class RegionsList {
 		);
 	}
 
+	editRegion(id: number) {
+		console.info('RegionsList.editRegion('+id+')');
+
+
+	}
+
+	removeRegion(id: number) {
+		console.info('RegionsList.removeRegion('+id+')');
+
+		// this.regionsService.removeRegion(id).subscribe(
+		// );
+	}
+
 	// внутренние методы
 	private getRegions(){
 		this.regionsService.getRegions().subscribe(

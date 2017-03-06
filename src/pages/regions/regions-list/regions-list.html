@@ -1,17 +1,29 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Домашняя страница</ion-title>
+	<ion-title>Домашняя страница</ion-title>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content>
-	<ion-item class='error' *ngIf="errorMsg">{{ errorMsg }}</ion-item>
-	<ion-item class='info' *ngIf="infoMsg">{{ infoMsg }}</ion-item>
+	<p padding class='error' *ngIf="errorMsg">Ошибка: {{ errorMsg }}</p>
+	<p padding class='info' *ngIf="infoMsg">{{ infoMsg }}</p>
 	
 	<ion-list>
-		<ion-list-header>Список районов:</ion-list-header>
-		<ion-item *ngFor="let region of regions" (click)="regionDetails(region.id, region.name)">{{ region.name }}</ion-item>
+		<ion-item-sliding *ngFor="let region of regions">
+			<ion-item (click)="regionDetails(region.id, region.name)">{{ region.name }}</ion-item>		
+			
+			<ion-item-options side="right">
+			  <button ion-button color="info" (click)="editRegion(region.id)">
+				<ion-icon name="create"></ion-icon>
+				Изменить
+			  </button>
+			  <button ion-button color="danger" (click)="removeRegion(region.id)">
+				<ion-icon name="trash"></ion-icon>
+				Удалить
+			  </button>
+			</ion-item-options>
+		</ion-item-sliding>
 	</ion-list>
 
 	<ion-item>

@@ -61,13 +61,17 @@ export class RegionsService {
 	}
 
 	private handleError(error: Response | any) {
+		console.info('----- RegionsService.handleError() -----');
+		console.info(error);
+		console.info('----------------------------------------');
+
 		// Вообще-то, нужно использовать внешнюю службу журналирования!
 		let errMsg: string;
 
 		if (error instanceof Response) {
 			const body = error.json();
 			const err = body.error || JSON.stringify(body);
-			errMsg = `$(error.status) - ${error.statusText || ''} ${err}`;
+			errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
 		}
 		else {
 			errMsg = error.message ? error.message : error.toString();
