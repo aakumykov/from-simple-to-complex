@@ -51,15 +51,24 @@ export class RegionsList {
 
 	editRegion(id: number) {
 		console.info('RegionsList.editRegion('+id+')');
-
-
 	}
 
 	removeRegion(id: number) {
 		console.info('RegionsList.removeRegion('+id+')');
 
-		// this.regionsService.removeRegion(id).subscribe(
-		// );
+		console.log('----- this.regions -----');
+		console.log(this.regions);
+		console.log('------------------------');
+
+		this.regionsService.removeRegion(id).subscribe(
+			region => {
+				//this.regions.splice(this.regions.indexOf(region),1)
+				console.info('----- success -----');
+				console.info(region);
+				console.info('-------------------');
+			},
+			error => this.errorMsg = <any>error
+		);
 	}
 
 	// внутренние методы

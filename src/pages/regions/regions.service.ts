@@ -15,6 +15,9 @@ export class RegionsService {
 	private regionsUrl = 'http://localhost:3000/regions';
 	private placesUrl = 'http://localhost:3000/places';
 
+	private requestHeaders = new Headers({ 'Content-Type': 'application/json' });
+	private requestOptions = new RequestOptions({ headers: this.requestHeaders });
+
 	constructor(private http: Http){}
 
 	// внешние методы
@@ -46,12 +49,19 @@ export class RegionsService {
 	addPlace(id:number, name: string) {
 		console.info('RegionsService.addPlace('+name+', '+id+')');
 
-		let headers = new Headers({ 'Content-Type': 'application/json' });
-		let options = new RequestOptions({ headers: headers });
-
-		return this.http.post(this.placesUrl, { name: name, region_id: id }, options)
+		return this.http.post(this.placesUrl, { name: name, region_id: id }, this.requestOptions)
 					.map(this.extractData)
 					.catch(this.handleError);
+	}
+
+	removeRegion(id: number) {
+		console.info('RegionsService.removeRegion('+id+')');
+
+		let regionUrl = this.regionsUrl+'/'+id;
+
+		return this.http.delete(regionUrl)
+				.map(this.extractData)
+				.catch(this.handleError);
 	}
 
 	// внутренние методы
