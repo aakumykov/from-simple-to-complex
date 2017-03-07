@@ -68,8 +68,9 @@ export class RegionsList {
 		);
 	}
 
-	presentActionSheet(region: Region) {
+	presentActionSheet(region: Region, slidingItem) {
 		console.info('RegionsList.presentActionSheet()');
+		console.info(slidingItem);
 
 		let name = region.name;
 
@@ -88,6 +89,7 @@ export class RegionsList {
 			  role: 'cancel',
 			  handler: () => {
 				console.info('Отмена удаления района "'+name+'"');
+				slidingItem.close();
 			  }
 			}
 		  ]
