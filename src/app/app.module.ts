@@ -4,17 +4,17 @@ import { MyApp } from './app.component';
 
 import { HomePage } from '../pages/home/home';
 
-import { RegionsList } from '../pages/regions/regions-list/regions-list';
-import { RegionDetails } from '../pages/regions/region-details/region-details'
-import { RegionsService } from '../pages/regions/regions.service'; // => region.service
+import { RegionList } from '../pages/region/list/list';
+// import { RegionDetails } from '../pages/regions/region-details/region-details'
+import { RegionService } from '../pages/region/region.service'; // => region.service
 
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    RegionsList,
-    RegionDetails,
+    RegionList,
+    // RegionDetails,
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -23,12 +23,12 @@ import { RegionsService } from '../pages/regions/regions.service'; // => region.
   entryComponents: [
     MyApp,
     HomePage,
-    RegionsList,
-    RegionDetails,
+    RegionList,
+    // RegionDetails,
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    RegionsService,
+    RegionService,
   ]
 })
 

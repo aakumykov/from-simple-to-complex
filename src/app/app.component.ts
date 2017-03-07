@@ -4,7 +4,7 @@ import { MenuController } from 'ionic-angular';
 
 import { HomePage  } from '../pages/home/home';
 
-import { RegionsList } from '../pages/regions/regions-list/regions-list';
+import { RegionList } from '../pages/region/list/list';
 
 @Component({
 	templateUrl: 'app.html'
@@ -13,11 +13,13 @@ import { RegionsList } from '../pages/regions/regions-list/regions-list';
 export class MyApp {
 	@ViewChild('content') nav: NavController;
 
+	// свойства
 	homePage = HomePage;
-	regionsPage = RegionsList;
+	regionListPage = RegionList;
 
 	rootPage = this.homePage;
 
+	// методы
 	constructor(public menuCtrl: MenuController){}
 
 	ngOnInit(): void {
@@ -27,12 +29,10 @@ export class MyApp {
 	ngAfterViewInit(){
 		console.log('ngAfterViewInit(), MyApp');
 		// this.menuCtrl.open();
-		this.nav.push(this.regionsPage);
+		this.nav.push(this.homePage);
 	}
 
 	openPage(page){
-		// console.info('openPage()');
-		// console.info(page);
 		this.nav.push(page);
 		this.menuCtrl.close();
 	}

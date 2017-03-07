@@ -11,7 +11,7 @@ import 'rxjs/add/observable/throw';
 
 
 @Injectable()
-export class RegionsService {
+export class RegionService {
 	private regionsUrl = 'http://localhost:3000/regions';
 	private placesUrl = 'http://localhost:3000/places';
 
