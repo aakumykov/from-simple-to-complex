@@ -6,8 +6,8 @@
 
 
 <ion-content>
-	<ion-item class='error' *ngIf="errorMsg">{{ errorMsg }}</ion-item>
-	<ion-item class='info' *ngIf="infoMsg">{{ infoMsg }}</ion-item>
+	<p padding class='error' *ngIf="errorMsg">Ошибка: {{ errorMsg }}</p>
+	<p padding class='info' *ngIf="infoMsg">{{ infoMsg }}</p>
 	
 	<!-- список мест -->
 	<ion-list>

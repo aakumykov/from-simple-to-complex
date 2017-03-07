@@ -40,12 +40,29 @@ export class RegionsList {
 		if (!name) { return false; }
 
 		this.regionsService.addRegion(name).subscribe(
-				region => {
-					console.info('region: ');
-					console.info(region);
-					this.regions.push(region);
-				},
+				region => this.regions.push(region),
 				error => this.errorMsg = <any>error
+		);
+	}
+
+	editRegion(id: number) {
+		console.info('RegionsList.editRegion('+id+')');
+	}
+
+	removeRegion(region: Region) {
+		console.info('RegionsList.removeRegion('+region+')');
+
+		this.regionsService.removeRegion(region.id).subscribe(
+			() => {
+				for (let r in this.regions) {
+					if (region == this.regions[r]) {
+						this.regions.splice(Number(r),1);
+					}
+				}
+				this.infoMsg = 'район "'+region.name+'" удалён';
+			},
+			error => this.errorMsg = <any>error,
+			() => this.infoMsg = 'операция выполнена'
 		);
 	}
 
