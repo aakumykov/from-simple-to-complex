@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { ActionSheetController } from 'ionic-angular';
 
 import { Region } from '../region';
 import { RegionDetails } from '../region-details/region-details'
@@ -15,6 +16,7 @@ export class RegionsList {
 	constructor(
 		public navCtrl: NavController,
 		public navParams: NavParams,
+		public actionSheetCtrl: ActionSheetController,
 		private regionsService: RegionsService
 	){}
 
@@ -64,6 +66,35 @@ export class RegionsList {
 			error => this.errorMsg = <any>error,
 			() => this.infoMsg = 'операция выполнена'
 		);
+	}
+
+	presentActionSheet(region: Region, slidingItem) {
+		console.info('RegionsList.presentActionSheet()');
+		console.info(slidingItem);
+
+		let name = region.name;
+
+		let actionSheet = this.actionSheetCtrl.create({
+		  title: 'Удалить район «'+name+'»?',
+		  buttons: [
+			{
+			  text: 'Да, удалить',
+			  role: 'destructive',
+			  handler: () => {
+				console.info('Выбрано удаление района "'+name+'"');
+				this.removeRegion(region);
+			  }
+			},{
+			  text: 'Нет, оставить',
+			  role: 'cancel',
+			  handler: () => {
+				console.info('Отмена удаления района "'+name+'"');
+				slidingItem.close();
+			  }
+			}
+		  ]
+		});
+		actionSheet.present();
 	}
 
 	// внутренние методы

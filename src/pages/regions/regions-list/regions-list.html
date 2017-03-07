@@ -10,18 +10,21 @@
 	<p padding class='info' *ngIf="infoMsg">{{ infoMsg }}</p>
 	
 	<ion-list>
-		<ion-item-sliding *ngFor="let region of regions">
+		<ion-item-sliding #slidingItem *ngFor="let region of regions">
 			<ion-item (click)="regionDetails(region.id, region.name)">{{ region.name }}</ion-item>		
 			
 			<ion-item-options side="right">
+			  
 			  <button ion-button color="info" (click)="editRegion(region.id)">
 				<ion-icon name="create"></ion-icon>
 				Изменить
 			  </button>
-			  <button ion-button color="danger" (click)="removeRegion(region)">
+			  
+			  <button ion-button color="danger" (click)="presentActionSheet(region, slidingItem)">
 				<ion-icon name="trash"></ion-icon>
 				Удалить
 			  </button>
+
 			</ion-item-options>
 		</ion-item-sliding>
 	</ion-list>
