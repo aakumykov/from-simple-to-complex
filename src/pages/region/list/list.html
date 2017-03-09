@@ -1,5 +1,3 @@
-<!-- Список районов. -->
-
 <ion-header>
   <ion-navbar>
 	<ion-title>Домашняя страница</ion-title>
@@ -13,7 +11,7 @@
 	
 	<ion-list>
 		<ion-item-sliding #slidingItem *ngFor="let region of list">
-			<ion-item (click)="regionDetails(region.id, region.name)">{{ region.name }}</ion-item>		
+			<ion-item (click)="showRegion(region.id)">{{ region.name }}</ion-item>		
 			
 			<ion-item-options side="right">
 			  

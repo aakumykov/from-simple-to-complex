@@ -7,7 +7,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw';
 
-// import { Region } from './region.class';
+import { Region } from './region.class';
 
 
 @Injectable()
@@ -23,9 +23,22 @@ export class RegionService {
 	// внешние методы
 	// getList(): Observable<Region[]> {
 	getList() {
+		console.info('RegionsService.getList()');
+
 		return this.http.get(this.regionsUrl)
 						.map(this.extractData)
 						.catch(this.handleError);
+	}
+
+	getRegion(id: number): Observable<Region> {
+		console.info('RegionsService.getRegion('+id+')');
+
+		let regionUrl = this.regionsUrl+'/'+id;
+			console.info('regionUrl: '+regionUrl+')');
+
+		return this.http.get(regionUrl)
+				.map(this.extractData)
+				.catch(this.handleError);
 	}
 
 	getRegionPlaces(id: number) {
