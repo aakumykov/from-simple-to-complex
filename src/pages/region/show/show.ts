@@ -14,7 +14,9 @@ export class RegionShow {
 
 	public id: number;
 	public name: string;
-	public region: Region;
+	public description: string;
+
+	// public region: Region;
 
 	public infoMsg: string = 'инфа 100%';
 	public errorMsg: string = 'юлин, ошибка';
@@ -53,16 +55,9 @@ export class RegionShow {
 
 		this.regionService.getRegion(this.id).subscribe(
 			region => {
-				this.region = region;
-				// this.region.name = region.name;
-				// this.region.id = region.id;
-
 				this.id = region.id;
 				this.name = region.name;
-
-				console.info('----- this.region -----');
-				console.info(this.region);
-				console.info('----------------------------------');
+				this.description = region.description;
 			},
 			error => this.errorMsg = error,
 		);

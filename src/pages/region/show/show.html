@@ -2,7 +2,7 @@
 
 <ion-header>
   <ion-navbar>
-	<ion-title>Район {{name}} {{region.name}}</ion-title>
+	<ion-title>Район &laquo;{{name}}&raquo;</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -10,7 +10,6 @@
 <ion-content>
 	<ion-card>
 		<ion-card-header>{{name}}</ion-card-header>
-		<!-- <ion-card-content *ngIf="description">{{description}}</ion-card-content> -->
-		<ion-card-content>Описание этого района.</ion-card-content>
+		<ion-card-content>{{description}}</ion-card-content>
 	</ion-card>
 </ion-content>
