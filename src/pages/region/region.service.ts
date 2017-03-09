@@ -21,8 +21,8 @@ export class RegionService {
 	constructor(private http: Http){}
 
 	// внешние методы
-	// getRegions(): Observable<Region[]> {
-	getRegions() {
+	// getList(): Observable<Region[]> {
+	getList() {
 		return this.http.get(this.regionsUrl)
 						.map(this.extractData)
 						.catch(this.handleError);

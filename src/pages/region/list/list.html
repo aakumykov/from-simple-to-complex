@@ -1,6 +1,6 @@
-Список районов.
+<!-- Список районов. -->
 
-<!-- <ion-header>
+<ion-header>
   <ion-navbar>
 	<ion-title>Домашняя страница</ion-title>
   </ion-navbar>
@@ -12,7 +12,7 @@
 	<p padding class='info' *ngIf="infoMsg">{{ infoMsg }}</p>
 	
 	<ion-list>
-		<ion-item-sliding #slidingItem *ngFor="let region of regions">
+		<ion-item-sliding #slidingItem *ngFor="let region of list">
 			<ion-item (click)="regionDetails(region.id, region.name)">{{ region.name }}</ion-item>		
 			
 			<ion-item-options side="right">
@@ -31,12 +31,11 @@
 		</ion-item-sliding>
 	</ion-list>
 
-	<ion-item>
+<!-- 	<ion-item>
 		<ion-label stacked>Новый район:</ion-label>
 		<ion-input type="text" value="" #newRegionName></ion-input>
 	</ion-item>
 	<div padding>
 		<button ion-button block (click)="addRegion(newRegionName.value); newRegionName.value=''">Добавить</button>
-	</div>
+	</div> -->
 </ion-content>
- -->
