@@ -24,22 +24,36 @@ export class RegionEdit {
 	constructor(
 		public navCtrl: NavController,
 		public navParams: NavParams,
-		private regionService: RegionService
+		// public regionShow: RegionShow,
+		
+		private regionService: RegionService,
 	){
 		this.id = this.navParams.get('id');
 		this.name = this.navParams.get('name');
 		this.description = this.navParams.get('description');
-
-		console.info('RegionEdit.constructor()');
-		console.info('id: '+this.id);
-		console.info('name: '+this.name);
-		console.info('description: '+this.description);
 	}
 
 	save(){
-		console.info('RegionShow.save()');
-		console.info('id: '+this.id);
-		console.info('new name: '+this.name);
-		console.info('new description: '+this.description);
+		console.info('RegionEdit.save()');
+		
+		this.regionService.updateRegion(
+			{
+				id: this.id, 
+				name: this.name, 
+				description: this.description
+			}
+		).subscribe(
+			region => { 
+				this.infoMsg = 'сохранено'; 
+				// this.navCtrl.pop();
+				// this.regionShow.showRegion(this.id);
+			},
+			error => { this.errorMsg = error }
+		);
+	}
+
+	cancel(){
+		console.info('RegionEdit.cancel()');
+		this.navCtrl.pop();
 	}
 }

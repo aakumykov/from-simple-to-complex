@@ -8,9 +8,12 @@
 
 
 <ion-content>
+	<p padding class='error' *ngIf="errorMsg">Ошибка: {{ errorMsg }}</p>
+	<p padding class='info' *ngIf="infoMsg">{{ infoMsg }}</p>
+	
 	<ion-card>
 		<ion-card-header>
-			{{name}}
+			<h2>{{name}}</h2>
 			<ion-icon name="create" item-right color="secondary" (click)="editItem(id)"></ion-icon>
 		</ion-card-header>
 		<ion-card-content>

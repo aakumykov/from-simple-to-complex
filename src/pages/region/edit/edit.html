@@ -6,6 +6,9 @@
 
 
 <ion-content>
+	<p padding class='error' *ngIf="errorMsg">Ошибка: {{ errorMsg }}</p>
+	<p padding class='info' *ngIf="infoMsg">{{ infoMsg }}</p>
+
 	<ion-list>
 
 	  <ion-item>
@@ -19,9 +22,9 @@
 	  </ion-item>
 
 	  <p padding>
-	  	<button ion-button color='primary' block>Сохранить</button>
+	  	<button ion-button color='primary' block (click)='save()'>Сохранить</button>
 	  	<br/>
-	  	<button ion-button color='light' block>Отмена</button>
+	  	<button ion-button color='light' block (click)='cancel()'>Отмена</button>
 	  </p>
 
 	</ion-list>

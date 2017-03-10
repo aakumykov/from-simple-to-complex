@@ -18,8 +18,8 @@ export class RegionShow {
 	public name: string;
 	public description: string;
 
-	public infoMsg: string = 'инфа 100%';
-	public errorMsg: string = 'юлин, ошибка';
+	public infoMsg: string;
+	public errorMsg: string;
 
   	constructor(
   		public navCtrl: NavController, 
@@ -58,5 +58,15 @@ export class RegionShow {
 			name: this.name,
 			description: this.description,
 		});
+	}
+
+	showRegion(id: number) {
+		console.info('RegionShow.getRegion('+id+')');
+
+		this.id = id;
+
+		this.getRegion();
+
+		this.navCtrl.push(RegionShow);
 	}
 }
