@@ -24,8 +24,6 @@ export class RegionEdit {
 	constructor(
 		public navCtrl: NavController,
 		public navParams: NavParams,
-		// public regionShow: RegionShow,
-		
 		private regionService: RegionService,
 	){
 		this.id = this.navParams.get('id');
@@ -45,8 +43,7 @@ export class RegionEdit {
 		).subscribe(
 			region => { 
 				this.infoMsg = 'сохранено'; 
-				// this.navCtrl.pop();
-				// this.regionShow.showRegion(this.id);
+				this.navCtrl.push(RegionShow,{id:this.id});
 			},
 			error => { this.errorMsg = error }
 		);

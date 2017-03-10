@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
+
 import { NavController, NavParams } from 'ionic-angular';
 
 import { Region } from '../region.class';
 import { RegionService } from '../region.service';
 import { RegionEdit } from '../edit/edit';
+
 
 @Component({
   selector: 'region-show',
@@ -60,13 +62,15 @@ export class RegionShow {
 		});
 	}
 
-	showRegion(id: number) {
-		console.info('RegionShow.getRegion('+id+')');
+	//  ionViewCanLoad(arg)   { console.info('*ionViewCanLoad*'+arg); }
+	//  ionViewWillLoad(arg)   { console.info('*ionViewWillLoad*'+arg); }
+	// ionViewDidLoad(arg)   { console.info('*ionViewDidLoad*'+arg); }
 
-		this.id = id;
-
-		this.getRegion();
-
-		this.navCtrl.push(RegionShow);
-	}
+	// ionViewCanEnter(arg)  { console.info('*ionViewCanEnter*'+arg); }	
+	// ionViewWillEnter(arg) { console.info('*ionViewWillEnter*'+arg); }
+	// ionViewDidEnter(arg)  { console.info('*ionViewDidEnter*'+arg); }
+	
+	// ionViewCanLeave(arg)  { console.info('*ionViewCanLeave*'+arg); }
+	// ionViewWillLeave(arg) { console.info('*ionViewWillLeave*'+arg); }
+	// ionViewDidLeave(arg)  { console.info('*ionViewDidLeave*'+arg); }
 }
