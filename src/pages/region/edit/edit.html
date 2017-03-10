@@ -6,8 +6,23 @@
 
 
 <ion-content>
-	<ion-card>
-		<ion-card-header>{{name}}</ion-card-header>
-		<ion-card-content>{{description}}</ion-card-content>
-	</ion-card>
+	<ion-list>
+
+	  <ion-item>
+	    <ion-label floating>Название</ion-label>
+	    <ion-input type="text" [(ngModel)]="name"></ion-input>
+	  </ion-item>
+
+	  <ion-item>
+	    <ion-label floating>Описание</ion-label>
+	    <ion-textarea rows="6" [(ngModel)]="description"></ion-textarea>
+	  </ion-item>
+
+	  <p padding>
+	  	<button ion-button color='primary' block>Сохранить</button>
+	  	<br/>
+	  	<button ion-button color='light' block>Отмена</button>
+	  </p>
+
+	</ion-list>
 </ion-content>

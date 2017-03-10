@@ -6,6 +6,7 @@ import { HomePage  } from '../pages/home/home';
 
 import { RegionList } from '../pages/region/list/list';
 import { RegionShow } from '../pages/region/show/show';
+import { RegionEdit } from '../pages/region/edit/edit';
 
 @Component({
 	templateUrl: 'app.html'
@@ -16,24 +17,29 @@ export class MyApp {
 
 	// свойства
 	homePage = HomePage;
-	// regionListPage = RegionList;
+	regionListPage = RegionList;
 
 	rootPage = this.homePage;
 
 	// методы
 	constructor(public menuCtrl: MenuController){}
 
-	ngOnInit(): void {
-		// console.log('ngOnInit(), MyApp');
-	}
-
 	ngAfterViewInit(){
 		// console.log('ngAfterViewInit(), MyApp');
 		// this.menuCtrl.open();
-		this.nav.push(this.homePage);
+		this.nav.push(this.regionListPage);
 	}
 
-	openPage(page){
+	goHomePage() {
+		this.openPage(RegionList);
+	}
+
+	goRegionList(){
+		this.openPage(RegionList);
+	}
+
+	private openPage(page){
+		console.info('MyApp.openPage()');
 		this.nav.push(page);
 		this.menuCtrl.close();
 	}

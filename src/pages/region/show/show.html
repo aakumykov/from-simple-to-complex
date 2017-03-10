@@ -9,7 +9,12 @@
 
 <ion-content>
 	<ion-card>
-		<ion-card-header>{{name}}</ion-card-header>
-		<ion-card-content>{{description}}</ion-card-content>
+		<ion-card-header>
+			{{name}}
+			<ion-icon name="create" item-right color="secondary" (click)="editItem(id)"></ion-icon>
+		</ion-card-header>
+		<ion-card-content>
+			{{description}}
+		</ion-card-content>
 	</ion-card>
 </ion-content>
