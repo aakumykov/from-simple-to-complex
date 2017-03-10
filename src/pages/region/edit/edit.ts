@@ -43,7 +43,28 @@ export class RegionEdit {
 		).subscribe(
 			region => { 
 				this.infoMsg = 'сохранено'; 
+
+				console.info(
+					'active index: '+this.navCtrl.indexOf( this.navCtrl.getActive() )
+				);
+
+				console.info(
+					'last index: '+this.navCtrl.indexOf( this.navCtrl.last() )
+				);
+
+				console.info('length(): '+this.navCtrl.length());
+
+
 				this.navCtrl.push(RegionShow,{id:this.id});
+				
+				this.navCtrl.remove(
+					this.navCtrl.indexOf( this.navCtrl.getActive() ) - 1,
+					2
+				);
+
+				// console.info('length: '+this.navCtrl.length());
+				// this.navCtrl.remove(1,1);
+				// console.info('length: '+this.navCtrl.length());
 			},
 			error => { this.errorMsg = error }
 		);
