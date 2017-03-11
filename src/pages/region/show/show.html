@@ -13,11 +13,13 @@
 	
 	<ion-card>
 		<ion-card-header>
-			<h2>{{name}}</h2>
-			<ion-icon name="create" item-right color="secondary" (click)="editItem(id)"></ion-icon>
+			<ion-item>
+				<h2>{{name}}</h2>
+				<ion-icon name="create" color="secondary" title='Изменить' item-right (click)="editItem(id)"></ion-icon>
+				<ion-icon name="trash" color="danger" title='Удалить' item-right (click)="removeItem(id)"></ion-icon>
+			</ion-item>
 		</ion-card-header>
-		<ion-card-content>
-			{{description}}
-		</ion-card-content>
+		
+		<ion-card-content *ngIf="description">{{description}}</ion-card-content>
 	</ion-card>
 </ion-content>
