@@ -67,6 +67,37 @@ export class RegionEdit {
 		this.navCtrl.pop();
 	}
 
+
+	// --- события ionic2 ---
+	// ionViewCanEnter()  { console.info('edit: *ionViewCanEnter*'); }
+	// ionViewWillEnter() { console.info('edit: *ionViewWillEnter*'); }
+	// ionViewDidEnter()  { console.info('edit: *ionViewDidEnter*'); }
+	
+	// ionViewCanLoad()   { console.info('edit: *ionViewCanLoad*'); }
+	// ionViewWillLoad()   { console.info('edit: *ionViewWillLoad*'); }
+	// ionViewDidLoad()   { console.info('edit: *ionViewDidLoad*'); }
+	
+	// ionViewCanLeave()  { console.info('edit: *ionViewCanLeave*'); }
+	// ionViewWillLeave() { console.info('edit: *ionViewWillLeave*'); }
+	
+	ionViewDidLeave()  { 
+		console.info('edit: *ionViewDidLeave*'); 
+
+		// let active = this.navCtrl.getActive()
+		// let currentIndex = this.navCtrl.indexOf(active);
+		// let editView = this.navCtrl.getByIndex(currentIndex-1);
+		
+		// this.navCtrl.removeView(editView);
+		// this.navCtrl.remove(currentIndex-2,1);
+
+		// this.navCtrl.remove(currentIndex-2, 1);
+	}
+
+	// ionViewCanUnload(){ console.info('edit: *ionViewCanUnload*'); }
+	// ionViewWillUnload(){ console.info('edit: *ionViewWillUnload*'); }
+	// ionViewDidUnload(){ console.info('edit: *ionViewDidUnload*'); }
+
+
 	// private inspectNav(){
 	// 	let nc = this.navCtrl;
 

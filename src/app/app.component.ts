@@ -28,7 +28,7 @@ export class MyApp {
 	ngAfterViewInit(){
 		// console.log('ngAfterViewInit(), MyApp');
 		// this.menuCtrl.open();
-		this.nav.push(this.regionListPage);
+		this.nav.push(this.homePage);
 	}
 
 	goHomePage() {
