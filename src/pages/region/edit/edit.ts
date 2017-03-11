@@ -20,6 +20,8 @@ export class RegionEdit {
 	public name: string;
 	public description: string;
 
+	public title: string;
+
 	// конструктор
 	constructor(
 		public navCtrl: NavController,
@@ -29,6 +31,8 @@ export class RegionEdit {
 		this.id = this.navParams.get('id');
 		this.name = this.navParams.get('name');
 		this.description = this.navParams.get('description');
+
+		this.title = 'Изменение района «'+this.name+'»';
 	}
 
 	save(){

@@ -5,8 +5,9 @@ import { MenuController } from 'ionic-angular';
 import { HomePage  } from '../pages/home/home';
 
 import { RegionList } from '../pages/region/list/list';
-import { RegionShow } from '../pages/region/show/show';
-import { RegionEdit } from '../pages/region/edit/edit';
+// import { RegionCreate } from '../pages/region/create/create';
+// import { RegionShow } from '../pages/region/show/show';
+// import { RegionEdit } from '../pages/region/edit/edit';
 
 @Component({
 	templateUrl: 'app.html'

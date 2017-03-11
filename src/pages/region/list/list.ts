@@ -4,6 +4,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { Region } from '../region.class';
 import { RegionService } from '../region.service';
 import { RegionShow } from '../show/show';
+import { RegionCreate } from '../create/create';
 
 @Component({
   selector: 'region-list',
@@ -59,5 +60,11 @@ export class RegionList {
 		console.info('RegionList.showRegion('+id+')');
 		
 		this.navCtrl.push(RegionShow, { id: id });
+	}
+
+	create() {
+		console.info('RegionList.create()');
+
+		this.navCtrl.push(RegionCreate);
 	}
 }

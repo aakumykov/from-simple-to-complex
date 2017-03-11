@@ -92,6 +92,21 @@ export class RegionService {
 					.catch(this.handleError);
 	}
 
+	create(data) {
+		console.info('RegionService.create()');
+
+		let requestData = {
+			name: data.name, 
+			description: data.description,
+		}
+
+		console.info(' this.regionsUrl: '+this.regionsUrl);
+
+		return this.http.post(this.regionsUrl, requestData, this.requestOptions)
+					.map(this.extractData)
+					.catch(this.handleError);
+	}
+
 	// внутренние методы
 	private extractData(res: Response) {
 		let body = res.json();
