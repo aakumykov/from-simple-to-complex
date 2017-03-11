@@ -44,27 +44,15 @@ export class RegionEdit {
 			region => { 
 				this.infoMsg = 'сохранено'; 
 
-				console.info(
-					'active index: '+this.navCtrl.indexOf( this.navCtrl.getActive() )
-				);
-
-				console.info(
-					'last index: '+this.navCtrl.indexOf( this.navCtrl.last() )
-				);
-
-				console.info('length(): '+this.navCtrl.length());
-
-
 				this.navCtrl.push(RegionShow,{id:this.id});
-				
-				this.navCtrl.remove(
-					this.navCtrl.indexOf( this.navCtrl.getActive() ) - 1,
-					2
-				);
 
-				// console.info('length: '+this.navCtrl.length());
-				// this.navCtrl.remove(1,1);
-				// console.info('length: '+this.navCtrl.length());
+				let active = this.navCtrl.getActive()
+				let currentIndex = this.navCtrl.indexOf(active);
+				let editView = this.navCtrl.getByIndex(currentIndex-1);
+				
+				this.navCtrl.removeView(editView);
+				this.navCtrl.remove(currentIndex-2, 1);
+
 			},
 			error => { this.errorMsg = error }
 		);
@@ -74,4 +62,25 @@ export class RegionEdit {
 		console.info('RegionEdit.cancel()');
 		this.navCtrl.pop();
 	}
+
+	// private inspectNav(){
+	// 	let nc = this.navCtrl;
+
+	// 	let first = nc.first();
+	// 	let last = nc.last();
+	// 	let active = nc.getActive();
+	// 	let previous = nc.getPrevious();
+
+	// 	console.info('first: '+first.component.name+', '+nc.indexOf(first));
+	// 	console.info('last: '+last.component.name+', '+nc.indexOf(last));
+	// 	console.info('active: '+active.component.name+', '+nc.indexOf(active));
+	// 	console.info('previous: '+previous.component.name+', '+nc.indexOf(previous));
+
+	// 	console.info('--- vews: ---');
+	// 	console.info( nc.getViews() );
+
+	// 	for (let i in nc.getViews()) {
+	// 		console.info(i);
+	// 	}
+	// }
 }

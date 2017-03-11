@@ -34,7 +34,7 @@ export class RegionService {
 		console.info('RegionService.getRegion('+id+')');
 
 		let regionUrl = this.regionsUrl+'/'+id;
-			console.info(' regionUrl: '+regionUrl+')');
+			// console.info(' regionUrl: '+regionUrl+')');
 
 		return this.http.get(regionUrl)
 				.map(this.extractData)
