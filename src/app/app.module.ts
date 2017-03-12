@@ -8,7 +8,9 @@ import { RegionList } from '../pages/region/list/list';
 import { RegionCreate } from '../pages/region/create/create';
 import { RegionShow } from '../pages/region/show/show';
 import { RegionEdit } from '../pages/region/edit/edit';
-import { RegionService } from '../pages/region/region.service'; // => region.service
+import { RegionService } from '../pages/region/region.service';
+
+import { PlaceService } from '../pages/place/place.service';
 
 
 @NgModule({
@@ -35,6 +37,7 @@ import { RegionService } from '../pages/region/region.service'; // => region.ser
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     RegionService,
+    PlaceService,
   ]
 })
 

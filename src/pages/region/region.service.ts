@@ -8,6 +8,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw';
 
 import { Region } from './region.class';
+import { PlaceService } from '../place/place.service';
 
 
 @Injectable()
@@ -18,7 +19,10 @@ export class RegionService {
 	private requestHeaders = new Headers({ 'Content-Type': 'application/json' });
 	private requestOptions = new RequestOptions({ headers: this.requestHeaders });
 
-	constructor(private http: Http){}
+	constructor(
+		private http: Http,
+		private palceService: PlaceService,
+	){}
 
 	// внешние методы
 	// getList(): Observable<Region[]> {
