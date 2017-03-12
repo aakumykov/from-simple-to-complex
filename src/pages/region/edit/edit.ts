@@ -50,12 +50,14 @@ export class RegionEdit {
 
 				this.navCtrl.push(RegionShow,{id:this.id});
 
-				let active = this.navCtrl.getActive()
-				let currentIndex = this.navCtrl.indexOf(active);
-				let editView = this.navCtrl.getByIndex(currentIndex-1);
+				this.clearNavHistory(2);
+
+				// let active = this.navCtrl.getActive()
+				// let currentIndex = this.navCtrl.indexOf(active);
+				// let editView = this.navCtrl.getByIndex(currentIndex-1);
 				
-				this.navCtrl.removeView(editView);
-				this.navCtrl.remove(currentIndex-2, 1);
+				// this.navCtrl.removeView(editView);
+				// this.navCtrl.remove(currentIndex-2, 1);
 
 			},
 			error => { this.errorMsg = error }
@@ -83,39 +85,27 @@ export class RegionEdit {
 	ionViewDidLeave()  { 
 		console.info('edit: *ionViewDidLeave*'); 
 
-		// let active = this.navCtrl.getActive()
-		// let currentIndex = this.navCtrl.indexOf(active);
-		// let editView = this.navCtrl.getByIndex(currentIndex-1);
-		
-		// this.navCtrl.removeView(editView);
-		// this.navCtrl.remove(currentIndex-2,1);
-
-		// this.navCtrl.remove(currentIndex-2, 1);
+		this.clearNavHistory();
 	}
 
 	// ionViewCanUnload(){ console.info('edit: *ionViewCanUnload*'); }
 	// ionViewWillUnload(){ console.info('edit: *ionViewWillUnload*'); }
 	// ionViewDidUnload(){ console.info('edit: *ionViewDidUnload*'); }
 
+	private clearNavHistory(depth: number = 1){
+		console.info('RegionEdit.clearNavHistory()');
 
-	// private inspectNav(){
-	// 	let nc = this.navCtrl;
-
-	// 	let first = nc.first();
-	// 	let last = nc.last();
-	// 	let active = nc.getActive();
-	// 	let previous = nc.getPrevious();
-
-	// 	console.info('first: '+first.component.name+', '+nc.indexOf(first));
-	// 	console.info('last: '+last.component.name+', '+nc.indexOf(last));
-	// 	console.info('active: '+active.component.name+', '+nc.indexOf(active));
-	// 	console.info('previous: '+previous.component.name+', '+nc.indexOf(previous));
-
-	// 	console.info('--- vews: ---');
-	// 	console.info( nc.getViews() );
-
-	// 	for (let i in nc.getViews()) {
-	// 		console.info(i);
-	// 	}
-	// }
+		// let active = this.navCtrl.getActive();
+		// let currentIndex = this.navCtrl.indexOf(active);
+		
+		let previous1View = this.navCtrl.getPrevious();
+		console.info(previous1View);
+		this.navCtrl.removeView(previous1View);
+		
+		if (2==depth) {
+			let previous2View = this.navCtrl.getPrevious(previous1View);
+			console.info(previous2View);
+			this.navCtrl.removeView(previous2View);
+		}
+	}
 }
