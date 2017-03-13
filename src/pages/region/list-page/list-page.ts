@@ -7,8 +7,8 @@ import { RegionShow } from '../show/show';
 import { RegionCreate } from '../create/create';
 
 @Component({
-  selector: 'region-list',
-  templateUrl: 'list.html'
+  selector: 'region-list-page',
+  templateUrl: 'list-page.html'
 })
 
 export class RegionListPage {

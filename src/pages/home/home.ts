@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 // import { TitlePage } from '../title/title';
-import { RegionListPage } from '../region/list/list';
+import { RegionListPage } from '../region/list-page/list-page';
 
 @Component({
   selector: 'page-home',

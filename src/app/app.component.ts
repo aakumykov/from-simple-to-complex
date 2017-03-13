@@ -4,7 +4,7 @@ import { MenuController } from 'ionic-angular';
 
 import { HomePage  } from '../pages/home/home';
 
-import { RegionListPage } from '../pages/region/list/list';
+import { RegionListPage } from '../pages/region/list-page/list-page';
 // import { RegionCreate } from '../pages/region/create/create';
 // import { RegionShow } from '../pages/region/show/show';
 // import { RegionEdit } from '../pages/region/edit/edit';
