@@ -7,7 +7,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw';
 
-import { Place } from './palce.class';
+// import { Place } from './palce.class';
 
 
 @Injectable()
@@ -15,7 +15,7 @@ export class PlaceService {
 	private placesUrl = 'http://localhost:3000/places';
 
 	private requestHeaders = new Headers({ 'Content-Type': 'application/json' });
-	private requestOptions = new RequestOptions({ headers: this.requestHeaders });
+	// private requestOptions = new RequestOptions({ headers: this.requestHeaders });
 
 	constructor(private http: Http){
 	}
@@ -41,7 +41,7 @@ export class PlaceService {
 	}
 	
 
-	getListFor(region_id: number) /*Observable<Place[]>*/ {
+	getListFor(region_id: number) {
 		console.info('PlaceService.getListFor('+region_id+')');
 
 		let requestUrl = this.placesUrl+'/for/'+region_id;

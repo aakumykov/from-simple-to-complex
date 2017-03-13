@@ -14,9 +14,9 @@ import { PlaceService } from '../place.service';
 
 export class PlaceList {
 
-	list: Place[];
 	@Input() region_id: number;
 	
+	public list: Place[];
 	public infoMsg: string;
 	public errorMsg: string;
 

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-import { Region } from '../region.class';
+// import { Region } from '../region.class';
 import { RegionService } from '../region.service';
 import { RegionShow } from '../show/show';
 

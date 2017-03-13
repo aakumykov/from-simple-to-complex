@@ -14,7 +14,7 @@
 	<ion-card>
 		<ion-card-header>
 			<ion-item>
-				<h2>{{name}}</h2>
+				<h2>{{id}}: {{name}} :{{id}}</h2>
 				<ion-icon name="create" color="secondary" title='Изменить' item-right (click)="editItem(id)"></ion-icon>
 				<ion-icon name="trash" color="danger" title='Удалить' item-right (click)="removeItem(id)"></ion-icon>
 			</ion-item>
@@ -22,4 +22,6 @@
 		
 		<ion-card-content *ngIf="description">{{description}}</ion-card-content>
 	</ion-card>
+
+	<place-list [region_id]="id"></place-list>
 </ion-content>
