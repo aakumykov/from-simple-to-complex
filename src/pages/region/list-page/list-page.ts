@@ -3,6 +3,8 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import { Region } from '../region.class';
 import { RegionService } from '../region.service';
+
+import { RegionList } from '../list/list';
 import { RegionShow } from '../show/show';
 import { RegionCreate } from '../create/create';
 
@@ -54,12 +56,6 @@ export class RegionListPage {
 			},
 			error => this.errorMsg = error,
 		);
-	}
-
-	showRegion(id: number) {
-		console.info('RegionListPage.showRegion('+id+')');
-		
-		this.navCtrl.push(RegionShow, { id: id });
 	}
 
 	create() {
