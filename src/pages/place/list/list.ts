@@ -29,6 +29,7 @@ export class PlaceList {
 
 	ngOnInit(){
 		console.info('*ngOnInit* (PlaceList)');
+		console.info(' region_id: '+this.region_id);
 		this.getListFor();
 	}
 
@@ -42,7 +43,10 @@ export class PlaceList {
 		console.info('PlaceList.getListFor()');
 
 		this.placeService.getListFor(this.region_id).subscribe(
-			list => this.list = list,
+			list => {
+				console.info(list);
+				this.list = list;
+			},
 			error => this.errorMsg = error,
 		);
 	}
