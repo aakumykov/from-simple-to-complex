@@ -17,9 +17,40 @@ export class PlaceService {
 	private requestHeaders = new Headers({ 'Content-Type': 'application/json' });
 	private requestOptions = new RequestOptions({ headers: this.requestHeaders });
 
-	constructor(private http: Http){}
+	constructor(private http: Http){
+	}
 
+
+	createPlace() /*Observable<Place>*/ {
+		console.info('PlaceService.createPlace()');
+	}
+
+
+	getPlace(id: number) /*Observable<Place>*/ {
+		console.info('PlaceService.createPlace('+id+')');
+	}
+
+
+	updatePlace(id: number) /*Observable<Place>*/ {
+		console.info('PlaceService.updatePlace('+id+')');
+	}
+
+
+	removePlace(id: number) {
+		console.info('PlaceService.removePlace('+id+')');
+	}
 	
+
+	getListFor(region_id: number) /*Observable<Place[]>*/ {
+		console.info('PlaceService.getListFor('+region_id+')');
+
+		let requestUrl = this.placesUrl+'/for/'+region_id;
+			console.info(' requestUrl: '+requestUrl);
+
+		return this.http.get(requestUrl)
+				.map(this.extractData)
+				.catch(this.handleError);
+	}
 
 	// внутренние методы
 	private extractData(res: Response) {

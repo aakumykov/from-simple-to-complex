@@ -4,14 +4,15 @@ import { MyApp } from './app.component';
 
 import { HomePage } from '../pages/home/home';
 
+import { RegionService } from '../pages/region/region.service';
 import { RegionList } from '../pages/region/list/list';
 import { RegionListPage } from '../pages/region/list-page/list-page';
 import { RegionCreate } from '../pages/region/create/create';
 import { RegionShow } from '../pages/region/show/show';
 import { RegionEdit } from '../pages/region/edit/edit';
-import { RegionService } from '../pages/region/region.service';
 
 import { PlaceService } from '../pages/place/place.service';
+import { PlaceList } from '../pages/place/list/list';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { PlaceService } from '../pages/place/place.service';
     RegionCreate,
     RegionShow,
     RegionEdit,
+    PlaceList,
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -36,6 +38,7 @@ import { PlaceService } from '../pages/place/place.service';
     RegionCreate,
     RegionShow,
     RegionEdit,
+    PlaceList,
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
