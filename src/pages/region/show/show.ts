@@ -12,6 +12,7 @@ import { RegionService } from '../region.service';
 export class RegionShow {
 
 	public id: number;
+	public name: string;
 
 	public infoMsg: string;
 	public errorMsg: string;
@@ -22,7 +23,9 @@ export class RegionShow {
   		private regionService: RegionService,
   	) {
   		this.id = this.navParams.get('id');
+  		// this.name = this.navParams.get('name');
   		console.info('RegionShow.constructor(), id='+this.id);
+  		// console.info('RegionShow.constructor(), name='+this.name);
   	}
 
 	// getRegion() {
