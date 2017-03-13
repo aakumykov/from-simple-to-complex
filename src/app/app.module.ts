@@ -4,7 +4,7 @@ import { MyApp } from './app.component';
 
 import { HomePage } from '../pages/home/home';
 
-import { RegionList } from '../pages/region/list/list';
+import { RegionListPage } from '../pages/region/list/list';
 import { RegionCreate } from '../pages/region/create/create';
 import { RegionShow } from '../pages/region/show/show';
 import { RegionEdit } from '../pages/region/edit/edit';
@@ -15,7 +15,7 @@ import { RegionService } from '../pages/region/region.service'; // => region.ser
   declarations: [
     MyApp,
     HomePage,
-    RegionList,
+    RegionListPage,
     RegionCreate,
     RegionShow,
     RegionEdit,
@@ -27,7 +27,7 @@ import { RegionService } from '../pages/region/region.service'; // => region.ser
   entryComponents: [
     MyApp,
     HomePage,
-    RegionList,
+    RegionListPage,
     RegionCreate,
     RegionShow,
     RegionEdit,

@@ -11,7 +11,7 @@ import { RegionCreate } from '../create/create';
   templateUrl: 'list.html'
 })
 
-export class RegionList {
+export class RegionListPage {
 
 	public list: Region[];
 	public infoMsg: string;
@@ -25,7 +25,7 @@ export class RegionList {
 
 	// -- события angular2 --
 	ngOnInit(){
-		console.info('*ngOnInit* (RegionList)');
+		console.info('*ngOnInit* (RegionListPage)');
 		this.getList();
 	}
 	// ngAfterContentInit(){ console.info('*ngAfterContentInit*'); }
@@ -43,7 +43,7 @@ export class RegionList {
 	// ionViewCanLeave()  { console.info('*ionViewCanLeave*'); }
 
 	getList() {
-		console.info('RegionList.getList()');
+		console.info('RegionListPage.getList()');
 
 		this.regionService.getList().subscribe(
 			list => {
@@ -57,13 +57,13 @@ export class RegionList {
 	}
 
 	showRegion(id: number) {
-		console.info('RegionList.showRegion('+id+')');
+		console.info('RegionListPage.showRegion('+id+')');
 		
 		this.navCtrl.push(RegionShow, { id: id });
 	}
 
 	create() {
-		console.info('RegionList.create()');
+		console.info('RegionListPage.create()');
 
 		this.navCtrl.push(RegionCreate);
 	}

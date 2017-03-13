@@ -5,7 +5,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { Region } from '../region.class';
 import { RegionService } from '../region.service';
 import { RegionEdit } from '../edit/edit';
-import { RegionList } from '../list/list';
+import { RegionListPage } from '../list/list';
 
 
 @Component({
@@ -70,7 +70,7 @@ export class RegionShow {
 		this.regionService.removeRegion(id).subscribe(
 			() => { 
 				this.infoMsg = 'объект удалён';
-				this.navCtrl.push(RegionList);
+				this.navCtrl.push(RegionListPage);
 
 				let currentIndex = this.navCtrl.indexOf(this.navCtrl.getActive());
 				
