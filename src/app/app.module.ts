@@ -5,6 +5,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 
 import { RegionList } from '../pages/region/list/list';
+import { RegionCard } from '../pages/region/card/card';
 import { RegionListPage } from '../pages/region/list-page/list-page';
 import { RegionCreate } from '../pages/region/create/create';
 import { RegionShow } from '../pages/region/show/show';
@@ -17,6 +18,7 @@ import { RegionService } from '../pages/region/region.service'; // => region.ser
     MyApp,
     HomePage,
     RegionList,
+    RegionCard,
     RegionListPage,
     RegionCreate,
     RegionShow,
@@ -30,6 +32,7 @@ import { RegionService } from '../pages/region/region.service'; // => region.ser
     MyApp,
     HomePage,
     RegionList,
+    RegionCard,
     RegionListPage,
     RegionCreate,
     RegionShow,
