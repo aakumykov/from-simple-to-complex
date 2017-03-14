@@ -33,7 +33,7 @@ export class RegionCreate {
 			description: this.description,
 		}
 
-		this.regionService.create(data).subscribe(
+		this.regionService.createRegion(data).subscribe(
 			region => {
 				// this.infoMsg = 'Район <?> создан '+region.id;
 				this.navCtrl.push(RegionShow, {id:region.id});

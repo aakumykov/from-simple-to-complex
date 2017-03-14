@@ -25,8 +25,8 @@ export class RegionService {
 	){}
 
 
-	create(data) {
-		console.info('RegionService.create()');
+	createRegion(data) {
+		console.info('RegionService.createRegion()');
 
 		let requestData = {
 			name: data.name, 
@@ -65,7 +65,6 @@ export class RegionService {
 				.catch(this.handleError);
 	}
 
-
 	getRegion(id: number): Observable<Region> {
 		console.info('RegionService.getRegion('+id+')');
 
@@ -85,12 +84,14 @@ export class RegionService {
 						.catch(this.handleError);
 	}
 
-	getRegionPlaces(id: number) {
-		let url = this.regionsUrl+'/'+id+'/places';
-		return this.http.get(url)
-						.map(this.extractData)
-						.catch(this.handleError);
-	}
+	// getRegionPlaces(id: number) {
+	// 	console.info('RegionService.getRegionPlaces()');
+
+	// 	let url = this.regionsUrl+'/'+id+'/places';
+	// 	return this.http.get(url)
+	// 					.map(this.extractData)
+	// 					.catch(this.handleError);
+	// }
 
 	// addRegion(name: string) {
 	// 	console.info('RegionService.addRegion('+name+')');
