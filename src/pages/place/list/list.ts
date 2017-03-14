@@ -4,8 +4,11 @@ import { Input } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 import { Place } from '../place.class';
+
 import { PlaceService } from '../place.service';
+
 import { PlaceNew } from '../new/new';
+import { PlaceShow } from '../show/show';
 
 @Component({
   selector: 'place-list',
@@ -14,6 +17,7 @@ import { PlaceNew } from '../new/new';
 
 export class PlaceList {
 
+	// свойства
 	@Input() region_id: number;
 	
 	public list: Place[];
@@ -21,6 +25,8 @@ export class PlaceList {
 	public infoMsg: string;
 	public errorMsg: string;
 
+
+	// системные методы
   	constructor(
   		public navCtrl: NavController, 
   		public navParams: NavParams,
@@ -32,16 +38,28 @@ export class PlaceList {
 		this.getListFor();
 	}
 
-  	noPlaces(){
-  		return (undefined==this.list) || (0==this.list.length);
-  	}
 
+  	// главные методы
   	newPlace() {
   		console.info('PlaceList.newPlace()');
 
   		this.navCtrl.push(PlaceNew, {region_id: this.region_id});
   	}
 
+  	showPlace(id: number) {
+  		console.info('PlaceList.showPlace('+id+')');
+
+  		this.navCtrl.push(PlaceShow, { id: id});
+  	}
+
+
+  	// вспомогательные методы
+  	noPlaces(){
+  		return (undefined==this.list) || (0==this.list.length);
+  	}
+
+
+  	// скрытые методы
 	private getListFor() {
 		console.info('PlaceList.getListFor()');
 
