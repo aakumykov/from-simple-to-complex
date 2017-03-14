@@ -3,6 +3,9 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import { PlaceService } from '../place.service';
 
+import { RegionShow } from '../../region/show/show';
+
+
 @Component({
 	selector: 'place-new',
 	templateUrl: '../edit/edit.html'
@@ -41,7 +44,7 @@ export class PlaceNew {
 		this.placeService.createPlace(data).subscribe(
 			place => {
 				this.infoMsg = 'Место "'+place.name+'" создано, id '+place.id;
-				// this.navCtrl.push(PlaceShow, {id: place.id});
+				this.navCtrl.push(RegionShow, {id: this.region_id});
 			},
 			error => this.errorMsg = error
 		);

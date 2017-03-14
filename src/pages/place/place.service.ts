@@ -42,6 +42,10 @@ export class PlaceService {
 
 	getPlace(id: number) /*Observable<Place>*/ {
 		console.info('PlaceService.createPlace('+id+')');
+
+		return this.http.get(this.placesUrl+'/'+id)
+				.map(this.extractData)
+				.catch(this.handleError);
 	}
 
 
