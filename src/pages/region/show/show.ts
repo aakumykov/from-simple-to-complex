@@ -7,7 +7,7 @@ import { RegionService } from '../region.service';
 
 import { RegionEdit } from '../edit/edit';
 import { RegionListPage } from '../list-page/list-page';
-import { PlaceList } from '../../place/list/list';
+// import { PlaceList } from '../../place/list/list';
 
 
 @Component({
