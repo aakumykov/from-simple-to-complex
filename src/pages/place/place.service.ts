@@ -15,14 +15,23 @@ export class PlaceService {
 	private placesUrl = 'http://localhost:3000/places';
 
 	private requestHeaders = new Headers({ 'Content-Type': 'application/json' });
-	// private requestOptions = new RequestOptions({ headers: this.requestHeaders });
+	private requestOptions = new RequestOptions({ headers: this.requestHeaders });
 
 	constructor(private http: Http){
 	}
 
 
-	createPlace() /*Observable<Place>*/ {
-		console.info('PlaceService.createPlace()');
+	addPlace(place_data) /*Observable<Place>*/ {
+		console.info('PlaceService.addPlace()');
+
+		let data = {
+			name: place_data.name,
+			region_id: place_data.region_id,
+		}
+
+		return this.http.post(this.placesUrl, { data }, this.requestOptions)
+					.map(this.extractData)
+					.catch(this.handleError);
 	}
 
 
@@ -51,6 +60,7 @@ export class PlaceService {
 				.map(this.extractData)
 				.catch(this.handleError);
 	}
+
 
 	// внутренние методы
 	private extractData(res: Response) {

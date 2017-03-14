@@ -13,6 +13,7 @@ import { RegionEdit } from '../pages/region/edit/edit';
 
 import { PlaceService } from '../pages/place/place.service';
 import { PlaceList } from '../pages/place/list/list';
+import { PlaceNew } from '../pages/place/new/new';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { PlaceList } from '../pages/place/list/list';
     RegionShow,
     RegionEdit,
     PlaceList,
+    PlaceNew,
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -39,6 +41,7 @@ import { PlaceList } from '../pages/place/list/list';
     RegionShow,
     RegionEdit,
     PlaceList,
+    PlaceNew,
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
