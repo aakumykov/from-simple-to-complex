@@ -24,7 +24,7 @@ export class RegionList {
 
 	ngOnInit(){
 		console.info('*ngOnInit* (RegionList)');
-		this.getList();
+		this.getRegionList();
 	}
 
 	showRegion(id: number) {
@@ -33,10 +33,10 @@ export class RegionList {
 		this.navCtrl.push(RegionShow, { id: id });
 	}
 
-	private getList() {
-		console.info('RegionList.getList()');
+	private getRegionList() {
+		console.info('RegionList.getRegionList()');
 
-		this.regionService.getList().subscribe(
+		this.regionService.getRegionList().subscribe(
 			list => {
 				this.list = list;
 				// console.info('----- this.list -----');
