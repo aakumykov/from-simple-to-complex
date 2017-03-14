@@ -21,15 +21,20 @@ export class PlaceService {
 	}
 
 
-	addPlace(place_data) /*Observable<Place>*/ {
-		console.info('PlaceService.addPlace()');
+	createPlace(data) /*Observable<Place>*/ {
+		console.info('PlaceService.createPlace()');
 
-		let data = {
-			name: place_data.name,
-			region_id: place_data.region_id,
+		let requestData = {
+			name: data.name, 
+			description: data.description,
+			region_id: data.region_id,
 		}
 
-		return this.http.post(this.placesUrl, { data }, this.requestOptions)
+			// console.info('----- requestData -----');
+			// console.info(requestData);
+			// console.info('-----------------------------------');
+
+		return this.http.post(this.placesUrl, requestData, this.requestOptions)
 					.map(this.extractData)
 					.catch(this.handleError);
 	}

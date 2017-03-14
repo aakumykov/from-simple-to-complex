@@ -39,7 +39,7 @@ export class PlaceList {
   	newPlace() {
   		console.info('PlaceList.newPlace()');
 
-  		this.navCtrl.push(PlaceNew);
+  		this.navCtrl.push(PlaceNew, {region_id: this.region_id});
   	}
 
 	private getListFor() {

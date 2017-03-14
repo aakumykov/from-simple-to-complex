@@ -14,6 +14,8 @@ export class PlaceNew {
 	public name: string;
 	public description: string;
 
+	private region_id: number;
+
 	public infoMsg: string;
 	public errorMsg: string;
 
@@ -21,19 +23,24 @@ export class PlaceNew {
 		public navCtrl: NavController, 
 		public navParams: NavParams,
 		private placeService: PlaceService,
-	){}
+	){
+		this.region_id = this.navParams.get('region_id');
+	}
 
 	save() { // общее имя с компонентом edit
 		console.info('PlaceNew.save()');
+		 // console.info(' name: '+this.name);
+		 // console.info(' description: '+this.description);
 
 		let data = {
 			name: this.name,
 			description: this.description,
+			region_id: this.region_id,
 		}
 
-		this.placeService.addPlace(data).subscribe(
+		this.placeService.createPlace(data).subscribe(
 			place => {
-				this.infoMsg = 'Место <?> создано '+place.id;
+				this.infoMsg = 'Место "'+place.name+'" создано, id '+place.id;
 				// this.navCtrl.push(PlaceShow, {id: place.id});
 			},
 			error => this.errorMsg = error
