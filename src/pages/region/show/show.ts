@@ -54,16 +54,6 @@ export class RegionShow {
 		);
 	}
 
-	editItem(id: number) {
-		console.info('RegionShow.editItem('+this.id+')');
-
-		this.navCtrl.push(RegionEdit, {
-			// region: this.region
-			id: this.id,
-			name: this.name,
-			description: this.description,
-		});
-	}
 
 	
 

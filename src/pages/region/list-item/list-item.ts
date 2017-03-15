@@ -8,7 +8,7 @@ import { RegionService } from '../region.service';
 
 import { RegionListPage } from '../list-page/list-page';
 import { RegionShow } from '../show/show';
-// import { RegionCreate } from '../create/create';
+import { RegionEdit } from '../edit/edit';
 
 @Component({
 	selector: 'list-item',
@@ -34,7 +34,7 @@ export class ListItem {
 		this.navCtrl.push(RegionShow, { id: id });
 	}
 
-	removeItem(item: Region) {
+	removeItem(item: Region, slidingItem) {
 		console.info('ListItem.removeItem(), item.id: '+item.id+')');
 
 		this.regionService.removeRegion(item.id).subscribe(
@@ -44,5 +44,15 @@ export class ListItem {
 			},
 			error => this.errorMsg = error
 		);
+	}
+
+	editItem(item: Region, slidingItem) {
+		console.info('ListItem.editItem('+item.id+')');
+
+		this.navCtrl.push(RegionEdit, {
+			id: item.id,
+			name: item.name,
+			description: item.description,
+		});
 	}
 }
