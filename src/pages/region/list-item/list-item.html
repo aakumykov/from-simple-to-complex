@@ -1,0 +1,21 @@
+<!-- <ion-item (click)="showRegion(item.id)" title="item.id">{{ item.name }}</ion-item> -->
+
+<ion-item-sliding #slidingItem>
+	
+	<ion-item (click)="showRegion(item.id)">{{ item.name }}</ion-item>		
+	
+	<ion-item-options side="right">
+	  
+	  <button ion-button color="info" (click)="editRegion(item.id)">
+		<ion-icon name="create"></ion-icon>
+		Изменить
+	  </button>
+	  
+	  <button ion-button color="danger" (click)="presentActionSheet(item, slidingItem)">
+		<ion-icon name="trash"></ion-icon>
+		Удалить
+	  </button>
+
+	</ion-item-options>
+
+</ion-item-sliding>
