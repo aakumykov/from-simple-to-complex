@@ -35,16 +35,15 @@ export class PlaceShow {
 		this.getPlace();
 	}
 
-	// editItem(id: number) {
-	// 	console.info('PlaceShow.editItem('+this.id+')');
+	editItem() {
+		console.info('PlaceShow.editItem('+this.id+')');
 
-	// 	this.navCtrl.push(PlaceEdit, {
-	// 		// place: this.place
-	// 		id: this.id,
-	// 		name: this.name,
-	// 		description: this.description,
-	// 	});
-	// }
+		this.navCtrl.push(PlaceEdit, {
+			id: this.id,
+			name: this.name,
+			description: this.description,
+		});
+	}
 
 	// removeItem(id: number) {
 	// 	console.info('PlaceShow.removeItem(), id: '+id+')');

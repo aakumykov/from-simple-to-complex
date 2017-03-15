@@ -49,8 +49,25 @@ export class PlaceService {
 	}
 
 
-	updatePlace(id: number) /*Observable<Place>*/ {
-		console.info('PlaceService.updatePlace('+id+')');
+	updatePlace(data) /*Observable<Place>*/ {
+		let requestData = {
+			id: data.id,
+			name: data.name,
+			description: data.description,
+		}
+
+		// console.info('PlaceService.updatePlace('+requestData.id+')');
+		// console.info('----- requestData -----');
+		// console.info(requestData);
+		// console.info('-----------------------');
+
+		let requestUrl = this.placesUrl+'/'+requestData.id;
+
+			// console.info(' requestUrl: '+requestUrl);
+
+		return this.http.patch(requestUrl, requestData, this.requestOptions)
+				.map(this.extractData)
+				.catch(this.handleError);
 	}
 
 

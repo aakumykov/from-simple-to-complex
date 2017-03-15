@@ -30,7 +30,7 @@ import { PlaceEdit } from '../pages/place/edit/edit';
     PlaceList,
     PlaceNew,
     PlaceShow,
-    // PlaceEdit,
+    PlaceEdit,
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -47,7 +47,7 @@ import { PlaceEdit } from '../pages/place/edit/edit';
     PlaceList,
     PlaceNew,
     PlaceShow,
-    // PlaceEdit,
+    PlaceEdit,
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
