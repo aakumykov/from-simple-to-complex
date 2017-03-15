@@ -10,6 +10,7 @@ import { RegionListPage } from '../pages/region/list-page/list-page';
 import { RegionCreate } from '../pages/region/create/create';
 import { RegionShow } from '../pages/region/show/show';
 import { RegionEdit } from '../pages/region/edit/edit';
+import { ListItem } from '../pages/region/list-item/list-item';
 
 import { PlaceService } from '../pages/place/place.service';
 import { PlaceList } from '../pages/place/list/list';
@@ -22,11 +23,14 @@ import { PlaceEdit } from '../pages/place/edit/edit';
   declarations: [
     MyApp,
     HomePage,
+    
     RegionList,
     RegionListPage,
     RegionCreate,
     RegionShow,
     RegionEdit,
+    ListItem,
+    
     PlaceList,
     PlaceNew,
     PlaceShow,
@@ -39,11 +43,14 @@ import { PlaceEdit } from '../pages/place/edit/edit';
   entryComponents: [
     MyApp,
     HomePage,
+    
     RegionList,
     RegionListPage,
     RegionCreate,
     RegionShow,
     RegionEdit,
+    ListItem,
+    
     PlaceList,
     PlaceNew,
     PlaceShow,
