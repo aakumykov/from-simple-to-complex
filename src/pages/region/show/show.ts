@@ -65,29 +65,7 @@ export class RegionShow {
 		});
 	}
 
-	removeItem(id: number) {
-		console.info('RegionShow.removeItem(), id: '+id+')');
-		console.info('RegionShow.removeItem(), this.id: '+this.id+')');
-
-		this.regionService.removeRegion(id).subscribe(
-			() => { 
-				this.infoMsg = 'объект удалён';
-				this.navCtrl.push(RegionListPage);
-
-				// let currentIndex = this.navCtrl.indexOf(this.navCtrl.getActive());
-				
-				let prevView = this.navCtrl.getPrevious();
-				let prevPrevView = this.navCtrl.getPrevious(prevView);
-				
-				// console.info('prevView: '+prevView.component.name);
-				// console.info('prevPrevView: '+prevPrevView.component.name);
-
-				this.navCtrl.removeView(prevView);
-				this.navCtrl.removeView(prevPrevView);
-			},
-			error => this.errorMsg = error
-		);
-	}
+	
 
 	//  ionViewCanLoad(arg)   { console.info('*ionViewCanLoad*'+arg); }
 	//  ionViewWillLoad(arg)   { console.info('*ionViewWillLoad*'+arg); }

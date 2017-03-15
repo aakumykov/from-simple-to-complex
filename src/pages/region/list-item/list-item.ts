@@ -4,9 +4,9 @@ import { NavController } from 'ionic-angular';
 // import { NavParams } from 'ionic-angular';
 
 import { Region } from '../region.class';
-// import { RegionService } from '../region.service';
+import { RegionService } from '../region.service';
 
-// import { RegionList } from '../list/list';
+import { RegionListPage } from '../list-page/list-page';
 import { RegionShow } from '../show/show';
 // import { RegionCreate } from '../create/create';
 
@@ -25,12 +25,24 @@ export class ListItem {
 	constructor(
 		public navCtrl: NavController, 
 		// public navParams: NavParams,
-		// private regionService: RegionService,
+		private regionService: RegionService,
 	) {}
 
-	showRegion(id: number) {
+	showItem(id: number) {
 		console.info('ListItem.showRegion('+id+')');
 		
 		this.navCtrl.push(RegionShow, { id: id });
+	}
+
+	removeItem(item: Region) {
+		console.info('ListItem.removeItem(), item.id: '+item.id+')');
+
+		this.regionService.removeRegion(item.id).subscribe(
+			() => { 
+				this.infoMsg = 'объект удалён';
+				this.navCtrl.push(RegionListPage);
+			},
+			error => this.errorMsg = error
+		);
 	}
 }
