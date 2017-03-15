@@ -4,6 +4,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { PlaceService } from '../place.service';
 
 import { PlaceEdit } from '../edit/edit';
+import { RegionShow } from '../../region/show/show';
 
 
 @Component({
@@ -45,18 +46,17 @@ export class PlaceShow {
 		});
 	}
 
-	// removeItem(id: number) {
-	// 	console.info('PlaceShow.removeItem(), id: '+id+')');
-	// 	console.info('PlaceShow.removeItem(), this.id: '+this.id+')');
+	removeItem() {
+		console.info('PlaceShow.removeItem(), this.id: '+this.id+')');
 
-	// 	this.placeService.removePlace(id).subscribe(
-	// 		() => { 
-	// 			this.infoMsg = 'объект удалён';
-	// 			// this.navCtrl.push(PlaceListPage);
-	// 		},
-	// 		error => this.errorMsg = error
-	// 	);
-	// }
+		this.placeService.removePlace(this.id).subscribe(
+			() => { 
+				this.infoMsg = 'объект удалён';
+				this.navCtrl.push(RegionShow, { id: this.region_id });
+			},
+			error => this.errorMsg = error
+		);
+	}
 
 	private getPlace() {
 		console.info('PlaceShow.getPlace('+this.id+')');

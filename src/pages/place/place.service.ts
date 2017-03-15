@@ -73,6 +73,12 @@ export class PlaceService {
 
 	removePlace(id: number) {
 		console.info('PlaceService.removePlace('+id+')');
+
+		let requestUrl = this.placesUrl+'/'+id;
+
+		return this.http.delete(requestUrl)
+				.map(this.extractData)
+				.catch(this.handleError);
 	}
 	
 
