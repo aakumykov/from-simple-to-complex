@@ -14,7 +14,6 @@ import { PlaceService } from '../place/place.service';
 @Injectable()
 export class RegionService {
 	private regionsUrl = 'http://localhost:3000/regions';
-	private placesUrl = 'http://localhost:3000/places';
 
 	private requestHeaders = new Headers({ 'Content-Type': 'application/json' });
 	private requestOptions = new RequestOptions({ headers: this.requestHeaders });
