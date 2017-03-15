@@ -4,8 +4,8 @@ import { NavController, NavParams } from 'ionic-angular';
 import { Region } from '../region.class';
 import { RegionService } from '../region.service';
 
-import { RegionList } from '../list/list';
-import { RegionShow } from '../show/show';
+// import { RegionList } from '../list/list';
+// import { RegionShow } from '../show/show';
 import { RegionCreate } from '../create/create';
 
 @Component({
@@ -28,7 +28,7 @@ export class RegionListPage {
 	// -- события angular2 --
 	ngOnInit(){
 		console.info('*ngOnInit* (RegionListPage)');
-		this.getList();
+		this.getRegionList();
 	}
 	// ngAfterContentInit(){ console.info('*ngAfterContentInit*'); }
 	// ngAfterViewInit(){ console.info('*ngAfterViewInit*'); }
@@ -44,10 +44,10 @@ export class RegionListPage {
 	// ionViewCanEnter()  { console.info('*ionViewCanEnter*'); }
 	// ionViewCanLeave()  { console.info('*ionViewCanLeave*'); }
 
-	getList() {
-		console.info('RegionListPage.getList()');
+	getRegionList() {
+		console.info('RegionListPage.getRegionList()');
 
-		this.regionService.getList().subscribe(
+		this.regionService.getRegionList().subscribe(
 			list => {
 				this.list = list;
 				// console.info('----- this.list -----');

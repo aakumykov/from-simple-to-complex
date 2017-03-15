@@ -8,73 +8,35 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw';
 
 import { Region } from './region.class';
+import { PlaceService } from '../place/place.service';
 
 
 @Injectable()
 export class RegionService {
 	private regionsUrl = 'http://localhost:3000/regions';
-	private placesUrl = 'http://localhost:3000/places';
 
 	private requestHeaders = new Headers({ 'Content-Type': 'application/json' });
 	private requestOptions = new RequestOptions({ headers: this.requestHeaders });
 
-	constructor(private http: Http){}
+	constructor(
+		private http: Http,
+		private palceService: PlaceService,
+	){}
 
-	// внешние методы
-	// getList(): Observable<Region[]> {
-	getList() {
-		console.info('RegionService.getList()');
 
-		return this.http.get(this.regionsUrl)
-						.map(this.extractData)
-						.catch(this.handleError);
-	}
+	createRegion(data) {
+		console.info('RegionService.createRegion()');
 
-	getRegion(id: number): Observable<Region> {
-		console.info('RegionService.getRegion('+id+')');
+		let requestData = {
+			name: data.name, 
+			description: data.description,
+		}
 
-		let regionUrl = this.regionsUrl+'/'+id;
-			// console.info(' regionUrl: '+regionUrl+')');
+		console.info(' this.regionsUrl: '+this.regionsUrl);
 
-		return this.http.get(regionUrl)
-				.map(this.extractData)
-				.catch(this.handleError);
-	}
-
-	getRegionPlaces(id: number) {
-		let url = this.regionsUrl+'/'+id+'/places';
-		return this.http.get(url)
-						.map(this.extractData)
-						.catch(this.handleError);
-	}
-
-	addRegion(name: string) {
-		console.info('RegionService.addRegion('+name+')');
-
-		let headers = new Headers({ 'Content-Type': 'application/json' });
-		let options = new RequestOptions({ headers: headers });
-
-		return this.http.post(this.regionsUrl, { name }, options)
+		return this.http.post(this.regionsUrl, requestData, this.requestOptions)
 					.map(this.extractData)
 					.catch(this.handleError);
-	}
-
-	addPlace(id:number, name: string) {
-		console.info('RegionService.addPlace('+name+', '+id+')');
-
-		return this.http.post(this.placesUrl, { name: name, region_id: id }, this.requestOptions)
-					.map(this.extractData)
-					.catch(this.handleError);
-	}
-
-	removeRegion(id: number) {
-		console.info('RegionService.removeRegion('+id+')');
-
-		let regionUrl = this.regionsUrl+'/'+id;
-
-		return this.http.delete(regionUrl)
-				.map(this.extractData)
-				.catch(this.handleError);
 	}
 
 	updateRegion(data) {
@@ -92,20 +54,64 @@ export class RegionService {
 					.catch(this.handleError);
 	}
 
-	create(data) {
-		console.info('RegionService.create()');
+	removeRegion(id: number) {
+		console.info('RegionService.removeRegion('+id+')');
 
-		let requestData = {
-			name: data.name, 
-			description: data.description,
-		}
+		let regionUrl = this.regionsUrl+'/'+id;
 
-		console.info(' this.regionsUrl: '+this.regionsUrl);
-
-		return this.http.post(this.regionsUrl, requestData, this.requestOptions)
-					.map(this.extractData)
-					.catch(this.handleError);
+		return this.http.delete(regionUrl)
+				.map(this.extractData)
+				.catch(this.handleError);
 	}
+
+	getRegion(id: number): Observable<Region> {
+		console.info('RegionService.getRegion('+id+')');
+
+		let regionUrl = this.regionsUrl+'/'+id;
+			// console.info(' regionUrl: '+regionUrl+')');
+
+		return this.http.get(regionUrl)
+				.map(this.extractData)
+				.catch(this.handleError);
+	}
+	
+	getRegionList() {
+		console.info('RegionService.getRegionList()');
+
+		return this.http.get(this.regionsUrl)
+						.map(this.extractData)
+						.catch(this.handleError);
+	}
+
+	// getRegionPlaces(id: number) {
+	// 	console.info('RegionService.getRegionPlaces()');
+
+	// 	let url = this.regionsUrl+'/'+id+'/places';
+	// 	return this.http.get(url)
+	// 					.map(this.extractData)
+	// 					.catch(this.handleError);
+	// }
+
+	// addRegion(name: string) {
+	// 	console.info('RegionService.addRegion('+name+')');
+
+	// 	let headers = new Headers({ 'Content-Type': 'application/json' });
+	// 	let options = new RequestOptions({ headers: headers });
+
+	// 	return this.http.post(this.regionsUrl, { name }, options)
+	// 				.map(this.extractData)
+	// 				.catch(this.handleError);
+	// }
+
+	// addPlace(id:number, name: string) {
+	// 	console.info('RegionService.addPlace('+name+', '+id+')');
+
+	// 	return this.http.post(this.placesUrl, { name: name, region_id: id }, this.requestOptions)
+	// 				.map(this.extractData)
+	// 				.catch(this.handleError);
+	// }
+
+	
 
 	// внутренние методы
 	private extractData(res: Response) {

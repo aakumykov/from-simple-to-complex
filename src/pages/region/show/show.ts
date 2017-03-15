@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
-
 import { NavController, NavParams } from 'ionic-angular';
 
-import { Region } from '../region.class';
+// import { Region } from '../region.class';
+
 import { RegionService } from '../region.service';
+
 import { RegionEdit } from '../edit/edit';
 import { RegionListPage } from '../list-page/list-page';
+// import { PlaceList } from '../../place/list/list';
 
 
 @Component({
@@ -15,7 +17,7 @@ import { RegionListPage } from '../list-page/list-page';
 
 export class RegionShow {
 
-	public region: Region;
+	// public region: Region;
 
 	public id: number;
 	public name: string;
@@ -72,7 +74,7 @@ export class RegionShow {
 				this.infoMsg = 'объект удалён';
 				this.navCtrl.push(RegionListPage);
 
-				let currentIndex = this.navCtrl.indexOf(this.navCtrl.getActive());
+				// let currentIndex = this.navCtrl.indexOf(this.navCtrl.getActive());
 				
 				let prevView = this.navCtrl.getPrevious();
 				let prevPrevView = this.navCtrl.getPrevious(prevView);

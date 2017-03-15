@@ -1,8 +1,8 @@
-<!-- Просмотр района. -->
+<!-- Просмотр места. -->
 
 <ion-header>
   <ion-navbar>
-	<ion-title>Район &laquo;{{name}}&raquo;</ion-title>
+	<ion-title>Местность &laquo;{{name}}&raquo;</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -21,8 +21,5 @@
 		</ion-card-header>
 		
 		<ion-card-content *ngIf="description">{{description}}</ion-card-content>
-	
-
-		<place-list [region_id]="id"></place-list>
 	</ion-card>
 </ion-content>

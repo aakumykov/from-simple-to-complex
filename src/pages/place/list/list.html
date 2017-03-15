@@ -1,0 +1,16 @@
+<ion-item>
+
+	<h2>Места <ion-icon name='add' color='primary' (click)='newPlace()'></ion-icon></h2>
+	
+	<p padding class='error' *ngIf="errorMsg">Ошибка: {{ errorMsg }}</p>
+	<p padding class='info' *ngIf="infoMsg">{{ infoMsg }}</p>
+
+	<ion-list>
+		<ion-item *ngFor="let place of list" (click)="showPlace(place.id)">{{place.name}}</ion-item>
+	</ion-list>
+
+	<ion-item *ngIf="noPlaces()">
+		<ion-item>здесь пока ничего нет</ion-item>
+	</ion-item>
+
+</ion-item>
