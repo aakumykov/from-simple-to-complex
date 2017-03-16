@@ -5,7 +5,6 @@ import { NavController } from 'ionic-angular';
 
 import { Region } from '../region.class';
 import { RegionService } from '../region.service';
-
 import { RegionListPage } from '../list-page/list-page';
 import { RegionShow } from '../show/show';
 import { RegionEdit } from '../edit/edit';

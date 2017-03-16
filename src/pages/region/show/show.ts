@@ -2,11 +2,9 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 import { Region } from '../region.class';
-
 import { RegionService } from '../region.service';
-
-import { RegionEdit } from '../edit/edit';
 import { RegionListPage } from '../list-page/list-page';
+import { RegionEdit } from '../edit/edit';
 import { ListItem } from '../../place/list-item/list-item';
 
 
@@ -16,8 +14,6 @@ import { ListItem } from '../../place/list-item/list-item';
 })
 
 export class RegionShow {
-
-	public region: Region;
 
 	public id: number;
 	public name: string;
@@ -30,6 +26,7 @@ export class RegionShow {
   		public navCtrl: NavController, 
   		public navParams: NavParams,
   		private regionService: RegionService,
+		private theRegion: Region,
   	) {
   		this.id = this.navParams.get('id');
   		console.info('RegionShow.constructor(), id='+this.id);
@@ -45,7 +42,12 @@ export class RegionShow {
 
 		this.regionService.getRegion(this.id).subscribe(
 			region => {
-
+				//this.region = region;
+				
+				this.theRegion.id = region.id;
+				this.theRegion.name = region.name;
+				this.theRegion.description = region.description;
+				
 				this.id = region.id;
 				this.name = region.name;
 				this.description = region.description;

@@ -1,8 +1,9 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-
 import { HomePage } from '../pages/home/home';
+
+import { Region } from '../pages/region/region.class';
 
 import { RegionService } from '../pages/region/region.service';
 import { RegionList } from '../pages/region/list/list';
@@ -60,6 +61,7 @@ import { PlaceEdit } from '../pages/place/edit/edit';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     RegionService,
     PlaceService,
+    Region,
   ]
 })
 

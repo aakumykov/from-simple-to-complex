@@ -13,7 +13,9 @@
 	
 	<ion-card>
 		<ion-card-header>
-			<list-item [item]="region"></list-item>
+			<ion-list>
+				<list-item [item]="theRegion"></list-item>
+			</ion-list>
 		</ion-card-header>
 		
 		<ion-card-content *ngIf="description">{{description}}</ion-card-content>
