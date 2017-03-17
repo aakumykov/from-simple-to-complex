@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-// import { NavParams } from 'ionic-angular';
+import { Input, Output } from '@angular/core';
+import { EventEmitter } from '@angular/core';
 
-import { ListItem } from '../list-item/list-item';
 import { Region } from '../region.class';
-import { RegionShow } from '../show/show';
-import { RegionEdit } from '../edit/edit';
-import { RegionService } from '../region.service';
+import { ListItem } from '../list-item/list-item';
 
 @Component({
   selector: 'region-list',
@@ -15,62 +12,15 @@ import { RegionService } from '../region.service';
 
 export class RegionList {
 
-	public list: Region[];
+	@Input() list: Region[];
+
+	@Output() show: EventEmitter<number> = new EventEmitter<number>();
 
 	public infoMsg: string;
 	public errorMsg: string;
 
-  	constructor(
-  		private regionService: RegionService,
-  		private navCtrl: NavController,
-  		// private navParams: NavParams,
-  	) {}
-
-	ngOnInit() {
-		console.info('*ngOnInit* (RegionList)');
-		this.getRegionList();
-	}
-
-
-	showItem(arg: number) {
-		console.info('RegionList.showItem('+arg+')');
-		this.navCtrl.push(RegionShow, {id: arg});
-	}
-
-	editItem(arg: Region) {
-		console.info('RegionList.editItem('+arg.id+')');
-		let data = {
-			id: arg.id,
-			name: arg.name,
-			description: arg.description,
-		}
-		this.navCtrl.push(RegionEdit, data);
-	}
-
-	removeItem(arg: number) {
-		console.info('RegionList.removeItem('+arg+')');
-		this.regionService.removeRegion(arg).subscribe(
-			() => {
-				this.infoMsg = 'Район '+arg+' удалён';
-				console.info(this.infoMsg);
-			},
-			error => this.errorMsg = error
-		);
-	}
-
-
-
-	private getRegionList() {
-		console.info('RegionList.getRegionList()');
-
-		this.regionService.getRegionList().subscribe(
-			list => {
-				this.list = list;
-				// console.info('----- this.list -----');
-				// console.info(this.list);
-				// console.info('----------------------------------');
-			},
-			error => this.errorMsg = error,
-		);
+	showRequest(id: number) {
+		console.info('RegionList.showRequest('+id+')');
+		this.show.emit(id);
 	}
 }

@@ -3,10 +3,9 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import { Region } from '../region.class';
 import { RegionService } from '../region.service';
-
-// import { RegionList } from '../list/list';
-// import { RegionShow } from '../show/show';
+import { RegionShow } from '../show/show';
 import { RegionCreate } from '../create/create';
+
 
 @Component({
   selector: 'region-list-page',
@@ -16,6 +15,7 @@ import { RegionCreate } from '../create/create';
 export class RegionListPage {
 
 	public list: Region[];
+	
 	public infoMsg: string;
 	public errorMsg: string;
 
@@ -25,26 +25,22 @@ export class RegionListPage {
   		private regionService: RegionService,
   	) {}
 
-	// -- события angular2 --
 	ngOnInit(){
 		console.info('*ngOnInit* (RegionListPage)');
 		this.getRegionList();
 	}
-	// ngAfterContentInit(){ console.info('*ngAfterContentInit*'); }
-	// ngAfterViewInit(){ console.info('*ngAfterViewInit*'); }
-	// ngOnDestroy(){ console.info('*ngOnDestroy*'); }
 
-	// --- события ionic2 ---
-	// ionViewDidLoad()   { console.info('*ionViewDidLoad*'); }
-	// ionViewWillEnter() { console.info('*ionViewWillEnter*'); }
-	// ionViewDidEnter()  { console.info('*ionViewDidEnter*'); }
-	// ionViewWillLeave() { console.info('*ionViewWillLeave*'); }
-	// ionViewDidLeave()  { console.info('*ionViewDidLeave*'); }
-	// ionViewWillUnload(){ console.info('*ionViewWillUnload*'); }
-	// ionViewCanEnter()  { console.info('*ionViewCanEnter*'); }
-	// ionViewCanLeave()  { console.info('*ionViewCanLeave*'); }
+	show(id: number) {
+		console.info('RegionListPage.show('+id+')');
+		this.navCtrl.push(RegionShow, {id: id});
+	}
 
-	getRegionList() {
+	create() {
+		console.info('RegionListPage.create()');
+		this.navCtrl.push(RegionCreate);
+	}
+
+	private getRegionList() {
 		console.info('RegionListPage.getRegionList()');
 
 		this.regionService.getRegionList().subscribe(
@@ -57,10 +53,26 @@ export class RegionListPage {
 			error => this.errorMsg = error,
 		);
 	}
-
-	create() {
-		console.info('RegionListPage.create()');
-
-		this.navCtrl.push(RegionCreate);
-	}
 }
+
+
+	// editItem(arg: Region) {
+	// 	console.info('RegionList.editItem('+arg.id+')');
+	// 	let data = {
+	// 		id: arg.id,
+	// 		name: arg.name,
+	// 		description: arg.description,
+	// 	}
+	// 	this.navCtrl.push(RegionEdit, data);
+	// }
+
+	// removeItem(arg: number) {
+	// 	console.info('RegionList.removeItem('+arg+')');
+	// 	this.regionService.removeRegion(arg).subscribe(
+	// 		() => {
+	// 			this.infoMsg = 'Район '+arg+' удалён';
+	// 			console.info(this.infoMsg);
+	// 		},
+	// 		error => this.errorMsg = error
+	// 	);
+	// }
