@@ -5,6 +5,7 @@ import { NavController } from 'ionic-angular';
 import { ListItem } from '../list-item/list-item';
 import { Region } from '../region.class';
 import { RegionShow } from '../show/show';
+import { RegionEdit } from '../edit/edit';
 import { RegionService } from '../region.service';
 
 @Component({
@@ -36,8 +37,14 @@ export class RegionList {
 		this.navCtrl.push(RegionShow, {id: arg});
 	}
 
-	editItem(arg) {
-		console.info('RegionList.editItem('+arg+')');
+	editItem(arg: Region) {
+		console.info('RegionList.editItem('+arg.id+')');
+		let data = {
+			id: arg.id,
+			name: arg.name,
+			description: arg.description,
+		}
+		this.navCtrl.push(RegionEdit, data);
 	}
 
 	removeItem(arg) {

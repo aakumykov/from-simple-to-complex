@@ -14,7 +14,7 @@ export class ListItem {
 
 	/*public*/ @Input() item: Region;
 	@Output() show: EventEmitter<number> = new EventEmitter<number>();
-	@Output() edit: EventEmitter<number> = new EventEmitter<number>();
+	@Output() edit: EventEmitter<Region> = new EventEmitter<Region>();
 	@Output() remove: EventEmitter<number> = new EventEmitter<number>();
 	
 	public infoMsg: string;
@@ -27,7 +27,7 @@ export class ListItem {
 
 	editRequest(item: Region, slidingItem) {
 		console.info('ListItem.editRequest('+item.id+')');
-		this.edit.emit(item.id);
+		this.edit.emit(item);
 	}
 
 	removeRequest(item: Region, slidingItem) {
