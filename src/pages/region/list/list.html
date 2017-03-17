@@ -1,3 +1,13 @@
 <ion-list>
-	<list-item *ngFor="let region of list" [item]="region"></list-item>
+	<list-item 
+
+		*ngFor="let region of list" 
+
+		[item]="region" 
+
+		(show)="showItem($event)" 
+		(edit)="editItem($event)" 
+		(remove)="removeItem($event)" 
+
+	></list-item>
 </ion-list>

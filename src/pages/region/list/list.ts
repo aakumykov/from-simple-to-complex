@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+// import { NavController, NavParams } from 'ionic-angular';
 
 import { Region } from '../region.class';
 import { RegionService } from '../region.service';
-import { RegionShow } from '../show/show';
 import { ListItem } from '../list-item/list-item';
 
 @Component({
@@ -14,19 +13,31 @@ import { ListItem } from '../list-item/list-item';
 export class RegionList {
 
 	public list: Region[];
+
 	public infoMsg: string;
 	public errorMsg: string;
 
-  	constructor(
-  		public navCtrl: NavController, 
-  		public navParams: NavParams,
-  		private regionService: RegionService,
-  	) {}
+  	constructor(private regionService: RegionService) {}
 
-	ngOnInit(){
+	ngOnInit() {
 		console.info('*ngOnInit* (RegionList)');
 		this.getRegionList();
 	}
+
+
+	showItem(ev) {
+		console.info('RegionList.showItem('+ev+')');
+	}
+
+	editItem(ev) {
+		console.info('RegionList.editItem('+ev+')');
+	}
+
+	removeItem(ev) {
+		console.info('RegionList.removeItem('+ev+')');
+	}
+
+
 
 	private getRegionList() {
 		console.info('RegionList.getRegionList()');
