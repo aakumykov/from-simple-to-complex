@@ -50,7 +50,7 @@ export class RegionEdit {
 
 				this.navCtrl.push(RegionShow,{id:this.id});
 
-				this.clearNavHistory(2);
+				// this.clearNavHistory(2);
 
 				// let active = this.navCtrl.getActive()
 				// let currentIndex = this.navCtrl.indexOf(active);
@@ -84,28 +84,27 @@ export class RegionEdit {
 	
 	ionViewDidLeave()  { 
 		console.info('edit: *ionViewDidLeave*'); 
-
-		this.clearNavHistory();
+		// this.clearNavHistory();
 	}
 
 	// ionViewCanUnload(){ console.info('edit: *ionViewCanUnload*'); }
 	// ionViewWillUnload(){ console.info('edit: *ionViewWillUnload*'); }
 	// ionViewDidUnload(){ console.info('edit: *ionViewDidUnload*'); }
 
-	private clearNavHistory(depth: number = 1){
-		console.info('RegionEdit.clearNavHistory()');
+	// private clearNavHistory(depth: number = 1){
+	// 	console.info('RegionEdit.clearNavHistory()');
 
-		// let active = this.navCtrl.getActive();
-		// let currentIndex = this.navCtrl.indexOf(active);
+	// 	// let active = this.navCtrl.getActive();
+	// 	// let currentIndex = this.navCtrl.indexOf(active);
 		
-		let previous1View = this.navCtrl.getPrevious();
-		console.info(previous1View);
-		this.navCtrl.removeView(previous1View);
+	// 	let previous1View = this.navCtrl.getPrevious();
+	// 	console.info(previous1View);
+	// 	this.navCtrl.removeView(previous1View);
 		
-		if (2==depth) {
-			let previous2View = this.navCtrl.getPrevious(previous1View);
-			console.info(previous2View);
-			this.navCtrl.removeView(previous2View);
-		}
-	}
+	// 	if (2==depth) {
+	// 		let previous2View = this.navCtrl.getPrevious(previous1View);
+	// 		console.info(previous2View);
+	// 		this.navCtrl.removeView(previous2View);
+	// 	}
+	// }
 }

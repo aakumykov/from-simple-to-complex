@@ -1,0 +1,19 @@
+<ion-item-sliding #slidingItem>
+	
+	<ion-item (click)="showRequest(item, slidingItem)">{{ item.name }}</ion-item>		
+	
+	<ion-item-options side="right">
+	  
+		<button ion-button color="info" (click)="editRequest(item, slidingItem)">
+			<ion-icon name="create"></ion-icon>
+			Изменить
+		</button>
+	  
+		<button ion-button color="danger" (click)="removeRequest(item, slidingItem)">
+			<ion-icon name="trash"></ion-icon>
+			Удалить
+		</button>
+
+	</ion-item-options>
+
+</ion-item-sliding>

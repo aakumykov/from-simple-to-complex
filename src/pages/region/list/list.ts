@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
+// import { NavParams } from 'ionic-angular';
 
+import { ListItem } from '../list-item/list-item';
 import { Region } from '../region.class';
-import { RegionService } from '../region.service';
 import { RegionShow } from '../show/show';
+import { RegionEdit } from '../edit/edit';
+import { RegionService } from '../region.service';
 
 @Component({
   selector: 'region-list',
@@ -13,25 +16,49 @@ import { RegionShow } from '../show/show';
 export class RegionList {
 
 	public list: Region[];
+
 	public infoMsg: string;
 	public errorMsg: string;
 
   	constructor(
-  		public navCtrl: NavController, 
-  		public navParams: NavParams,
   		private regionService: RegionService,
+  		private navCtrl: NavController,
+  		// private navParams: NavParams,
   	) {}
 
-	ngOnInit(){
+	ngOnInit() {
 		console.info('*ngOnInit* (RegionList)');
 		this.getRegionList();
 	}
 
-	showRegion(id: number) {
-		console.info('RegionList.showRegion('+id+')');
-		
-		this.navCtrl.push(RegionShow, { id: id });
+
+	showItem(arg: number) {
+		console.info('RegionList.showItem('+arg+')');
+		this.navCtrl.push(RegionShow, {id: arg});
 	}
+
+	editItem(arg: Region) {
+		console.info('RegionList.editItem('+arg.id+')');
+		let data = {
+			id: arg.id,
+			name: arg.name,
+			description: arg.description,
+		}
+		this.navCtrl.push(RegionEdit, data);
+	}
+
+	removeItem(arg: number) {
+		console.info('RegionList.removeItem('+arg+')');
+		this.regionService.removeRegion(arg).subscribe(
+			() => {
+				this.infoMsg = 'Район '+arg+' удалён';
+				console.info(this.infoMsg);
+			},
+			error => this.errorMsg = error
+		);
+	}
+
+
 
 	private getRegionList() {
 		console.info('RegionList.getRegionList()');

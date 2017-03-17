@@ -40,7 +40,7 @@ export class RegionService {
 	}
 
 	updateRegion(data) {
-		console.info('RegionService.removeRegion('+data.id+')');
+		console.info('RegionService.updateRegion('+data.id+')');
 
 		let regionUrl = this.regionsUrl+'/'+data.id;
 
