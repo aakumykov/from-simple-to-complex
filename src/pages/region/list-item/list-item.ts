@@ -1,13 +1,9 @@
 import { Component } from '@angular/core';
-import { Input } from '@angular/core';
-import { NavController } from 'ionic-angular';
-// import { NavParams } from 'ionic-angular';
+import { Input, Output } from '@angular/core';
+import { EventEmitter } from '@angular/core';
 
 import { Region } from '../region.class';
-import { RegionService } from '../region.service';
-import { RegionListPage } from '../list-page/list-page';
-import { RegionShow } from '../show/show';
-import { RegionEdit } from '../edit/edit';
+
 
 @Component({
 	selector: 'list-item',
@@ -16,42 +12,26 @@ import { RegionEdit } from '../edit/edit';
 
 export class ListItem {
 
-	@Input() item: Region;
+	/*public*/ @Input() item: Region;
+	@Output() show: EventEmitter<number> = new EventEmitter<number>();
+	@Output() edit: EventEmitter<Region> = new EventEmitter<Region>();
+	@Output() remove: EventEmitter<number> = new EventEmitter<number>();
 	
 	public infoMsg: string;
 	public errorMsg: string;
 
-	constructor(
-		public navCtrl: NavController, 
-		// public navParams: NavParams,
-		private regionService: RegionService,
-	) {}
-
-	showItem(id: number) {
-		console.info('ListItem.showRegion('+id+')');
-		
-		this.navCtrl.push(RegionShow, { id: id });
+	showRequest(item: Region, slidingItem) {
+		console.info('ListItem.showRequest('+item.id+')');
+		this.show.emit(item.id);
 	}
 
-	removeItem(item: Region, slidingItem) {
-		console.info('ListItem.removeItem(), item.id: '+item.id+')');
-
-		this.regionService.removeRegion(item.id).subscribe(
-			() => { 
-				this.infoMsg = 'объект удалён';
-				this.navCtrl.push(RegionListPage);
-			},
-			error => this.errorMsg = error
-		);
+	editRequest(item: Region, slidingItem) {
+		console.info('ListItem.editRequest('+item.id+')');
+		this.edit.emit(item);
 	}
 
-	editItem(item: Region, slidingItem) {
-		console.info('ListItem.editItem('+item.id+')');
-
-		this.navCtrl.push(RegionEdit, {
-			id: item.id,
-			name: item.name,
-			description: item.description,
-		});
+	removeRequest(item: Region, slidingItem) {
+		console.info('ListItem.removeRequest(), item.id: '+item.id+')');
+		this.remove.emit(item.id);
 	}
 }
