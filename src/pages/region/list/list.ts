@@ -32,7 +32,7 @@ export class RegionList {
 	}
 
 
-	showItem(arg) {
+	showItem(arg: number) {
 		console.info('RegionList.showItem('+arg+')');
 		this.navCtrl.push(RegionShow, {id: arg});
 	}
@@ -47,8 +47,15 @@ export class RegionList {
 		this.navCtrl.push(RegionEdit, data);
 	}
 
-	removeItem(arg) {
+	removeItem(arg: number) {
 		console.info('RegionList.removeItem('+arg+')');
+		this.regionService.removeRegion(arg).subscribe(
+			() => {
+				this.infoMsg = 'Район '+arg+' удалён';
+				console.info(this.infoMsg);
+			},
+			error => this.errorMsg = error
+		);
 	}
 
 
