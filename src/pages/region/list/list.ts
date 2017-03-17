@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-// import { NavController, NavParams } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
+// import { NavParams } from 'ionic-angular';
 
-import { Region } from '../region.class';
-import { RegionService } from '../region.service';
 import { ListItem } from '../list-item/list-item';
+import { Region } from '../region.class';
+import { RegionShow } from '../show/show';
+import { RegionService } from '../region.service';
 
 @Component({
   selector: 'region-list',
@@ -17,7 +19,11 @@ export class RegionList {
 	public infoMsg: string;
 	public errorMsg: string;
 
-  	constructor(private regionService: RegionService) {}
+  	constructor(
+  		private regionService: RegionService,
+  		private navCtrl: NavController,
+  		// private navParams: NavParams,
+  	) {}
 
 	ngOnInit() {
 		console.info('*ngOnInit* (RegionList)');
@@ -25,16 +31,17 @@ export class RegionList {
 	}
 
 
-	showItem(ev) {
-		console.info('RegionList.showItem('+ev+')');
+	showItem(arg) {
+		console.info('RegionList.showItem('+arg+')');
+		this.navCtrl.push(RegionShow, {id: arg});
 	}
 
-	editItem(ev) {
-		console.info('RegionList.editItem('+ev+')');
+	editItem(arg) {
+		console.info('RegionList.editItem('+arg+')');
 	}
 
-	removeItem(ev) {
-		console.info('RegionList.removeItem('+ev+')');
+	removeItem(arg) {
+		console.info('RegionList.removeItem('+arg+')');
 	}
 
 
