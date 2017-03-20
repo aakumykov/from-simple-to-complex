@@ -9,7 +9,7 @@
 	<p padding class='error' *ngIf="errorMsg">Ошибка: {{ errorMsg }}</p>
 	<p padding class='info' *ngIf="infoMsg">{{ infoMsg }}</p>
 	
-	<region-list></region-list>
+	<list [list]="list" (showEvent)="show($event)"></list>
 
 	<ion-fab right bottom>
 		<button ion-fab mini color="primary" (click)="create()"><ion-icon name="add"></ion-icon></button>

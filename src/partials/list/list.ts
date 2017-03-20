@@ -10,7 +10,7 @@ export class List {
 
 	@Input() list;
 
-	@Output() showEvent<number> = new EventEmitter<number>();
+	@Output() showEvent: EventEmitter<number> = new EventEmitter<number>();
 
 	public infoMsg: string;
 	public errorMsg: string;

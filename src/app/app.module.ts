@@ -19,6 +19,8 @@ import { PlaceNew } from '../pages/place/new/new';
 import { PlaceShow } from '../pages/place/show/show';
 import { PlaceEdit } from '../pages/place/edit/edit';
 
+// Partials
+import { List } from '../partials/list/list';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { PlaceEdit } from '../pages/place/edit/edit';
     PlaceNew,
     PlaceShow,
     PlaceEdit,
+
+    List,
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -56,6 +60,8 @@ import { PlaceEdit } from '../pages/place/edit/edit';
     PlaceNew,
     PlaceShow,
     PlaceEdit,
+
+    List,
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
