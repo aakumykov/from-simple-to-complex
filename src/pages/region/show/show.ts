@@ -3,10 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import { Region } from '../region.class';
 import { RegionService } from '../region.service';
-import { RegionListPage } from '../list-page/list-page';
 import { RegionEdit } from '../edit/edit';
-import { ListItem } from '../../place/list-item/list-item';
-
 
 @Component({
   selector: 'region-show',

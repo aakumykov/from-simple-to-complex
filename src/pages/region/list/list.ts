@@ -1,64 +1,49 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-// import { NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 
-import { ListItem } from '../list-item/list-item';
 import { Region } from '../region.class';
-import { RegionShow } from '../show/show';
-import { RegionEdit } from '../edit/edit';
 import { RegionService } from '../region.service';
+import { RegionCreate } from '../create/create';
+import { RegionShow } from '../show/show';
+
+// import { List } from '../../partials/list/list';
 
 @Component({
-  selector: 'region-list',
+  selector: 'region-list-page',
   templateUrl: 'list.html'
 })
 
 export class RegionList {
 
 	public list: Region[];
-
+	
 	public infoMsg: string;
 	public errorMsg: string;
 
   	constructor(
+  		public navCtrl: NavController, 
+  		public navParams: NavParams,
   		private regionService: RegionService,
-  		private navCtrl: NavController,
-  		// private navParams: NavParams,
   	) {}
 
-	ngOnInit() {
+
+	ngOnInit(){
 		console.info('*ngOnInit* (RegionList)');
 		this.getRegionList();
 	}
 
-
-	showItem(arg: number) {
-		console.info('RegionList.showItem('+arg+')');
-		this.navCtrl.push(RegionShow, {id: arg});
+	show(id: number){
+		// console.info('------- RegionList.show() ------');
+		// console.info(arg);
+		// console.info('------------------------------------');
+		this.navCtrl.push(RegionShow, {id:id});
 	}
 
-	editItem(arg: Region) {
-		console.info('RegionList.editItem('+arg.id+')');
-		let data = {
-			id: arg.id,
-			name: arg.name,
-			description: arg.description,
-		}
-		this.navCtrl.push(RegionEdit, data);
+	create() {
+		console.info('RegionList.create()');
+
+		this.navCtrl.push(RegionCreate);
 	}
-
-	removeItem(arg: number) {
-		console.info('RegionList.removeItem('+arg+')');
-		this.regionService.removeRegion(arg).subscribe(
-			() => {
-				this.infoMsg = 'Район '+arg+' удалён';
-				console.info(this.infoMsg);
-			},
-			error => this.errorMsg = error
-		);
-	}
-
-
 
 	private getRegionList() {
 		console.info('RegionList.getRegionList()');
@@ -66,9 +51,7 @@ export class RegionList {
 		this.regionService.getRegionList().subscribe(
 			list => {
 				this.list = list;
-				// console.info('----- this.list -----');
-				// console.info(this.list);
-				// console.info('----------------------------------');
+
 			},
 			error => this.errorMsg = error,
 		);

@@ -4,7 +4,7 @@ import { MenuController } from 'ionic-angular';
 
 import { HomePage  } from '../pages/home/home';
 
-import { RegionListPage } from '../pages/region/list-page/list-page';
+import { RegionList } from '../pages/region/list/list';
 // import { RegionCreate } from '../pages/region/create/create';
 // import { RegionShow } from '../pages/region/show/show';
 // import { RegionEdit } from '../pages/region/edit/edit';
@@ -18,7 +18,7 @@ export class MyApp {
 
 	// свойства
 	homePage = HomePage;
-	regionListPage = RegionListPage;
+	regionListPage = RegionList;
 
 	rootPage = this.homePage;
 
@@ -32,11 +32,11 @@ export class MyApp {
 	}
 
 	goHomePage() {
-		this.openPage(RegionListPage);
+		this.openPage(RegionList);
 	}
 
-	goRegionListPage(){
-		this.openPage(RegionListPage);
+	goRegionList(){
+		this.openPage(RegionList);
 	}
 
 	private openPage(page){

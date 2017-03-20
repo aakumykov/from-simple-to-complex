@@ -7,11 +7,9 @@ import { Region } from '../pages/region/region.class';
 
 import { RegionService } from '../pages/region/region.service';
 import { RegionList } from '../pages/region/list/list';
-import { RegionListPage } from '../pages/region/list-page/list-page';
 import { RegionCreate } from '../pages/region/create/create';
 import { RegionShow } from '../pages/region/show/show';
 import { RegionEdit } from '../pages/region/edit/edit';
-import { ListItem } from '../pages/region/list-item/list-item';
 
 import { PlaceService } from '../pages/place/place.service';
 import { PlaceList } from '../pages/place/list/list';
@@ -28,11 +26,9 @@ import { List } from '../partials/list/list';
     HomePage,
     
     RegionList,
-    RegionListPage,
     RegionCreate,
     RegionShow,
     RegionEdit,
-    ListItem,
     
     PlaceList,
     PlaceNew,
@@ -50,11 +46,9 @@ import { List } from '../partials/list/list';
     HomePage,
     
     RegionList,
-    RegionListPage,
     RegionCreate,
     RegionShow,
     RegionEdit,
-    ListItem,
     
     PlaceList,
     PlaceNew,
