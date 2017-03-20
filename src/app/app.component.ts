@@ -35,7 +35,7 @@ export class MyApp {
 		this.openPage(RegionList);
 	}
 
-	goRegionList(){
+	goRegionListPage(){
 		this.openPage(RegionList);
 	}
 
