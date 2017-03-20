@@ -1,24 +1,17 @@
-<ion-item>
+<ion-header>
+  <ion-navbar>
+	<ion-title>Места</ion-title>
+  </ion-navbar>
+</ion-header>
 
-	<h2>Места <ion-icon name='add' color='primary' (click)='newPlace()'></ion-icon></h2>
-	
+
+<ion-content>
 	<p padding class='error' *ngIf="errorMsg">Ошибка: {{ errorMsg }}</p>
 	<p padding class='info' *ngIf="infoMsg">{{ infoMsg }}</p>
-
-	<ion-list>
-		<ion-item-sliding #slidingItem *ngFor="let place of list">
-			<ion-item (click)="showPlace(place.id)">{{ place.name }}</ion-item>		
-			<ion-item-options side="right">
-				<button ion-button color="info" (click)="editPlace(place.id)"><ion-icon name="create"></ion-icon>Изменить</button>
-				<button ion-button color="danger" (click)="presentActionSheet(place, slidingItem)"><ion-icon name="trash"></ion-icon>Удалить</button>
-			</ion-item-options>
-		</ion-item-sliding>
-	</ion-list>
-
-	<ion-item *ngIf="noPlaces()">
-		<ion-item>здесь пока ничего нет</ion-item>
-	</ion-item>
-
-</ion-item>
-
 	
+	<list [list]="list" (showEvent)="show($event)"></list>
+
+	<ion-fab right bottom>
+		<button ion-fab mini color="primary" (click)="create()"><ion-icon name="add"></ion-icon></button>
+	</ion-fab>
+</ion-content>

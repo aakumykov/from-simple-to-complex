@@ -5,6 +5,7 @@ import { MenuController } from 'ionic-angular';
 import { HomePage  } from '../pages/home/home';
 
 import { RegionList } from '../pages/region/list/list';
+import { PlaceList } from '../pages/place/list/list';
 // import { RegionCreate } from '../pages/region/create/create';
 // import { RegionShow } from '../pages/region/show/show';
 // import { RegionEdit } from '../pages/region/edit/edit';
@@ -32,11 +33,18 @@ export class MyApp {
 	}
 
 	goHomePage() {
+		console.info('MyApp.goHomePage()');
 		this.openPage(RegionList);
 	}
 
 	goRegionListPage(){
+		console.info('MyApp.goRegionListPage()');
 		this.openPage(RegionList);
+	}
+
+	goPlaceListPage(){
+		console.info('MyApp.goPlaceListPage()');
+		this.openPage(PlaceList);
 	}
 
 	private openPage(page){

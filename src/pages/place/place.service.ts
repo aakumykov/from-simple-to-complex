@@ -7,8 +7,6 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw';
 
-// import { Place } from './palce.class';
-
 
 @Injectable()
 export class PlaceService {
@@ -20,6 +18,13 @@ export class PlaceService {
 	constructor(private http: Http){
 	}
 
+	getPlaceList() {
+		console.info('RegionService.getPlaceList()');
+
+		return this.http.get(this.placesUrl)
+						.map(this.extractData)
+						.catch(this.handleError);
+	}
 
 	createPlace(data) /*Observable<Place>*/ {
 		console.info('PlaceService.createPlace()');
@@ -30,10 +35,6 @@ export class PlaceService {
 			region_id: data.region_id,
 		}
 
-			// console.info('----- requestData -----');
-			// console.info(requestData);
-			// console.info('-----------------------------------');
-
 		return this.http.post(this.placesUrl, requestData, this.requestOptions)
 					.map(this.extractData)
 					.catch(this.handleError);
@@ -41,7 +42,7 @@ export class PlaceService {
 
 
 	getPlace(id: number) /*Observable<Place>*/ {
-		console.info('PlaceService.createPlace('+id+')');
+		console.info('PlaceService.getPlace('+id+')');
 
 		return this.http.get(this.placesUrl+'/'+id)
 				.map(this.extractData)
@@ -54,16 +55,10 @@ export class PlaceService {
 			id: data.id,
 			name: data.name,
 			description: data.description,
+			region_id: data.region_id,
 		}
 
-		// console.info('PlaceService.updatePlace('+requestData.id+')');
-		// console.info('----- requestData -----');
-		// console.info(requestData);
-		// console.info('-----------------------');
-
 		let requestUrl = this.placesUrl+'/'+requestData.id;
-
-			// console.info(' requestUrl: '+requestUrl);
 
 		return this.http.patch(requestUrl, requestData, this.requestOptions)
 				.map(this.extractData)
@@ -101,28 +96,15 @@ export class PlaceService {
 	}
 
 	private handleError(error: Response | any) {
-		// console.info('----- PlaceService.handleError() -----');
-		// console.info(error);
-		// console.info('----------------------------------------');
-
-		// Вообще-то, нужно использовать внешнюю службу журналирования!
 		let errMsg: string;
 
 		if (error instanceof Response) {
 			const body = error.json();
 			const err = body.error || JSON.stringify(body);
 			errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
-
-			// console.info('----- errMsg (1) -----');
-			// console.info(errMsg);
-			// console.info('------------------');
 		}
 		else {
 			errMsg = error.message ? error.message : error.toString();
-
-			// console.info('----- errMsg (2) -----');
-			// console.info(errMsg);
-			// console.info('------------------');
 		}
 
 		console.error(errMsg);

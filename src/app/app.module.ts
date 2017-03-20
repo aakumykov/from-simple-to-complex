@@ -13,7 +13,7 @@ import { RegionEdit } from '../pages/region/edit/edit';
 
 import { PlaceService } from '../pages/place/place.service';
 import { PlaceList } from '../pages/place/list/list';
-import { PlaceNew } from '../pages/place/new/new';
+import { PlaceCreate } from '../pages/place/create/create';
 import { PlaceShow } from '../pages/place/show/show';
 import { PlaceEdit } from '../pages/place/edit/edit';
 
@@ -31,7 +31,7 @@ import { List } from '../partials/list/list';
     RegionEdit,
     
     PlaceList,
-    PlaceNew,
+    PlaceCreate,
     PlaceShow,
     PlaceEdit,
 
@@ -51,7 +51,7 @@ import { List } from '../partials/list/list';
     RegionEdit,
     
     PlaceList,
-    PlaceNew,
+    PlaceCreate,
     PlaceShow,
     PlaceEdit,
 

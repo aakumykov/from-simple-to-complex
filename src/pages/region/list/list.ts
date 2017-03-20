@@ -6,7 +6,6 @@ import { RegionService } from '../region.service';
 import { RegionCreate } from '../create/create';
 import { RegionShow } from '../show/show';
 
-// import { List } from '../../partials/list/list';
 
 @Component({
   selector: 'region-list-page',
@@ -41,7 +40,6 @@ export class RegionList {
 
 	create() {
 		console.info('RegionList.create()');
-
 		this.navCtrl.push(RegionCreate);
 	}
 
@@ -51,7 +49,6 @@ export class RegionList {
 		this.regionService.getRegionList().subscribe(
 			list => {
 				this.list = list;
-
 			},
 			error => this.errorMsg = error,
 		);
