@@ -17,6 +17,12 @@ import { PlaceCreate } from '../pages/place/create/create';
 import { PlaceShow } from '../pages/place/show/show';
 import { PlaceEdit } from '../pages/place/edit/edit';
 
+import { InventoryService } from '../services/inventory.service';
+import { InventoryList } from '../pages/inventory/list/list';
+import { InventoryCreate } from '../pages/inventory/create/create';
+import { InventoryShow } from '../pages/inventory/show/show';
+import { InventoryEdit } from '../pages/inventory/edit/edit';
+
 // Partials
 import { List } from '../partials/list/list';
 

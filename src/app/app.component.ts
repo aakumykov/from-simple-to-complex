@@ -5,6 +5,7 @@ import { MenuController } from 'ionic-angular';
 import { HomePage  } from '../pages/home/home';
 import { RegionList } from '../pages/region/list/list';
 import { PlaceList } from '../pages/place/list/list';
+import { InventoryList } from '../pages/inventory/list/list';
 
 @Component({
 	templateUrl: 'app.html'
@@ -39,6 +40,11 @@ export class MyApp {
 	goPlaceListPage(){
 		console.info('MyApp.goPlaceListPage()');
 		this.openPage(PlaceList);
+	}
+
+	goInventoryListPage(){
+		console.info('MyApp.goInventoryListPage()');
+		this.openPage(InventoryList);
 	}
 
 	private openPage(page){
