@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+	<ion-title>{{title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+	<p padding class='error' *ngIf="errorMsg">Ошибка: {{ errorMsg }}</p>
+	<p padding class='info' *ngIf="infoMsg">{{ infoMsg }}</p>
+
+	<ion-list>
+
+	  <ion-item>
+	    <ion-label floating>Название</ion-label>
+	    <ion-input type="text" autofocus [(ngModel)]="name"></ion-input>
+	  </ion-item>
+
+	  <ion-item>
+	    <ion-label floating>Описание</ion-label>
+	    <ion-textarea rows="6" [(ngModel)]="description"></ion-textarea>
+	  </ion-item>
+
+	  <p padding>
+	  	<button ion-button color='primary' block (click)='save()'>Сохранить</button>
+	  	<br/>
+	  	<button ion-button color='light' block (click)='cancel()'>Отменить</button>
+	  </p>
+
+	</ion-list>
+</ion-content>
