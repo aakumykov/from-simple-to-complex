@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { ActionSheetController } from 'ionic-angular';
 
+// import { Place } from '../place.class';
 import { PlaceService } from '../../../services/place.service';
-
 import { PlaceEdit } from '../edit/edit';
+import { PlaceList } from '../list/list';
 import { RegionShow } from '../../region/show/show';
-
 
 @Component({
   selector: 'place-show',
@@ -26,6 +27,7 @@ export class PlaceShow {
   		public navCtrl: NavController, 
   		public navParams: NavParams,
   		private placeService: PlaceService,
+  		private actionSheetCtrl: ActionSheetController,
   	) {
   		this.id = this.navParams.get('id');
   		console.info('PlaceShow.constructor(), id='+this.id);
@@ -38,26 +40,20 @@ export class PlaceShow {
 
 	editItem() {
 		console.info('PlaceShow.editItem('+this.id+')');
-
-		this.navCtrl.push(PlaceEdit, {
+		let data = {
 			id: this.id,
 			name: this.name,
 			description: this.description,
 			region_id: this.region_id,
-		});
+		}
+		this.navCtrl.push(PlaceEdit,data);
 	}
 
 	removeItem() {
-		console.info('PlaceShow.removeItem(), this.id: '+this.id+')');
-
-		this.placeService.removePlace(this.id).subscribe(
-			() => { 
-				this.infoMsg = 'объект удалён';
-				this.navCtrl.push(RegionShow, { id: this.region_id });
-			},
-			error => this.errorMsg = error
-		);
+		console.info('PlaceShow.removeItem()');
+		this.presentActionSheet();
 	}
+
 
 	private getPlace() {
 		console.info('PlaceShow.getPlace('+this.id+')');
@@ -71,6 +67,43 @@ export class PlaceShow {
 				this.region_id = place.region_id;
 			},
 			error => this.errorMsg = error,
+		);
+	}
+
+	private presentActionSheet(){
+		console.info('PlaceShow.presentActionSheet()');
+		
+		let actionSheet = this.actionSheetCtrl.create({
+		  title: 'Удалить «'+this.name+'»?',
+		  buttons: [
+		    {
+		      text: 'Да',
+		      role: 'destructive',
+		      handler: () => {
+		        console.info('Destructive clicked');
+		        this.removeItemReal();
+		      }
+		    },{
+		      text: 'Нет',
+		      role: 'cancel',
+		      handler: () => {
+		        console.info('Cancel clicked');
+		      }
+		    }
+		  ]
+		});
+		actionSheet.present();
+	}
+
+	private removeItemReal(){
+		console.info('PlaceShow.removeItemReal(), id='+this.id);
+
+		this.placeService.removePlace(this.id).subscribe(
+			()=>{
+				this.infoMsg = 'Удалено «'+this.name+'»';
+				this.navCtrl.push(PlaceList);
+			},
+			error => this.errorMsg = error
 		);
 	}
 }

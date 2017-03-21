@@ -1,11 +1,8 @@
-<!-- Просмотр места. -->
-
 <ion-header>
   <ion-navbar>
 	<ion-title>Местность &laquo;{{name}}&raquo;</ion-title>
   </ion-navbar>
 </ion-header>
-
 
 <ion-content>
 	<p padding class='error' *ngIf="errorMsg">Ошибка: {{ errorMsg }}</p>
@@ -19,5 +16,7 @@
 		</ion-item>
 		
 		<ion-card-content *ngIf="description">{{description}}</ion-card-content>
+	
+
 	</ion-card>
 </ion-content>

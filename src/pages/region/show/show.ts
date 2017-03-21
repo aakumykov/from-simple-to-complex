@@ -7,6 +7,7 @@ import { RegionService } from '../../../services/region.service';
 import { RegionEdit } from '../edit/edit';
 import { RegionList } from '../list/list';
 
+
 @Component({
   selector: 'region-show',
   templateUrl: 'show.html'
@@ -17,6 +18,7 @@ export class RegionShow {
 	public id: number;
 	public name: string;
 	public description: string;
+
 
 	public infoMsg: string;
 	public errorMsg: string;
@@ -36,19 +38,6 @@ export class RegionShow {
 		this.getRegion();
 	}
 
-	getRegion() {
-		console.info('RegionShow.getRegion('+this.id+')');
-
-		this.regionService.getRegion(this.id).subscribe(
-			region => {
-				this.id = region.id;
-				this.name = region.name;
-				this.description = region.description;
-			},
-			error => this.errorMsg = error,
-		);
-	}
-
 	editItem(){
 		console.info('RegionShow.editItem()');
 		let data = {
@@ -62,6 +51,20 @@ export class RegionShow {
 	removeItem() {
 		console.info('RegionShow.removeItem()');
 		this.presentActionSheet();
+	}
+
+
+	private getRegion() {
+		console.info('RegionShow.getRegion('+this.id+')');
+
+		this.regionService.getRegion(this.id).subscribe(
+			region => {
+				this.id = region.id;
+				this.name = region.name;
+				this.description = region.description;
+			},
+			error => this.errorMsg = error,
+		);
 	}
 
 	private presentActionSheet(){
