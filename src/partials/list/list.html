@@ -1,8 +1,10 @@
 <ion-list>
+	<ion-list-header *ngIf="this.hasTitle()">{{title}}</ion-list-header>
+	
 	<ion-item 
 		*ngFor="let item of list" 
-		(click)="show(item.id)" 
 		title="{{item.name}}" 
+		(click)="show(item.id)" 
 	>
 		{{ item.name }}
 

@@ -18,7 +18,8 @@ export class PlacesOfRegion {
 
 	@Input() 
 		region_id: number;
-	
+		title: string;
+
 	@Output() 
 		showEvent: EventEmitter<number> = new EventEmitter<number>();
 
@@ -35,6 +36,8 @@ export class PlacesOfRegion {
 	ngOnInit(){
 		console.info('*ngOnInit*, PlacesOfRegion');
 		this.getList(this.region_id);
+		console.info(this.list);
+		console.info('title: '+this.title);
 	}
 
 	show(id: number) {
@@ -45,12 +48,7 @@ export class PlacesOfRegion {
 	private getList(id: number) {
 		console.info('PlacesOfRegion.getList('+id+')');
 		this.placeService.getListFor(id).subscribe(
-			list => {
-				console.info('----- place list -----');
-				console.info(list);
-				console.info('----------------------');
-				this.list = list;
-			},
+			list => this.list = list,
 			error => this.errorMsg = error
 		);
 	}
