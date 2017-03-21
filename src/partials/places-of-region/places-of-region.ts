@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { Input, Output, EventEmitter } from '@angular/core';
-
-import { PlaceService } from '../../services/place.service';
-import { List } from '../list/list';
+import { NavController } from 'ionic-angular';
 
 import { Place } from '../../pages/place/place.class';
+
+import { List } from '../list/list';
+import { PlaceService } from '../../services/place.service';
+import { PlaceShow } from '../../pages/place/show/show';
 
 @Component({
   selector: 'places-of-region',
@@ -25,16 +27,19 @@ export class PlacesOfRegion {
 	public infoMsg: string;
 	public errorMsg: string;
 
-	constructor(private placeService:PlaceService){}
+	constructor(
+		private placeService:PlaceService,
+		private navCtrl: NavController,
+	){}
 
 	ngOnInit(){
 		console.info('*ngOnInit*, PlacesOfRegion');
 		this.getList(this.region_id);
 	}
 
-	show(arg) {
-		console.info('PlacesOfRegion.show('+arg+')');
-		// this.showEvent.emit(arg);
+	show(id: number) {
+		console.info('PlacesOfRegion.show('+id+')');
+		this.navCtrl.push(PlaceShow, {id: id});
 	}
 
 	private getList(id: number) {
