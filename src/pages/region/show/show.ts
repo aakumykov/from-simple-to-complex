@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ActionSheetController } from 'ionic-angular';
 
-import { Region } from '../region.class';
+// import { Region } from '../region.class';
 import { RegionService } from '../region.service';
 import { RegionEdit } from '../edit/edit';
 import { RegionList } from '../list/list';
