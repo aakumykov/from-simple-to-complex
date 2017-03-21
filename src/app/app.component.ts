@@ -3,38 +3,32 @@ import { NavController } from 'ionic-angular';
 import { MenuController } from 'ionic-angular';
 
 import { HomePage  } from '../pages/home/home';
-
 import { RegionList } from '../pages/region/list/list';
 import { PlaceList } from '../pages/place/list/list';
-// import { RegionCreate } from '../pages/region/create/create';
-// import { RegionShow } from '../pages/region/show/show';
-// import { RegionEdit } from '../pages/region/edit/edit';
 
 @Component({
 	templateUrl: 'app.html'
 })
 
 export class MyApp {
-	@ViewChild('content') nav: NavController;
+	@ViewChild('content') navCtrl: NavController;
 
 	// свойства
-	homePage = HomePage;
-	regionListPage = RegionList;
-
-	rootPage = this.homePage;
+	rootPage = HomePage;
 
 	// методы
 	constructor(public menuCtrl: MenuController){}
 
 	ngAfterViewInit(){
-		// console.log('ngAfterViewInit(), MyApp');
+		console.log('*ngAfterViewInit*, MyApp');
 		// this.menuCtrl.open();
-		this.nav.push(this.regionListPage);
+		this.goRegionListPage();
 	}
 
 	goHomePage() {
 		console.info('MyApp.goHomePage()');
-		this.openPage(RegionList);
+		this.openPage(HomePage);
+		// this.navCtrl.push(HomePage);
 	}
 
 	goRegionListPage(){
@@ -49,7 +43,7 @@ export class MyApp {
 
 	private openPage(page){
 		console.info('MyApp.openPage()');
-		this.nav.push(page);
+		this.navCtrl.push(page);
 		this.menuCtrl.close();
 	}
 }

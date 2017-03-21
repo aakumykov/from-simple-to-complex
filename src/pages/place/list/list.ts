@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 import { Place } from '../place.class';
-import { PlaceService } from '../place.service';
+import { PlaceService } from '../../../services/place.service';
 import { PlaceCreate } from '../create/create';
 import { PlaceShow } from '../show/show';
 

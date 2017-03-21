@@ -5,13 +5,13 @@ import { HomePage } from '../pages/home/home';
 
 import { Region } from '../pages/region/region.class';
 
-import { RegionService } from '../pages/region/region.service';
+import { RegionService } from '../services/region.service';
 import { RegionList } from '../pages/region/list/list';
 import { RegionCreate } from '../pages/region/create/create';
 import { RegionShow } from '../pages/region/show/show';
 import { RegionEdit } from '../pages/region/edit/edit';
 
-import { PlaceService } from '../pages/place/place.service';
+import { PlaceService } from '../services/place.service';
 import { PlaceList } from '../pages/place/list/list';
 import { PlaceCreate } from '../pages/place/create/create';
 import { PlaceShow } from '../pages/place/show/show';

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-import { PlaceService } from '../place.service';
+import { PlaceService } from '../../../services/place.service';
 
 import { PlaceEdit } from '../edit/edit';
 import { RegionShow } from '../../region/show/show';
