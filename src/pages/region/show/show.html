@@ -1,18 +1,19 @@
-<!-- Просмотр района. -->
-
 <ion-header>
   <ion-navbar>
 	<ion-title>Район &laquo;{{name}}&raquo;</ion-title>
   </ion-navbar>
 </ion-header>
 
-
 <ion-content>
 	<p padding class='error' *ngIf="errorMsg">Ошибка: {{ errorMsg }}</p>
 	<p padding class='info' *ngIf="infoMsg">{{ infoMsg }}</p>
 	
 	<ion-card>
-		<ion-card-header>{{name}}</ion-card-header>
+		<ion-item> 
+			<h2>{{name}}</h2> 
+			<ion-icon small item-right name="create" color="primary" (click)="editItem(id)"></ion-icon>
+			<ion-icon small item-right name="trash" (click)="removeItem(id)"></ion-icon>
+		</ion-item>
 		
 		<ion-card-content *ngIf="description">{{description}}</ion-card-content>
 
