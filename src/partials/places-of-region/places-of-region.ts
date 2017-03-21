@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Input, Output, EventEmitter } from '@angular/core';
 
+import { PlaceService } from '../../services/place.service';
 import { List } from '../list/list';
 
 import { Place } from '../../pages/place/place.class';
@@ -19,12 +20,12 @@ export class PlacesOfRegion {
 	@Output() 
 		showEvent: EventEmitter<number> = new EventEmitter<number>();
 
-
 	public list: Place[];
 
 	public infoMsg: string;
 	public errorMsg: string;
 
+	constructor(private placeService:PlaceService){}
 
 	ngOnInit(){
 		console.info('*ngOnInit*, PlacesOfRegion');
@@ -38,6 +39,14 @@ export class PlacesOfRegion {
 
 	private getList(id: number) {
 		console.info('PlacesOfRegion.getList('+id+')');
-
+		this.placeService.getListFor(id).subscribe(
+			list => {
+				console.info('----- place list -----');
+				console.info(list);
+				console.info('----------------------');
+				this.list = list;
+			},
+			error => this.errorMsg = error
+		);
 	}
 }
