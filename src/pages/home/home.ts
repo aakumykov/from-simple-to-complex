@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 // import { TitlePage } from '../title/title';
-import { RegionListPage } from '../region/list-page/list-page';
+import { RegionList } from '../region/list/list';
+import { PlaceList } from '../place/list/list';
 
 @Component({
   selector: 'page-home',
@@ -19,6 +20,10 @@ export class HomePage {
 	// }
 
 	showRegions() {
-		this.navCtrl.push(RegionListPage);
+		this.navCtrl.push(RegionList);
+	}
+
+	showPlaces() {
+		this.navCtrl.push(PlaceList);
 	}
 }

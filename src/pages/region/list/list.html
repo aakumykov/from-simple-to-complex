@@ -1,13 +1,27 @@
-<ion-list>
-	<list-item 
+<!-- <ion-header>
+  <ion-navbar>
+	<ion-title>Районы</ion-title>
+  </ion-navbar>
+</ion-header> -->
 
-		*ngFor="let region of list" 
+<ion-header>
+	<ion-navbar>
+		Районы
+		<ion-buttons end>
+			<button ion-button icon-only>
+				<ion-icon name="add" (click)="create()"></ion-icon>
+			</button>
+		</ion-buttons>
+	</ion-navbar>
+</ion-header>
 
-		[item]="region" 
+<ion-content>
+	<p padding class='error' *ngIf="errorMsg">Ошибка: {{ errorMsg }}</p>
+	<p padding class='info' *ngIf="infoMsg">{{ infoMsg }}</p>
+	
+	<list [list]="list" (showEvent)="show($event)"></list>
 
-		(show)="showItem($event)" 
-		(edit)="editItem($event)" 
-		(remove)="removeItem($event)" 
-
-	></list-item>
-</ion-list>
+	<ion-fab right bottom>
+		<button ion-fab mini color="primary" (click)="create()"><ion-icon name="add"></ion-icon></button>
+	</ion-fab>
+</ion-content>

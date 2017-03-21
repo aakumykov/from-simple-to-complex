@@ -18,6 +18,7 @@ export class PlaceEdit {
 	public id: number;
 	public name: string;
 	public description: string;
+	public region_id: string;
 
 	public title: string;
 
@@ -30,6 +31,7 @@ export class PlaceEdit {
 		this.id = this.navParams.get('id');
 		this.name = this.navParams.get('name');
 		this.description = this.navParams.get('description');
+		this.region_id = this.navParams.get('region_id');
 
 		this.title = 'Изменение местности «'+this.name+'»';
 	}
@@ -41,23 +43,14 @@ export class PlaceEdit {
 			{
 				id: this.id, 
 				name: this.name, 
-				description: this.description
+				description: this.description,
+				region_id: this.region_id,
 			}
 		).subscribe(
 			place => { 
 				this.infoMsg = 'сохранено'; 
 
 				this.navCtrl.push(PlaceShow,{id:this.id});
-
-				// this.clearNavHistory(2);
-
-				// let active = this.navCtrl.getActive()
-				// let currentIndex = this.navCtrl.indexOf(active);
-				// let editView = this.navCtrl.getByIndex(currentIndex-1);
-				
-				// this.navCtrl.removeView(editView);
-				// this.navCtrl.remove(currentIndex-2, 1);
-
 			},
 			error => { this.errorMsg = error }
 		);

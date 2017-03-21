@@ -43,6 +43,7 @@ export class PlaceShow {
 			id: this.id,
 			name: this.name,
 			description: this.description,
+			region_id: this.region_id,
 		});
 	}
 

@@ -7,11 +7,11 @@ import { RegionShow } from '../../region/show/show';
 
 
 @Component({
-	selector: 'place-new',
+	selector: 'place-create',
 	templateUrl: '../edit/edit.html'
 })
 
-export class PlaceNew {
+export class PlaceCreate {
 	public title = 'Добавление места в район ...';
 
 	public name: string;
@@ -31,7 +31,7 @@ export class PlaceNew {
 	}
 
 	save() { // общее имя с компонентом edit
-		console.info('PlaceNew.save()');
+		console.info('PlaceCreate.save()');
 		 // console.info(' name: '+this.name);
 		 // console.info(' description: '+this.description);
 
@@ -51,7 +51,7 @@ export class PlaceNew {
 	}
 
 	cancel() {
-		console.info('PlaceNew.cancel()');
+		console.info('PlaceCreate.cancel()');
 		this.navCtrl.pop();
 	}
 }

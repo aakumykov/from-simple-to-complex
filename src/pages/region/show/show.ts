@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { ActionSheetController } from 'ionic-angular';
 
 import { Region } from '../region.class';
 import { RegionService } from '../region.service';
-import { RegionListPage } from '../list-page/list-page';
 import { RegionEdit } from '../edit/edit';
-import { ListItem } from '../../place/list-item/list-item';
-
+import { RegionList } from '../list/list';
 
 @Component({
   selector: 'region-show',
@@ -26,7 +25,7 @@ export class RegionShow {
   		public navCtrl: NavController, 
   		public navParams: NavParams,
   		private regionService: RegionService,
-		private theRegion: Region,
+  		private actionSheetCtrl: ActionSheetController,
   	) {
   		this.id = this.navParams.get('id');
   		console.info('RegionShow.constructor(), id='+this.id);
@@ -42,12 +41,6 @@ export class RegionShow {
 
 		this.regionService.getRegion(this.id).subscribe(
 			region => {
-				//this.region = region;
-				
-				this.theRegion.id = region.id;
-				this.theRegion.name = region.name;
-				this.theRegion.description = region.description;
-				
 				this.id = region.id;
 				this.name = region.name;
 				this.description = region.description;
@@ -56,18 +49,55 @@ export class RegionShow {
 		);
 	}
 
+	editItem(){
+		console.info('RegionShow.editItem()');
+		let data = {
+			id: this.id,
+			name: this.name,
+			description: this.description,
+		}
+		this.navCtrl.push(RegionEdit,data);
+	}
 
-	
+	removeItem() {
+		console.info('RegionShow.removeItem()');
+		this.presentActionSheet();
+	}
 
-	//  ionViewCanLoad(arg)   { console.info('*ionViewCanLoad*'+arg); }
-	//  ionViewWillLoad(arg)   { console.info('*ionViewWillLoad*'+arg); }
-	// ionViewDidLoad(arg)   { console.info('*ionViewDidLoad*'+arg); }
+	private presentActionSheet(){
+		console.info('RegionShow.presentActionSheet()');
+		
+		let actionSheet = this.actionSheetCtrl.create({
+		  title: 'Удалить «'+this.name+'»?',
+		  buttons: [
+		    {
+		      text: 'Да',
+		      role: 'destructive',
+		      handler: () => {
+		        console.info('Destructive clicked');
+		        this.removeItemReal();
+		      }
+		    },{
+		      text: 'Нет',
+		      role: 'cancel',
+		      handler: () => {
+		        console.info('Cancel clicked');
+		      }
+		    }
+		  ]
+		});
+		actionSheet.present();
+	}
 
-	// ionViewCanEnter(arg)  { console.info('*ionViewCanEnter*'+arg); }	
-	// ionViewWillEnter(arg) { console.info('*ionViewWillEnter*'+arg); }
-	// ionViewDidEnter(arg)  { console.info('*ionViewDidEnter*'+arg); }
-	
-	// ionViewCanLeave(arg)  { console.info('*ionViewCanLeave*'+arg); }
-	// ionViewWillLeave(arg) { console.info('*ionViewWillLeave*'+arg); }
-	// ionViewDidLeave(arg)  { console.info('*ionViewDidLeave*'+arg); }
+	private removeItemReal(){
+		console.info('RegionShow.removeItemReal(), id='+this.id);
+
+		this.regionService.removeRegion(this.id).subscribe(
+			()=>{
+				this.infoMsg = 'Удалено «'+this.name+'»';
+				this.navCtrl.push(RegionList);
+			},
+			error => this.errorMsg = error
+		);
+	}
 }

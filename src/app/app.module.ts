@@ -7,18 +7,18 @@ import { Region } from '../pages/region/region.class';
 
 import { RegionService } from '../pages/region/region.service';
 import { RegionList } from '../pages/region/list/list';
-import { RegionListPage } from '../pages/region/list-page/list-page';
 import { RegionCreate } from '../pages/region/create/create';
 import { RegionShow } from '../pages/region/show/show';
 import { RegionEdit } from '../pages/region/edit/edit';
-import { ListItem } from '../pages/region/list-item/list-item';
 
 import { PlaceService } from '../pages/place/place.service';
 import { PlaceList } from '../pages/place/list/list';
-import { PlaceNew } from '../pages/place/new/new';
+import { PlaceCreate } from '../pages/place/create/create';
 import { PlaceShow } from '../pages/place/show/show';
 import { PlaceEdit } from '../pages/place/edit/edit';
 
+// Partials
+import { List } from '../partials/list/list';
 
 @NgModule({
   declarations: [
@@ -26,16 +26,16 @@ import { PlaceEdit } from '../pages/place/edit/edit';
     HomePage,
     
     RegionList,
-    RegionListPage,
     RegionCreate,
     RegionShow,
     RegionEdit,
-    ListItem,
     
     PlaceList,
-    PlaceNew,
+    PlaceCreate,
     PlaceShow,
     PlaceEdit,
+
+    List,
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -46,16 +46,16 @@ import { PlaceEdit } from '../pages/place/edit/edit';
     HomePage,
     
     RegionList,
-    RegionListPage,
     RegionCreate,
     RegionShow,
     RegionEdit,
-    ListItem,
     
     PlaceList,
-    PlaceNew,
+    PlaceCreate,
     PlaceShow,
     PlaceEdit,
+
+    List,
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
