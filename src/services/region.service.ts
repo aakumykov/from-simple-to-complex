@@ -7,111 +7,78 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw';
 
-import { Region } from '../pages/region/region.class';
-import { PlaceService } from './place.service';
-
+import { @Name@ } from '../pages/@name@/@name@.class';
 
 @Injectable()
-export class RegionService {
-	private regionsUrl = 'http://localhost:3000/regions';
+export class @Name@Service {
+	private @name@sUrl = 'http://localhost:3000/@name@s';
 
 	private requestHeaders = new Headers({ 'Content-Type': 'application/json' });
 	private requestOptions = new RequestOptions({ headers: this.requestHeaders });
 
 	constructor(
-		private http: Http,
-		private palceService: PlaceService,
+		private http: Http
 	){}
 
 
-	createRegion(data) {
-		console.info('RegionService.createRegion()');
+	create@Name@(data) {
+		console.info('@Name@Service.create@Name@()');
 
 		let requestData = {
 			name: data.name, 
 			description: data.description,
 		}
 
-		console.info(' this.regionsUrl: '+this.regionsUrl);
+		console.info(' this.@name@sUrl: '+this.@name@sUrl);
 
-		return this.http.post(this.regionsUrl, requestData, this.requestOptions)
+		return this.http.post(this.@name@sUrl, requestData, this.requestOptions)
 					.map(this.extractData)
 					.catch(this.handleError);
 	}
 
-	updateRegion(data) {
-		console.info('RegionService.updateRegion('+data.id+')');
+	update@Name@(data) {
+		console.info('@Name@Service.update@Name@('+data.id+')');
 
-		let regionUrl = this.regionsUrl+'/'+data.id;
+		let @name@Url = this.@name@sUrl+'/'+data.id;
 
 		let requestData = {
 			name: data.name, 
 			description: data.description,
 		}
 
-		return this.http.patch(regionUrl, requestData, this.requestOptions)
+		return this.http.patch(@name@Url, requestData, this.requestOptions)
 					.map(this.extractData)
 					.catch(this.handleError);
 	}
 
-	removeRegion(id: number) {
-		console.info('RegionService.removeRegion('+id+')');
+	remove@Name@(id: number) {
+		console.info('@Name@Service.remove@Name@('+id+')');
 
-		let regionUrl = this.regionsUrl+'/'+id;
+		let @name@Url = this.@name@sUrl+'/'+id;
 
-		return this.http.delete(regionUrl)
+		return this.http.delete(@name@Url)
 				.map(this.extractData)
 				.catch(this.handleError);
 	}
 
-	getRegion(id: number): Observable<Region> {
-		console.info('RegionService.getRegion('+id+')');
+	get@Name@(id: number): Observable<@Name@> {
+		console.info('@Name@Service.get@Name@('+id+')');
 
-		let regionUrl = this.regionsUrl+'/'+id;
-			// console.info(' regionUrl: '+regionUrl+')');
+		let @name@Url = this.@name@sUrl+'/'+id;
+			// console.info(' @name@Url: '+@name@Url+')');
 
-		return this.http.get(regionUrl)
+		return this.http.get(@name@Url)
 				.map(this.extractData)
 				.catch(this.handleError);
 	}
 	
-	getRegionList() {
-		console.info('RegionService.getRegionList()');
+	get@Name@List() {
+		console.info('@Name@Service.get@Name@List()');
 
-		return this.http.get(this.regionsUrl)
+		return this.http.get(this.@name@sUrl)
 						.map(this.extractData)
 						.catch(this.handleError);
-	}
-
-	// getRegionPlaces(id: number) {
-	// 	console.info('RegionService.getRegionPlaces()');
-
-	// 	let url = this.regionsUrl+'/'+id+'/places';
-	// 	return this.http.get(url)
-	// 					.map(this.extractData)
-	// 					.catch(this.handleError);
-	// }
-
-	// addRegion(name: string) {
-	// 	console.info('RegionService.addRegion('+name+')');
-
-	// 	let headers = new Headers({ 'Content-Type': 'application/json' });
-	// 	let options = new RequestOptions({ headers: headers });
-
-	// 	return this.http.post(this.regionsUrl, { name }, options)
-	// 				.map(this.extractData)
-	// 				.catch(this.handleError);
-	// }
-
-	// addPlace(id:number, name: string) {
-	// 	console.info('RegionService.addPlace('+name+', '+id+')');
-
-	// 	return this.http.post(this.placesUrl, { name: name, region_id: id }, this.requestOptions)
-	// 				.map(this.extractData)
-	// 				.catch(this.handleError);
-	// }
-
-	
+	}	
 
 	// внутренние методы
 	private extractData(res: Response) {
@@ -120,10 +87,6 @@ export class RegionService {
 	}
 
 	private handleError(error: Response | any) {
-		// console.info('----- RegionService.handleError() -----');
-		// console.info(error);
-		// console.info('----------------------------------------');
-
 		// Вообще-то, нужно использовать внешнюю службу журналирования!
 		let errMsg: string;
 

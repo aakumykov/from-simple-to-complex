@@ -1,16 +1,17 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-// import { Region } from '../region.class';
-import { RegionService } from '../../../services/region.service';
-import { RegionShow } from '../show/show';
+import { @Name@ } from '../@name@.class';
+import { @Name@Service } from '../../../services/@name@.service';
+import { @Name@Show } from '../show/show';
 
 @Component({
-	selector: 'region-edit',
-	templateUrl: 'edit.html'
+	selector: '@name@-edit',
+	templateUrl: 'edit.html',
+	providers: [ @Name@ ],
 })
 
-export class RegionEdit {
+export class @Name@Edit {
 	
 	// переменные
 	public errorMsg: string;
@@ -26,7 +27,7 @@ export class RegionEdit {
 	constructor(
 		public navCtrl: NavController,
 		public navParams: NavParams,
-		private regionService: RegionService,
+		private @name@Service: @Name@Service,
 	){
 		this.id = this.navParams.get('id');
 		this.name = this.navParams.get('name');
@@ -36,75 +37,31 @@ export class RegionEdit {
 	}
 
 	save(){
-		console.info('RegionEdit.save()');
+		console.info('@Name@Edit.save()');
 		
-		this.regionService.updateRegion(
+		this.@name@Service.update@Name@(
 			{
 				id: this.id, 
 				name: this.name, 
 				description: this.description
 			}
 		).subscribe(
-			region => { 
+			@name@ => { 
 				this.infoMsg = 'сохранено'; 
 
-				this.navCtrl.push(RegionShow,{id:this.id});
-
-				// this.clearNavHistory(2);
-
-				// let active = this.navCtrl.getActive()
-				// let currentIndex = this.navCtrl.indexOf(active);
-				// let editView = this.navCtrl.getByIndex(currentIndex-1);
-				
-				// this.navCtrl.removeView(editView);
-				// this.navCtrl.remove(currentIndex-2, 1);
-
+				this.navCtrl.push(@Name@Show,{id:this.id});
 			},
 			error => { this.errorMsg = error }
 		);
 	}
 
 	cancel(){
-		console.info('RegionEdit.cancel()');
+		console.info('@Name@Edit.cancel()');
 		this.navCtrl.pop();
 	}
-
-
-	// --- события ionic2 ---
-	// ionViewCanEnter()  { console.info('edit: *ionViewCanEnter*'); }
-	// ionViewWillEnter() { console.info('edit: *ionViewWillEnter*'); }
-	// ionViewDidEnter()  { console.info('edit: *ionViewDidEnter*'); }
-	
-	// ionViewCanLoad()   { console.info('edit: *ionViewCanLoad*'); }
-	// ionViewWillLoad()   { console.info('edit: *ionViewWillLoad*'); }
-	// ionViewDidLoad()   { console.info('edit: *ionViewDidLoad*'); }
-	
-	// ionViewCanLeave()  { console.info('edit: *ionViewCanLeave*'); }
-	// ionViewWillLeave() { console.info('edit: *ionViewWillLeave*'); }
 	
 	ionViewDidLeave()  { 
 		console.info('edit: *ionViewDidLeave*'); 
 		// this.clearNavHistory();
 	}
-
-	// ionViewCanUnload(){ console.info('edit: *ionViewCanUnload*'); }
-	// ionViewWillUnload(){ console.info('edit: *ionViewWillUnload*'); }
-	// ionViewDidUnload(){ console.info('edit: *ionViewDidUnload*'); }
-
-	// private clearNavHistory(depth: number = 1){
-	// 	console.info('RegionEdit.clearNavHistory()');
-
-	// 	// let active = this.navCtrl.getActive();
-	// 	// let currentIndex = this.navCtrl.indexOf(active);
-		
-	// 	let previous1View = this.navCtrl.getPrevious();
-	// 	console.info(previous1View);
-	// 	this.navCtrl.removeView(previous1View);
-		
-	// 	if (2==depth) {
-	// 		let previous2View = this.navCtrl.getPrevious(previous1View);
-	// 		console.info(previous2View);
-	// 		this.navCtrl.removeView(previous2View);
-	// 	}
-	// }
 }
