@@ -2,19 +2,18 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ActionSheetController } from 'ionic-angular';
 
-import { @Name@ } from '../@name@.class';
-import { @Name@Service } from '../../../services/@name@.service';
-import { @Name@Edit } from '../edit/edit';
-import { @Name@List } from '../list/list';
+// import { Region } from '../region.class';
+import { RegionService } from '../../../services/region.service';
+import { RegionEdit } from '../edit/edit';
+import { RegionList } from '../list/list';
 
 
 @Component({
-  selector: '@name@-show',
-  templateUrl: 'show.html',
-  providers: [ @Name@ ],
+  selector: 'region-show',
+  templateUrl: 'show.html'
 })
 
-export class @Name@Show {
+export class RegionShow {
 
 	public id: number;
 	public name: string;
@@ -27,49 +26,49 @@ export class @Name@Show {
   	constructor(
   		public navCtrl: NavController, 
   		public navParams: NavParams,
-  		private @name@Service: @Name@Service,
+  		private regionService: RegionService,
   		private actionSheetCtrl: ActionSheetController,
   	) {
   		this.id = this.navParams.get('id');
-  		console.info('@Name@Show.constructor(), id='+this.id);
+  		console.info('RegionShow.constructor(), id='+this.id);
   	}
 	
 	ngOnInit(){
-		console.info('*ngOnInit* (@Name@Show)');
-		this.get@Name@();
+		console.info('*ngOnInit* (RegionShow)');
+		this.getRegion();
 	}
 
 	editItem(){
-		console.info('@Name@Show.editItem()');
+		console.info('RegionShow.editItem()');
 		let data = {
 			id: this.id,
 			name: this.name,
 			description: this.description,
 		}
-		this.navCtrl.push(@Name@Edit,data);
+		this.navCtrl.push(RegionEdit,data);
 	}
 
 	removeItem() {
-		console.info('@Name@Show.removeItem()');
+		console.info('RegionShow.removeItem()');
 		this.presentActionSheet();
 	}
 
 
-	private get@Name@() {
-		console.info('@Name@Show.get@Name@('+this.id+')');
+	private getRegion() {
+		console.info('RegionShow.getRegion('+this.id+')');
 
-		this.@name@Service.get@Name@(this.id).subscribe(
-			@name@ => {
-				this.id = @name@.id;
-				this.name = @name@.name;
-				this.description = @name@.description;
+		this.regionService.getRegion(this.id).subscribe(
+			region => {
+				this.id = region.id;
+				this.name = region.name;
+				this.description = region.description;
 			},
 			error => this.errorMsg = error,
 		);
 	}
 
 	private presentActionSheet(){
-		console.info('@Name@Show.presentActionSheet()');
+		console.info('RegionShow.presentActionSheet()');
 		
 		let actionSheet = this.actionSheetCtrl.create({
 		  title: 'Удалить «'+this.name+'»?',
@@ -94,12 +93,12 @@ export class @Name@Show {
 	}
 
 	private removeItemReal(){
-		console.info('@Name@Show.removeItemReal(), id='+this.id);
+		console.info('RegionShow.removeItemReal(), id='+this.id);
 
-		this.@name@Service.remove@Name@(this.id).subscribe(
+		this.regionService.removeRegion(this.id).subscribe(
 			()=>{
 				this.infoMsg = 'Удалено «'+this.name+'»';
-				this.navCtrl.push(@Name@List);
+				this.navCtrl.push(RegionList);
 			},
 			error => this.errorMsg = error
 		);

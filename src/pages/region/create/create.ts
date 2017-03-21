@@ -1,17 +1,16 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-import { @Name@ } from '../@name@.class';
-import { @Name@Service } from '../../../services/@name@.service';
-import { @Name@Show } from '../show/show';
+// import { Region } from '../region.class';
+import { RegionService } from '../../../services/region.service';
+import { RegionShow } from '../show/show';
 
 @Component({
-	selector: '@name@-create',
-	templateUrl: '../edit/edit.html',
-	providers: [ @Name@ ],
+	selector: 'region-create',
+	templateUrl: '../edit/edit.html'
 })
 
-export class @Name@Create {
+export class RegionCreate {
 	public title = 'Добавление нового района';
 
 	public name: string;
@@ -23,21 +22,21 @@ export class @Name@Create {
 	constructor(
 		public navCtrl: NavController, 
 		public navParams: NavParams,
-		private @name@Service: @Name@Service,
+		private regionService: RegionService,
 	){}
 
 	save() { // общее имя с компонентом edit
-		console.info('@Name@Create.save()');
+		console.info('RegionCreate.save()');
 
 		let data = {
 			name: this.name,
 			description: this.description,
 		}
 
-		this.@name@Service.create@Name@(data).subscribe(
-			@name@ => {
-				// this.infoMsg = 'Район <?> создан '+@name@.id;
-				this.navCtrl.push(@Name@Show, {id:@name@.id});
+		this.regionService.createRegion(data).subscribe(
+			region => {
+				// this.infoMsg = 'Район <?> создан '+region.id;
+				this.navCtrl.push(RegionShow, {id:region.id});
 
 				// let active = this.navCtrl.getActive()
 				// let currentIndex = this.navCtrl.indexOf(active);
@@ -51,7 +50,7 @@ export class @Name@Create {
 	}
 
 	cancel() {
-		console.info('@Name@Create.cancel()');
+		console.info('RegionCreate.cancel()');
 		this.navCtrl.pop();
 	}
 }

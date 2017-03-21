@@ -1,21 +1,20 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-import { @Name@ } from '../@name@.class';
-import { @Name@Service } from '../../../services/@name@.service';
-import { @Name@Create } from '../create/create';
-import { @Name@Show } from '../show/show';
+import { Region } from '../region.class';
+import { RegionService } from '../../../services/region.service';
+import { RegionCreate } from '../create/create';
+import { RegionShow } from '../show/show';
 
 
 @Component({
-  selector: '@name@-list-page',
-  templateUrl: 'list.html',
-  providers: [ @Name@ ],
+  selector: 'region-list-page',
+  templateUrl: 'list.html'
 })
 
-export class @Name@List {
+export class RegionList {
 
-	public list: @Name@[];
+	public list: Region[];
 	
 	public infoMsg: string;
 	public errorMsg: string;
@@ -23,31 +22,31 @@ export class @Name@List {
   	constructor(
   		public navCtrl: NavController, 
   		public navParams: NavParams,
-  		private @name@Service: @Name@Service,
+  		private regionService: RegionService,
   	) {}
 
 
 	ngOnInit(){
-		console.info('*ngOnInit* (@Name@List)');
-		this.get@Name@List();
+		console.info('*ngOnInit* (RegionList)');
+		this.getRegionList();
 	}
 
 	show(id: number){
-		// console.info('------- @Name@List.show() ------');
+		// console.info('------- RegionList.show() ------');
 		// console.info(arg);
 		// console.info('------------------------------------');
-		this.navCtrl.push(@Name@Show, {id:id});
+		this.navCtrl.push(RegionShow, {id:id});
 	}
 
 	create() {
-		console.info('@Name@List.create()');
-		this.navCtrl.push(@Name@Create);
+		console.info('RegionList.create()');
+		this.navCtrl.push(RegionCreate);
 	}
 
-	private get@Name@List() {
-		console.info('@Name@List.get@Name@List()');
+	private getRegionList() {
+		console.info('RegionList.getRegionList()');
 
-		this.@name@Service.get@Name@List().subscribe(
+		this.regionService.getRegionList().subscribe(
 			list => {
 				this.list = list;
 			},
