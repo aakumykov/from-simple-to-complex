@@ -1,9 +1,19 @@
-<ion-header>
+<!-- <ion-header>
   <ion-navbar>
 	<ion-title>Районы</ion-title>
   </ion-navbar>
-</ion-header>
+</ion-header> -->
 
+<ion-header>
+	<ion-navbar>
+		Районы
+		<ion-buttons end>
+			<button ion-button icon-only>
+				<ion-icon name="add" (click)="create()"></ion-icon>
+			</button>
+		</ion-buttons>
+	</ion-navbar>
+</ion-header>
 
 <ion-content>
 	<p padding class='error' *ngIf="errorMsg">Ошибка: {{ errorMsg }}</p>
