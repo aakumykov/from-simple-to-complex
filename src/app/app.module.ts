@@ -20,6 +20,7 @@ import { PlaceEdit } from '../pages/place/edit/edit';
 // Partials
 import { List } from '../partials/list/list';
 import { PlacesOfRegion } from '../partials/places-of-region/places-of-region';
+import { OneRegion } from '../partials/one-region/one-region';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { PlacesOfRegion } from '../partials/places-of-region/places-of-region';
 
     List,
     PlacesOfRegion,
+    OneRegion,
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -59,12 +61,14 @@ import { PlacesOfRegion } from '../partials/places-of-region/places-of-region';
 
     List,
     PlacesOfRegion,
+    OneRegion,
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     RegionService,
     PlaceService,
     Region,
+    // Place,
   ]
 })
 

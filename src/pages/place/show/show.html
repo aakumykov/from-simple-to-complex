@@ -16,7 +16,9 @@
 		</ion-item>
 		
 		<ion-card-content *ngIf="description">{{description}}</ion-card-content>
-	
-
 	</ion-card>
+
+	<ion-item>region_id: {{region_id}}</ion-item>
+
+	<one-region [id]="(region_id)"></one-region>
 </ion-content>

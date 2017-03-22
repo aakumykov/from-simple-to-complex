@@ -6,7 +6,8 @@ import { ActionSheetController } from 'ionic-angular';
 import { PlaceService } from '../../../services/place.service';
 import { PlaceEdit } from '../edit/edit';
 import { PlaceList } from '../list/list';
-import { RegionShow } from '../../region/show/show';
+
+import { OneRegion } from '../../../partials/one-region/one-region';
 
 @Component({
   selector: 'place-show',
@@ -60,11 +61,11 @@ export class PlaceShow {
 
 		this.placeService.getPlace(this.id).subscribe(
 			place => {
-
 				this.id = place.id;
 				this.name = place.name;
 				this.description = place.description;
 				this.region_id = place.region_id;
+				console.info('region_id: '+this.region_id);
 			},
 			error => this.errorMsg = error,
 		);

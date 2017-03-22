@@ -19,7 +19,6 @@ export class RegionShow {
 	public name: string;
 	public description: string;
 
-
 	public infoMsg: string;
 	public errorMsg: string;
 

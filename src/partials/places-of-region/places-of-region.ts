@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { Input, Output, EventEmitter } from '@angular/core';
+import { Input } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import { Place } from '../../pages/place/place.class';
 
-import { List } from '../list/list';
 import { PlaceService } from '../../services/place.service';
 import { PlaceShow } from '../../pages/place/show/show';
 import { PlaceCreate } from '../../pages/place/create/create';
