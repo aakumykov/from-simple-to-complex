@@ -7,6 +7,7 @@ import { Place } from '../../pages/place/place.class';
 import { List } from '../list/list';
 import { PlaceService } from '../../services/place.service';
 import { PlaceShow } from '../../pages/place/show/show';
+import { PlaceCreate } from '../../pages/place/create/create';
 
 @Component({
   selector: 'places-of-region',
@@ -19,10 +20,13 @@ export class PlacesOfRegion {
 	@Input() 
 		region_id: number;
 
-	@Output() 
-		showEvent: EventEmitter<number> = new EventEmitter<number>();
+	// не нужно здесь
+	// @Output() 
+		// showEvent: EventEmitter<number> = new EventEmitter<number>();
+		// addEvent: EventEmitter<number> = new EventEmitter<number>();
 
 	public list: Place[];
+	public title: string = 'Места:';
 
 	public infoMsg: string;
 	public errorMsg: string;
@@ -42,6 +46,11 @@ export class PlacesOfRegion {
 	show(id: number) {
 		console.info('PlacesOfRegion.show('+id+')');
 		this.navCtrl.push(PlaceShow, {id: id});
+	}
+
+	addPlace() {
+		console.info('PlacesOfRegion.addPlace('+this.region_id+')');
+		this.navCtrl.push(PlaceCreate, {region_id: this.region_id});
 	}
 
 	private getList(id: number) {
