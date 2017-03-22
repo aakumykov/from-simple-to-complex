@@ -1,0 +1,12 @@
+<div class='places_of_region' padding>
+	
+	<ion-item> 
+		<h2>Места:</h2> 
+		<ion-icon small item-right name="add" (click)="addPlace()" title='добавить местность'></ion-icon>
+	</ion-item>
+	
+	<ion-item>
+		<list [list]="list" (showEvent)="show($event)"></list>
+	</ion-item>
+
+</div>
