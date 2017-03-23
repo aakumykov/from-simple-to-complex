@@ -1,4 +1,12 @@
-<ion-item 
+<!-- <ion-item 
 	(click)="showRegion()" 
 	title="просмотр района" 
 >Район: «{{ name }}»</ion-item>
+ -->
+ <div 
+ 	(click)="showRegion()" 
+ 	title="просмотр района «{{ name }}»" 
+ 	class='text_underline' 
+ >
+({{ name }})
+</div>

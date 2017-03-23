@@ -10,13 +10,12 @@
 	
 	<ion-card>
 		<ion-item> 
-			<h2>{{name}}</h2> 
+			<h2>{{name}}</h2>
+			<one-region *ngIf="region_id" [id]="region_id"></one-region>
 			<ion-icon small item-right name="create" color="primary" (click)="editItem(id)"></ion-icon>
 			<ion-icon small item-right name="trash" (click)="removeItem(id)"></ion-icon>
 		</ion-item>
 		
 		<ion-card-content *ngIf="description">{{description}}</ion-card-content>
 	</ion-card>
-
-	<one-region *ngIf="region_id" [id]="region_id"></one-region>
 </ion-content>
