@@ -49,6 +49,7 @@ export class RegionList {
 		this.regionService.getRegionList().subscribe(
 			list => {
 				this.list = list;
+				console.info('RegionList.getRegionList(), list recieved');
 			},
 			error => this.errorMsg = error,
 		);

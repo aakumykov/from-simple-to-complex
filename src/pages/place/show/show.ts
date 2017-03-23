@@ -9,6 +9,7 @@ import { PlaceList } from '../list/list';
 
 import { OneRegion } from '../../../partials/one-region/one-region';
 
+
 @Component({
   selector: 'place-show',
   templateUrl: 'show.html'
@@ -24,18 +25,19 @@ export class PlaceShow {
 	public infoMsg: string;
 	public errorMsg: string;
 
+
   	constructor(
   		public navCtrl: NavController, 
   		public navParams: NavParams,
   		private placeService: PlaceService,
   		private actionSheetCtrl: ActionSheetController,
   	) {
+  		console.info('PlaceShow.constructor()');
   		this.id = this.navParams.get('id');
-  		console.info('PlaceShow.constructor(), id='+this.id);
   	}
 	
 	ngOnInit(){
-		console.info('*ngOnInit* (PlaceShow)');
+		console.info('*ngOnInit* (PlaceShow), region_id: '+this.region_id);
 		this.getPlace();
 	}
 
@@ -65,7 +67,7 @@ export class PlaceShow {
 				this.name = place.name;
 				this.description = place.description;
 				this.region_id = place.region_id;
-				console.info('region_id: '+this.region_id);
+				console.info('PlaceShow.getPlace(), data recieved, region_id: '+this.region_id);
 			},
 			error => this.errorMsg = error,
 		);

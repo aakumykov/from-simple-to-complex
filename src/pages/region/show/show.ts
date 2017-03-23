@@ -61,6 +61,7 @@ export class RegionShow {
 				this.id = region.id;
 				this.name = region.name;
 				this.description = region.description;
+				console.info('RegionShow.getRegion('+this.id+'), data recieved');
 			},
 			error => this.errorMsg = error,
 		);

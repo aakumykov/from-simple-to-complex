@@ -52,6 +52,7 @@ export class PlaceList {
 		this.placeService.getPlaceList().subscribe(
 			list => {
 				this.list = list;
+				console.info('PlaceList.getPlaceList(), list recieved');
 			},
 			error => this.errorMsg = error,
 		);
