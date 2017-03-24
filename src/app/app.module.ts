@@ -17,6 +17,8 @@ import { PlaceCreate } from '../pages/place/create/create';
 import { PlaceShow } from '../pages/place/show/show';
 import { PlaceEdit } from '../pages/place/edit/edit';
 
+import { LoadingSplashService } from '../services/loading-splash.service';
+
 // Partials
 import { List } from '../partials/list/list';
 import { PlacesOfRegion } from '../partials/places-of-region/places-of-region';
@@ -65,6 +67,7 @@ import { OneRegion } from '../partials/one-region/one-region';
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    LoadingSplashService,
     RegionService,
     PlaceService,
     Region,

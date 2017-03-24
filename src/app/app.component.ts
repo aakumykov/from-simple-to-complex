@@ -22,7 +22,7 @@ export class MyApp {
 	ngAfterViewInit(){
 		console.log('*ngAfterViewInit*, MyApp');
 		// this.menuCtrl.open();
-		this.goRegionListPage();
+		// this.goRegionListPage();
 	}
 
 	goHomePage() {

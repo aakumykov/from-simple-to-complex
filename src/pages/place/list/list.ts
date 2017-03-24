@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-// import { Input } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+
+import { LoadingSplashService } from '../../../services/loading-splash.service';
 
 import { Place } from '../place.class';
 import { PlaceService } from '../../../services/place.service';
@@ -22,15 +23,19 @@ export class PlaceList {
 	public infoMsg: string;
 	public errorMsg: string;
 
+	private loader;
+
   	constructor(
   		public navCtrl: NavController, 
   		public navParams: NavParams,
   		private placeService: PlaceService,
+  		private loadingSplash: LoadingSplashService,
   	) {}
 
 
 	ngOnInit(){
 		console.info('*ngOnInit* (PlaceList)');
+		this.loadingSplash.show('Список мест загружается...');
 		this.getPlaceList();
 	}
 
@@ -53,6 +58,7 @@ export class PlaceList {
 			list => {
 				this.list = list;
 				console.info('PlaceList.getPlaceList(), list recieved');
+				this.loadingSplash.hide();
 			},
 			error => this.errorMsg = error,
 		);
