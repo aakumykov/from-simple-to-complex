@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { LoadingController } from 'ionic-angular';
+
+import { LoadingSplashService } from '../../../services/loading-splash.service';
 
 import { Region } from '../region.class';
 import { RegionService } from '../../../services/region.service';
@@ -26,16 +27,12 @@ export class RegionList {
   		public navCtrl: NavController, 
   		public navParams: NavParams,
   		private regionService: RegionService,
-  		private loadingCtrl: LoadingController,
-  	) {
-  		this.loader = this.loadingCtrl.create({
-			content: "Список районов загружается...",
-		});
-  	}
+  		private loadingSplash: LoadingSplashService,
+  	) {}
 
 	ngOnInit(){
 		console.info('*ngOnInit* (RegionList)');
-		this.loader.present();
+		this.loadingSplash.show('Список районов загружается...');
 		this.getRegionList();
 	}
 
@@ -58,7 +55,7 @@ export class RegionList {
 			list => {
 				this.list = list;
 				console.info('RegionList.getRegionList(), list recieved');
-				this.loader.dismiss();
+				this.loadingSplash.hide();
 			},
 			error => this.errorMsg = error,
 		);
