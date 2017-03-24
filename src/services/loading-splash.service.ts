@@ -22,6 +22,10 @@ export class LoadingSplashService {
 		this.loader.dismiss();
 	}
 
+	public qwerty() {
+		console.info('LoadingSplashService.qwerty()');
+	}
+
 	private createLoader(text: string) {
 		console.info('LoadingSplashService.createLoader()');
 
