@@ -7,8 +7,6 @@ import { PlaceService } from '../../../services/place.service';
 import { PlaceEdit } from '../edit/edit';
 import { PlaceList } from '../list/list';
 
-import { OneRegion } from '../../../partials/one-region/one-region';
-
 
 @Component({
   selector: 'place-show',

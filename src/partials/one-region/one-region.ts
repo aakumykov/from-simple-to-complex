@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Input } from '@angular/core';
-import { EventEmitter } from '@angular/core';
 
 import { RegionService } from '../../services/region.service';
 import { RegionShow } from '../../pages/region/show/show';
