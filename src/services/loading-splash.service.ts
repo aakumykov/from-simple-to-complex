@@ -24,6 +24,7 @@ export class LoadingSplashService {
 
 	public qwerty() {
 		console.info('LoadingSplashService.qwerty()');
+		// alert('qwerty');
 	}
 
 	private createLoader(text: string) {

@@ -28,6 +28,7 @@ export class RegionService {
 		private palceService: PlaceService,
 		private loadingSplash: LoadingSplashService,
 	){
+		// LoadingSplashService.qwerty();
 		console.info('---------- constructor ----------');
 		console.info(this.loadingSplash);
 		console.info(this.publicName);
@@ -101,6 +102,9 @@ export class RegionService {
 
 	private extractData(res: Response) {
 		let body = res.json();
+
+		let loadingSplash = new LoadingSplashService();
+		loadingSplash.qwerty();
 
 		// this.loadingSplash.hide();
 		console.info('---------- extractData ----------');
