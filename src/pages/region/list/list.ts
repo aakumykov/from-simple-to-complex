@@ -21,8 +21,6 @@ export class RegionList {
 	public infoMsg: string;
 	public errorMsg: string;
 
-	private loader;
-
   	constructor(
   		public navCtrl: NavController, 
   		public navParams: NavParams,
