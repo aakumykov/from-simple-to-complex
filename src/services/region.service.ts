@@ -8,6 +8,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw';
 
 import { Region } from '../pages/region/region.class';
+import { LoadingSplashService } from './loading-splash.service';
 import { PlaceService } from './place.service';
 
 
@@ -21,6 +22,7 @@ export class RegionService {
 	constructor(
 		private http: Http,
 		private palceService: PlaceService,
+		private loadingSplash: LoadingSplashService,
 	){}
 
 
@@ -35,7 +37,7 @@ export class RegionService {
 		console.info(' this.regionsUrl: '+this.regionsUrl);
 
 		return this.http.post(this.regionsUrl, requestData, this.requestOptions)
-					.map(this.extractData)
+					.map(data => this.extractData(data))
 					.catch(this.handleError);
 	}
 
@@ -50,7 +52,7 @@ export class RegionService {
 		}
 
 		return this.http.patch(regionUrl, requestData, this.requestOptions)
-					.map(this.extractData)
+					.map(data => this.extractData(data))
 					.catch(this.handleError);
 	}
 
@@ -60,7 +62,7 @@ export class RegionService {
 		let regionUrl = this.regionsUrl+'/'+id;
 
 		return this.http.delete(regionUrl)
-				.map(this.extractData)
+				.map(data => this.extractData(data))
 				.catch(this.handleError);
 	}
 
@@ -71,51 +73,28 @@ export class RegionService {
 			// console.info(' regionUrl: '+regionUrl+')');
 
 		return this.http.get(regionUrl)
-				.map(this.extractData)
+				.map(data => this.extractData(data))
 				.catch(this.handleError);
 	}
 	
 	getRegionList() {
 		console.info('RegionService.getRegionList()');
 
+		this.loadingSplash.show('Получаю список районов...');
+
 		return this.http.get(this.regionsUrl)
-						.map(this.extractData)
+						.map(data => this.extractData(data,this.loadingSplash))
 						.catch(this.handleError);
 	}
-
-	// getRegionPlaces(id: number) {
-	// 	console.info('RegionService.getRegionPlaces()');
-
-	// 	let url = this.regionsUrl+'/'+id+'/places';
-	// 	return this.http.get(url)
-	// 					.map(this.extractData)
-	// 					.catch(this.handleError);
-	// }
-
-	// addRegion(name: string) {
-	// 	console.info('RegionService.addRegion('+name+')');
-
-	// 	let headers = new Headers({ 'Content-Type': 'application/json' });
-	// 	let options = new RequestOptions({ headers: headers });
-
-	// 	return this.http.post(this.regionsUrl, { name }, options)
-	// 				.map(this.extractData)
-	// 				.catch(this.handleError);
-	// }
-
-	// addPlace(id:number, name: string) {
-	// 	console.info('RegionService.addPlace('+name+', '+id+')');
-
-	// 	return this.http.post(this.placesUrl, { name: name, region_id: id }, this.requestOptions)
-	// 				.map(this.extractData)
-	// 				.catch(this.handleError);
-	// }
-
 	
 
 	// внутренние методы
-	private extractData(res: Response) {
+	private extractData(res: Response, loadingSplash=null) {
 		let body = res.json();
+		if (null!=loadingSplash) {
+			// console.info(this.loadingSplash.hide);
+			loadingSplash.hide();
+		}
 		return body || {};
 	}
 
