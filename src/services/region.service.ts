@@ -19,21 +19,11 @@ export class RegionService {
 	private requestHeaders = new Headers({ 'Content-Type': 'application/json' });
 	private requestOptions = new RequestOptions({ headers: this.requestHeaders });
 
-	public publicName = 'this is the public name';
-	private privateName = 'this is the private name';
-
-
 	constructor(
 		private http: Http,
 		private palceService: PlaceService,
 		private loadingSplash: LoadingSplashService,
-	){
-		// console.info('---------- constructor ----------');
-		// console.info(this.loadingSplash);
-		// console.info(this.publicName);
-		// console.info(this.privateName);
-		// console.info('---------------------------------');
-	}
+	){}
 
 
 	createRegion(data) {
@@ -47,7 +37,7 @@ export class RegionService {
 		console.info(' this.regionsUrl: '+this.regionsUrl);
 
 		return this.http.post(this.regionsUrl, requestData, this.requestOptions)
-					.map(this.extractData)
+					.map(data => this.extractData(data))
 					.catch(this.handleError);
 	}
 
@@ -62,7 +52,7 @@ export class RegionService {
 		}
 
 		return this.http.patch(regionUrl, requestData, this.requestOptions)
-					.map(this.extractData)
+					.map(data => this.extractData(data))
 					.catch(this.handleError);
 	}
 
@@ -72,7 +62,7 @@ export class RegionService {
 		let regionUrl = this.regionsUrl+'/'+id;
 
 		return this.http.delete(regionUrl)
-				.map(this.extractData)
+				.map(data => this.extractData(data))
 				.catch(this.handleError);
 	}
 
@@ -83,39 +73,36 @@ export class RegionService {
 			// console.info(' regionUrl: '+regionUrl+')');
 
 		return this.http.get(regionUrl)
-				.map(this.extractData)
+				.map(data => this.extractData(data))
 				.catch(this.handleError);
 	}
 	
 	getRegionList() {
 		console.info('RegionService.getRegionList()');
 
-		// this.loadingSplash.show();
+		this.loadingSplash.show('Получаю список районов...');
 
-		let res = this.http.get(this.regionsUrl)
-						.map(data => {this.extractData(data);})
+		return this.http.get(this.regionsUrl)
+						.map(data => this.extractData(data,this.loadingSplash))
 						.catch(this.handleError);
-
-		// this.loadingSplash.hide();
-
-		return res;
 	}
+	
 
-
-	private extractData(res: Response) {
+	// внутренние методы
+	private extractData(res: Response, loadingSplash=null) {
 		let body = res.json();
-
-		// console.info('---------- extractData ----------');
-		// console.info(this);
-		// console.info(this.loadingSplash);
-		// console.info(this.publicName);
-		// console.info(this.privateName);
-		// console.info('---------------------------------');
-
+		if (null!=loadingSplash) {
+			// console.info(this.loadingSplash.hide);
+			loadingSplash.hide();
+		}
 		return body || {};
 	}
 
 	private handleError(error: Response | any) {
+		// console.info('----- RegionService.handleError() -----');
+		// console.info(error);
+		// console.info('----------------------------------------');
+
 		// Вообще-то, нужно использовать внешнюю службу журналирования!
 		let errMsg: string;
 
@@ -123,18 +110,20 @@ export class RegionService {
 			const body = error.json();
 			const err = body.error || JSON.stringify(body);
 			errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
+
+			// console.info('----- errMsg (1) -----');
+			// console.info(errMsg);
+			// console.info('------------------');
 		}
 		else {
 			errMsg = error.message ? error.message : error.toString();
+
+			// console.info('----- errMsg (2) -----');
+			// console.info(errMsg);
+			// console.info('------------------');
 		}
 
 		console.error(errMsg);
-
-		// console.info('---------- handleError ----------');
-		// console.info(this.loadingSplash);
-		// console.info(this.publicName);
-		// console.info(this.privateName);
-		// console.info('---------------------------------');
 
 		return Observable.throw(errMsg);
 	}
