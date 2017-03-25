@@ -28,12 +28,11 @@ export class RegionService {
 		private palceService: PlaceService,
 		private loadingSplash: LoadingSplashService,
 	){
-		// LoadingSplashService.qwerty();
-		console.info('---------- constructor ----------');
-		console.info(this.loadingSplash);
-		console.info(this.publicName);
-		console.info(this.privateName);
-		console.info('---------------------------------');
+		// console.info('---------- constructor ----------');
+		// console.info(this.loadingSplash);
+		// console.info(this.publicName);
+		// console.info(this.privateName);
+		// console.info('---------------------------------');
 	}
 
 
@@ -91,26 +90,26 @@ export class RegionService {
 	getRegionList() {
 		console.info('RegionService.getRegionList()');
 
-		this.loadingSplash.qwerty();
-		// console.info(this.loadingSplash);
+		this.loadingSplash.show();
 
-		return this.http.get(this.regionsUrl)
+		let res = this.http.get(this.regionsUrl)
 						.map(this.extractData)
 						.catch(this.handleError);
+
+		this.loadingSplash.hide();
+
+		return res;
 	}
 
 
 	private extractData(res: Response) {
 		let body = res.json();
 
-		let loadingSplash = new LoadingSplashService();
-		loadingSplash.qwerty();
-
-		// this.loadingSplash.hide();
 		console.info('---------- extractData ----------');
-		console.info(this.loadingSplash);
-		console.info(this.publicName);
-		console.info(this.privateName);
+		console.info(this);
+		// console.info(this.loadingSplash);
+		// console.info(this.publicName);
+		// console.info(this.privateName);
 		console.info('---------------------------------');
 
 		return body || {};
@@ -131,12 +130,11 @@ export class RegionService {
 
 		console.error(errMsg);
 
-		// this.loadingSplash.hide();
-		console.info('---------- handleError ----------');
-		console.info(this.loadingSplash);
-		console.info(this.publicName);
-		console.info(this.privateName);
-		console.info('---------------------------------');
+		// console.info('---------- handleError ----------');
+		// console.info(this.loadingSplash);
+		// console.info(this.publicName);
+		// console.info(this.privateName);
+		// console.info('---------------------------------');
 
 		return Observable.throw(errMsg);
 	}
