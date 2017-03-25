@@ -90,13 +90,13 @@ export class RegionService {
 	getRegionList() {
 		console.info('RegionService.getRegionList()');
 
-		this.loadingSplash.show();
+		// this.loadingSplash.show();
 
 		let res = this.http.get(this.regionsUrl)
-						.map(this.extractData)
+						.map(data => {this.extractData(data);})
 						.catch(this.handleError);
 
-		this.loadingSplash.hide();
+		// this.loadingSplash.hide();
 
 		return res;
 	}
@@ -105,12 +105,12 @@ export class RegionService {
 	private extractData(res: Response) {
 		let body = res.json();
 
-		console.info('---------- extractData ----------');
-		console.info(this);
+		// console.info('---------- extractData ----------');
+		// console.info(this);
 		// console.info(this.loadingSplash);
 		// console.info(this.publicName);
 		// console.info(this.privateName);
-		console.info('---------------------------------');
+		// console.info('---------------------------------');
 
 		return body || {};
 	}
